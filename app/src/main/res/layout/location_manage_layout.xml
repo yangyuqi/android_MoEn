@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/bg_all"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/title_bar"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+        <ListView
+            android:layout_marginBottom="2dp"
+            android:id="@+id/ls_location"
+            android:layout_above="@+id/tv_add"
+            android:dividerHeight="@dimen/space_10"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></ListView>
+
+
+        <TextView
+            android:id="@+id/tv_add"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/text_blue"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_15"
+            android:textColor="@color/bg_background_white"
+            android:text="新建地址"
+            />
+
+    </RelativeLayout>
+
+</LinearLayout>

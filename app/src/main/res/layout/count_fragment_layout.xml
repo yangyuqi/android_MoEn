@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/bg_background_white"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/title_bar"/>
+
+    <LinearLayout
+        android:background="@color/bg_all"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <include
+            android:visibility="gone"
+            layout="@layout/activity_base"/>
+
+
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/space_10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <RelativeLayout
+                android:background="@color/bg_background_white"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="125dp">
+
+
+
+                <LinearLayout
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+
+                    <ImageView
+                        android:src="@mipmap/group_8_1"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:text="门店销量"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_15"
+                        android:textColor="@color/text_main"
+                        android:layout_marginTop="@dimen/space_5"
+                        />
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/bg_all"/>
+            <RelativeLayout
+                android:background="@color/bg_background_white"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="125dp">
+
+
+
+                <LinearLayout
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+
+                    <ImageView
+                        android:src="@mipmap/group_8_2"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        />
+                    <TextView
+                        android:text="商品销量"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_15"
+                        android:textColor="@color/text_main"
+                        android:layout_marginTop="@dimen/space_5"
+                        />
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/bg_all"/>
+
+            <RelativeLayout
+                android:background="@color/bg_background_white"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="125dp">
+
+
+
+                <LinearLayout
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+
+                    <ImageView
+                        android:src="@mipmap/group_8_3"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/iv_icon"
+                        />
+                    <TextView
+                        android:text="套餐排名"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_15"
+                        android:textColor="@color/text_main"
+                        android:layout_marginTop="@dimen/space_5"
+                        />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg_all"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <RelativeLayout
+                android:background="@color/bg_background_white"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="125dp">
+
+
+
+                <LinearLayout
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+
+                    <ImageView
+                        android:src="@mipmap/group_8_4"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:text="商品品类排名"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_15"
+                        android:textColor="@color/text_main"
+                        android:layout_marginTop="@dimen/space_5"
+                        />
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/bg_all"/>
+            <RelativeLayout
+                android:background="@color/bg_background_white"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="125dp">
+
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:background="@color/bg_background_white"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="125dp">
+
+
+
+                <LinearLayout
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_marginTop="@dimen/space_10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <RelativeLayout
+                    android:background="@color/bg_background_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp">
+
+                    <TextView
+                        android:textSize="@dimen/text_size_15"
+                        android:layout_marginLeft="@dimen/space_15"
+                        android:drawablePadding="@dimen/space_10"
+                        android:layout_centerVertical="true"
+                        android:drawableLeft="@mipmap/group_8_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="今日门店销售额"
+                        android:textColor="@color/text_main"
+                        />
+
+                    <TextView
+                        android:textSize="@dimen/text_size_16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="@dimen/space_15"
+                        android:textColor="@color/text_golden"
+                        />
+
+                </RelativeLayout>
+                <LinearLayout
+                    android:paddingTop="@dimen/space_15"
+                    android:layout_width="match_parent"
+                    android:layout_height="67dp"
+                    android:background="@color/bg_background_white"
+                    android:layout_marginTop="@dimen/space_divider_2"
+                    >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/group_8_5"
+                        android:layout_marginLeft="@dimen/space_15"
+                        />
+
+                    <LinearLayout
+                        android:layout_marginLeft="@dimen/space_10"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:textSize="@dimen/text_size_15"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="今日套餐销量最佳"
+                            android:textColor="@color/text_main"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/space_3"
+                            android:textSize="@dimen/text_size_12"
+                            android:textColor="@color/text_drak_gray"
+                            android:text="是多久啊是觉得"
+                            />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:textSize="@dimen/text_size_16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="@dimen/space_15"
+                        android:textColor="@color/text_golden"
+                        android:text="哈哈哈"
+                        />
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_marginTop="@dimen/space_divider_2"
+                    android:background="@color/bg_background_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp">
+
+                    <TextView
+                        android:textSize="@dimen/text_size_15"
+                        android:layout_marginLeft="@dimen/space_15"
+                        android:drawablePadding="@dimen/space_10"
+                        android:layout_centerVertical="true"
+                        android:drawableLeft="@mipmap/group_8_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="今日平类销量最佳"
+                        android:textColor="@color/text_main"
+                        />
+
+                    <TextView
+                        android:textSize="@dimen/text_size_16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="@dimen/space_15"
+                        android:textColor="@color/text_golden"
+                        />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:paddingTop="@dimen/space_15"
+                    android:layout_width="match_parent"
+                    android:layout_height="67dp"
+                    android:background="@color/bg_background_white"
+                    android:layout_marginTop="@dimen/space_divider_2"
+                    >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/group_8_5"
+                        android:layout_marginLeft="@dimen/space_15"
+                        />
+
+                    <LinearLayout
+                        android:layout_marginLeft="@dimen/space_10"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:textSize="@dimen/text_size_15"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="今日单品销量最佳"
+                            android:textColor="@color/text_main"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/space_3"
+                            android:textSize="@dimen/text_size_12"
+                            android:textColor="@color/text_drak_gray"
+                            android:text="是多久啊是觉得"
+                            />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:textSize="@dimen/text_size_16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="@dimen/space_15"
+                        android:textColor="@color/text_golden"
+                        android:text="哈哈哈"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:paddingTop="@dimen/space_15"
+                    android:layout_width="match_parent"
+                    android:layout_height="67dp"
+                    android:background="@color/bg_background_white"
+                    android:layout_marginTop="@dimen/space_divider_2"
+                    >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/group_8_5"
+                        android:layout_marginLeft="@dimen/space_15"
+                        />
+
+                    <LinearLayout
+                        android:layout_marginLeft="@dimen/space_10"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:textSize="@dimen/text_size_15"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="今日客户注册数"
+                            android:textColor="@color/text_main"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/space_3"
+                            android:textSize="@dimen/text_size_12"
+                            android:textColor="@color/text_drak_gray"
+                            android:text="是多久啊是觉得"
+                            />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:textSize="@dimen/text_size_16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="@dimen/space_15"
+                        android:textColor="@color/text_golden"
+                        android:text="哈哈哈"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>

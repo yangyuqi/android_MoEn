@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/colorPrimary"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:src="@mipmap/group_1_1"
+        android:layout_centerHorizontal="true"
+        />
+
+    <LinearLayout
+        android:paddingTop="80dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        >
+        <EditText
+            android:maxLength="11"
+            android:inputType="phone"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:background="@null"
+            android:drawableLeft="@mipmap/group_1_2"
+            android:drawablePadding="@dimen/space_10"
+            android:hint="@string/login_input_phone"
+            android:textColor="@color/color_air_blue"
+            android:textSize="@dimen/text_size_13"
+            />
+        <View
+            android:layout_marginTop="@dimen/space_3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_divider_2"
+            android:background="@color/color_air_blue"/>
+
+
+        <RelativeLayout
+            android:visibility="visible"
+            android:id="@+id/rl_show_code"
+            android:layout_marginTop="@dimen/space_5"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <EditText
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:gravity="center_vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="38dp"
+                    android:background="@null"
+                    android:drawableLeft="@mipmap/group_2_1"
+                    android:drawablePadding="@dimen/space_10"
+                    android:hint="@string/login_input_code"
+                    android:textColor="@color/color_air_blue"
+                    android:textSize="@dimen/text_size_13"
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/group_2_2"
+                    android:layout_gravity="center_vertical"
+                    />
+
+                <Button
+                    android:textColor="@color/color_air_blue"
+                    android:textSize="@dimen/text_size_13"
+                    android:text="获取验证码"
+                    android:gravity="center"
+                    android:background="@color/colorPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/space_10"
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="@dimen/space_3"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_divider_2"
+                android:background="@color/color_air_blue"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/space_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <EditText
+                android:inputType="textPassword"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:background="@null"
+                android:drawableLeft="@mipmap/group_1_3"
+                android:drawablePadding="@dimen/space_10"
+                android:hint="@string/login_new_pwd"
+                android:textColor="@color/color_air_blue"
+                android:textSize="@dimen/text_size_13"
+                />
+            <View
+                android:layout_marginTop="@dimen/space_3"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_divider_2"
+                android:background="@color/color_air_blue"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_show_pwd"
+            android:layout_marginTop="@dimen/space_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <EditText
+                android:inputType="textPassword"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:background="@null"
+                android:drawableLeft="@mipmap/group_1_3"
+                android:drawablePadding="@dimen/space_10"
+                android:hint="@string/login_pwd_again"
+                android:textColor="@color/color_air_blue"
+                android:textSize="@dimen/text_size_13"
+                />
+            <View
+                android:layout_marginTop="@dimen/space_3"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_divider_2"
+                android:background="@color/color_air_blue"/>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:textSize="@dimen/text_size_15"
+            android:textColor="@color/colorPrimary"
+            android:gravity="center"
+            android:text="@string/confrim_text"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/reclick_btn_bg"
+            />
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/group_2_3"
+        android:padding="@dimen/space_15"
+        android:id="@+id/iv_back"
+        android:visibility="visible"
+        />
+
+</RelativeLayout>

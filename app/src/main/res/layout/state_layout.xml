@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/state_layout_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/group_0_1" />
+        <TextView
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/space_15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:text="@string/error_network"
+            android:textColor="@color/text_main" />
+
+
+        <Button
+            android:paddingRight="@dimen/space_20"
+            android:paddingLeft="@dimen/space_20"
+            android:layout_gravity="center_horizontal"
+            android:textSize="@dimen/text_size_14"
+            android:layout_marginTop="@dimen/space_15"
+            android:id="@+id/state_layout_error_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="39dp"
+            android:background="@drawable/reclick_btn_bg"
+            android:text="点击重试"
+            android:textColor="@color/colorPrimary" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/state_layout_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+
+
+        <Button
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:text="暂无数据"
+            android:textColor="@color/text_drak_gray" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_header"
+    android:layout_width="match_parent"
+    android:layout_height="48dip"
+    android:background="@color/colorPrimary">
+
+    <!-- 返回按钮 -->
+
+    <ImageView
+        android:layout_centerVertical="true"
+        android:visibility="visible"
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/space_15"
+        android:clickable="true"
+        android:src="@mipmap/group_12_4"
+        />
+
+    <TextView
+        android:id="@+id/textHeadTitle"
+        style="@style/main_head_title"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:clickable="true"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:maxWidth="180dp"
+        android:singleLine="true"
+        android:text=""
+        android:textColor="@color/bg_background_white"
+        android:textSize="@dimen/text_size_17" />
+
+    <TextView
+        android:id="@+id/textHeadNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:padding="@dimen/space_15"
+        android:text=""
+        android:textSize="@dimen/text_size_15"
+        android:clickable="true"
+        android:textColor="@color/text_drak_gray"
+        />
+
+    <ImageView
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        android:id="@+id/iv_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/space_15"
+        android:clickable="true"
+        android:src="@mipmap/group_12_1"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/bg_all"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/title_bar"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="204dp"
+        android:background="@color/bg_background_white"
+        >
+
+        <LinearLayout
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <ImageView
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/group_34_1"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="注册成功!"
+                android:layout_marginTop="@dimen/space_10"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/text_blue"
+                android:textSize="@dimen/text_size_16"
+                />
+
+            <TextView
+                android:text="手机号码 : 17236128930"
+                android:textColor="@color/text_main"
+                android:textSize="@dimen/text_size_14"
+                android:layout_marginTop="@dimen/space_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:background="@color/bg_background_white"
+        android:layout_marginTop="@dimen/space_10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="快速服务"
+        android:paddingLeft="@dimen/space_15"
+        android:paddingBottom="@dimen/space_10"
+        android:paddingTop="@dimen/space_10"
+        />
+
+    <GridView
+        android:id="@+id/gv"
+        android:horizontalSpacing="1dp"
+        android:verticalSpacing="1dp"
+        android:numColumns="3"
+        android:layout_marginTop="@dimen/space_divider_2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></GridView>
+
+</LinearLayout>

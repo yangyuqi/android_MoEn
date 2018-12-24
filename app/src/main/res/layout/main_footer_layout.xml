@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutFooter"
+    android:layout_width="match_parent"
+    android:layout_height="52dp"
+    android:background="@color/bg_background_white"
+    >
+
+    <RadioGroup
+        android:id="@+id/group"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:checked="true"
+            android:id="@+id/foot_bar_home"
+            style="@style/main_footer_bar_radio"
+            android:drawableTop="@drawable/drawable_bar_home_select"
+            android:text="首页" />
+
+        <RadioButton
+            android:id="@+id/foot_bar_im"
+            style="@style/main_footer_bar_radio"
+            android:drawableTop="@drawable/drawable_bar_inter_select"
+            android:text="门店管理" />
+
+
+        <RadioButton
+            android:id="@+id/main_footbar_account"
+            style="@style/main_footer_bar_radio"
+            android:drawableTop="@drawable/drawable_bar_home_my"
+            android:text="统计" />
+
+        <RadioButton
+            android:id="@+id/main_footbar_user"
+            style="@style/main_footer_bar_radio"
+            android:drawableTop="@drawable/drawable_bar_home_my_account"
+            android:text="我的" />
+
+    </RadioGroup>
+
+</RelativeLayout>
