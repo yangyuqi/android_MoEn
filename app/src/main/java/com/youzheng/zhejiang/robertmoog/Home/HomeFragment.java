@@ -14,6 +14,7 @@ import com.youzheng.zhejiang.robertmoog.Base.BaseFragment;
 import com.youzheng.zhejiang.robertmoog.Home.activity.ClientViewActivity;
 import com.youzheng.zhejiang.robertmoog.Home.activity.LoginActivity;
 import com.youzheng.zhejiang.robertmoog.Home.activity.RegisterActivity;
+import com.youzheng.zhejiang.robertmoog.Home.activity.RegisterSuccessActivity;
 import com.youzheng.zhejiang.robertmoog.Home.activity.SearchGoodsActivity;
 import com.youzheng.zhejiang.robertmoog.R;
 
@@ -64,7 +65,10 @@ public class HomeFragment extends BaseFragment  implements BaseFragment.ReloadIn
         mView.findViewById(R.id.iv_search).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(mContext, SearchGoodsActivity.class));
+                Intent intent = new Intent(mContext, RegisterSuccessActivity.class);
+                intent.putExtra("type","scan");
+                startActivity(intent);
+//                startActivity(new Intent(mContext, SearchGoodsActivity.class));
             }
         });
     }

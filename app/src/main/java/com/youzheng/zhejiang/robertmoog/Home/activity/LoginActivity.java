@@ -68,9 +68,7 @@ public class LoginActivity extends BaseActivity {
 
     private void initLogin() {
         Map<String,Object> map = new HashMap<>();
-        map.put("mobile","18101399087");
-        map.put("password","91B4D142823F7D20C5F08DF69122DE43F35F057A988D9619F6D3138485C9A203");
-       OkHttpClientManager.getAsyn("https://demo.waycomtech.com/api/oauth/token?grant_type=password&username=18101399087&password="+ PublicUtils.getSHA256StrJava("000000")+"&client_id=app&client_secret=appSecret", new OkHttpClientManager.StringCallback() {
+       OkHttpClientManager.getAsyn("https://demo.waycomtech.com/api/oauth/token?grant_type=password&username=18101399087&password="+ PublicUtils.getSHA256StrJava("111111")+"&client_id=app&client_secret=appSecret", new OkHttpClientManager.StringCallback() {
            @Override
            public void onFailure(Request request, IOException e) {
 

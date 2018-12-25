@@ -18,4 +18,6 @@
     <string name="login_pwd_again">请重复新密码</string>
     <string name="phone_number">手机号码</string>
     <string name="add_new_address">新增地址</string>
+    <string name="phone_not_null">手机号不能为空</string>
+    <string name="code_not_null">验证码不能为空</string>
 </resources>

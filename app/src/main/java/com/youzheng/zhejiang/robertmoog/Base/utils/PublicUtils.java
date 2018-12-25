@@ -6,6 +6,8 @@ import java.security.NoSuchAlgorithmException;
 
 public class PublicUtils {
 
+    public static int code = 200 ;
+
     public static String getSHA256StrJava(String str) {
         MessageDigest messageDigest;
         String encodeStr = "";
