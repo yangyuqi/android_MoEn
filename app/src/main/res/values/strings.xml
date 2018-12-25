@@ -18,4 +18,7 @@
     <string name="login_pwd_again">请重复新密码</string>
     <string name="phone_number">手机号码</string>
     <string name="add_new_address">新增地址</string>
+    <string name="store_customer_number">门店拓展客户（人数）</string>
+    <string name="order_number">订单编号：</string>
+    <string name="disbursements">实付款：</string>
 </resources>
