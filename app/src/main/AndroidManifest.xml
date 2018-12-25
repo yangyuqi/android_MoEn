@@ -24,24 +24,36 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Home.activity.LoginActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Home.activity.ForgetPwdActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Home.activity.ClientViewActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Home.activity.ScanSellerActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Home.activity.SearchGoodsActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Home.activity.RegisterActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Home.activity.RegisterSuccessActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Home.activity.LocationManageActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Home.activity.AddNewAddressActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Home.activity.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Home.activity.ForgetPwdActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Home.activity.ClientViewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Home.activity.ScanSellerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Home.activity.SearchGoodsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Home.activity.RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Home.activity.RegisterSuccessActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Home.activity.LocationManageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Home.activity.AddNewAddressActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Store.activity.StoreCustomerActivity" />
+        <activity android:name=".Store.activity.StoreCustomerInsideActivity" />
+        <activity android:name=".Store.activity.OrderListActivity"></activity>
     </application>
 
 </manifest>
