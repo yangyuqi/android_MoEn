@@ -21,4 +21,6 @@
     <string name="store_customer_number">门店拓展客户（人数）</string>
     <string name="order_number">订单编号：</string>
     <string name="disbursements">实付款：</string>
+    <string name="phone_not_null">手机号不能为空</string>
+    <string name="code_not_null">验证码不能为空</string>
 </resources>
