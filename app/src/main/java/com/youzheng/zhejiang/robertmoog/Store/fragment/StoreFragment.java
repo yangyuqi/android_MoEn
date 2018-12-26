@@ -1,4 +1,4 @@
-package com.youzheng.zhejiang.robertmoog.Store;
+package com.youzheng.zhejiang.robertmoog.Store.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +13,9 @@ import android.widget.GridView;
 import com.youzheng.zhejiang.robertmoog.Base.BaseFragment;
 import com.youzheng.zhejiang.robertmoog.Home.HomeFragment;
 import com.youzheng.zhejiang.robertmoog.R;
+import com.youzheng.zhejiang.robertmoog.Store.activity.GoodsManageActivity;
 import com.youzheng.zhejiang.robertmoog.Store.activity.OrderListActivity;
+import com.youzheng.zhejiang.robertmoog.Store.activity.ProfessionalCustomerActivity;
 import com.youzheng.zhejiang.robertmoog.Store.activity.StoreCustomerActivity;
 import com.youzheng.zhejiang.robertmoog.utils.CommonAdapter;
 import com.youzheng.zhejiang.robertmoog.utils.ViewHolder;
@@ -67,6 +69,14 @@ public class StoreFragment extends BaseFragment implements BaseFragment.ReloadIn
 
                    case 1:
                        startActivity(new Intent(getActivity(),OrderListActivity.class));
+                       break;
+
+                   case 2:
+                       startActivity(new Intent(getActivity(),GoodsManageActivity.class));
+                       break;
+
+                   case 3:
+                       startActivity(new Intent(getActivity(),ProfessionalCustomerActivity.class));
                        break;
                }
             }

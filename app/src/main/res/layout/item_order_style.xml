@@ -58,11 +58,11 @@
             android:gravity="center_vertical"
             android:background="@color/bg_all">
 
-            <GridView
+            <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_list_pic"
                 android:layout_width="match_parent"
-                android:numColumns="1"
-                android:layout_height="88dp"></GridView>
+                android:paddingLeft="15dp"
+                android:layout_height="88dp"></android.support.v7.widget.RecyclerView>
 
 
         </LinearLayout>

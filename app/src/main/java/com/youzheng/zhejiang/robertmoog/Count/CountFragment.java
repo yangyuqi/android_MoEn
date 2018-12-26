@@ -6,16 +6,9 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 
 import com.youzheng.zhejiang.robertmoog.Base.BaseFragment;
 import com.youzheng.zhejiang.robertmoog.R;
-import com.youzheng.zhejiang.robertmoog.Store.StoreFragment;
-import com.youzheng.zhejiang.robertmoog.utils.CommonAdapter;
-import com.youzheng.zhejiang.robertmoog.utils.ViewHolder;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class CountFragment extends BaseFragment implements BaseFragment.ReloadInterface{
 

@@ -23,4 +23,10 @@
     <string name="disbursements">实付款：</string>
     <string name="phone_not_null">手机号不能为空</string>
     <string name="code_not_null">验证码不能为空</string>
+    <string name="order_time">下单时间</string>
+    <string name="again">重置</string>
+    <string name="confirm">确定</string>
+    <string name="professional_customer">专业客户（人数）</string>
+    <string name="name">姓名</string>
+    <string name="degree">身份</string>
 </resources>

@@ -19,7 +19,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/store_customer_number"
+            android:text="@string/professional_customer"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/bg_main"
             android:textSize="13sp"
@@ -30,7 +30,7 @@
             android:id="@+id/tv_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="78"
+            android:text="3"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/text_golden2"
             android:textSize="32sp"
@@ -39,15 +39,13 @@
 
     </LinearLayout>
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/lv_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:divider="@color/divider_color_item"
-        android:dividerHeight="1dp"
         android:scrollbars="none"
-        android:background="@color/bg_background_white"></ListView>
+        android:background="@color/bg_background_white"></android.support.v7.widget.RecyclerView>
 
 
 
