@@ -70,6 +70,7 @@
             android:name=".Store.activity.ProfessionalCustomerActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".Store.activity.AddCustomerActivity"></activity>
+        <activity android:name=".Home.activity.AttentionIntentActivity"/>
     </application>
 
 </manifest>

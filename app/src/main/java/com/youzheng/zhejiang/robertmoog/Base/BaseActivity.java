@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.youzheng.zhejiang.robertmoog.Base.utils.PublicUtils;
 import com.youzheng.zhejiang.robertmoog.R;
 import com.youzheng.zhejiang.robertmoog.utils.ActivityStack;
 
@@ -30,6 +31,7 @@ public class BaseActivity extends AppCompatActivity {
     protected Context mContext ;
     protected FragmentManager fm;
     protected Gson gson ;
+    protected String access_token ;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class BaseActivity extends AppCompatActivity {
         fm = getSupportFragmentManager();
         mContext = this ;
         gson = new Gson();
+        access_token = (String) com.youzheng.tongxiang.huntingjob.UI.Utils.SharedPreferencesUtils.getParam(mContext, PublicUtils.access_token,"");
         ActivityStack.getScreenManager().pushActivity(this);
         initBaseView();
     }

@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.youzheng.zhejiang.robertmoog.Base.BaseFragment;
+import com.youzheng.zhejiang.robertmoog.Home.activity.AttentionIntentActivity;
 import com.youzheng.zhejiang.robertmoog.Home.activity.ClientViewActivity;
 import com.youzheng.zhejiang.robertmoog.Home.activity.LoginActivity;
 import com.youzheng.zhejiang.robertmoog.Home.activity.RegisterActivity;
@@ -94,6 +95,10 @@ public class HomeFragment extends BaseFragment  implements BaseFragment.ReloadIn
 
                     case 2 :
                         startActivity(new Intent(mContext,LoginActivity.class));
+                        break;
+
+                    case 3 :
+                        startActivity(new Intent(mContext, AttentionIntentActivity.class));
                         break;
                 }
             }

@@ -11,20 +11,6 @@ import android.content.SharedPreferences;
  */
 public class SharedPreferencesUtils {
 
-    public static String refresh_token = "refresh_token";
-    public static String access_token = "access_token";
-    public static String userName = "userName" ;
-    public static String attestation = "attestation" ;
-    public static String mobile = "mobile";
-    public static String isfristuse = "isfristuse" ;
-    public static String uid = "time";
-    public static String rid = "rid";
-    public static String userType = "userType";
-    public static String from = "from";
-
-    public static String fiet = "frist";
-
-    public static String versionCode = "versionCode";
 
     /**
      * 保存在手机里面的文件名
