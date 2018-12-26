@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_all"
+    tools:context=".Store.activity.GoodsDetailActivity">
+
+    <include layout="@layout/title_bar" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            
+            
+            
+            <com.jude.rollviewpager.RollPagerView
+                android:id="@+id/pagerView"
+                android:layout_width="match_parent"
+                android:layout_height="375dp"
+                android:background="@color/bg_main"></com.jude.rollviewpager.RollPagerView>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@color/bg_background_white"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:id="@+id/tv_goods_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="987656201801020002"
+                    android:textColor="@color/text_main"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="10dp"/>
+
+                <TextView
+                    android:id="@+id/tv_goods_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="摩恩淋浴花洒龙头套装pro 淋雨喷头卫生间 浴室冷热水龙头沐浴器"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"/>
+
+
+                <TextView
+                    android:id="@+id/tv_goods_money"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="￥123"
+                    android:gravity="bottom"
+                    android:textColor="@color/text_golden2"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"/>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:background="@color/bg_background_white">
+
+                <TextView
+                    android:id="@+id/tv_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="品类 XXX"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"/>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:background="@color/bg_background_white">
+
+                <TextView
+                    android:id="@+id/tv_series"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="系列 XXX"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:background="@color/bg_background_white">
+
+                <TextView
+                    android:id="@+id/tv_spec"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="规格 XXX"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:background="@color/bg_background_white">
+
+                <TextView
+                    android:id="@+id/tv_marketing_unit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="销售单位 XXX"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"/>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:background="@color/bg_background_white">
+
+                <TextView
+                    android:id="@+id/tv_value_of_moen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="摩恩PR00售价 XXX"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"/>
+
+            </LinearLayout>
+            
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

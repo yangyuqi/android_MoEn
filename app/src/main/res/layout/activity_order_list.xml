@@ -10,6 +10,18 @@
 
     <include layout="@layout/title_bar" />
 
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+        >
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
@@ -72,12 +84,88 @@
 
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView
         android:id="@+id/rv_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:background="@color/bg_background_white"
-        android:scrollbars="none"></android.support.v7.widget.RecyclerView>
+        android:scrollbars="none"></com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView>
 
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="end"
+            android:background="@color/bg_background_white"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/order_time"
+                android:textSize="14sp"
+                android:textColor="@color/text_main"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"/>
+
+
+            <GridView
+                android:id="@+id/gv_time"
+                android:layout_width="match_parent"
+                android:layout_marginTop="11dp"
+                android:layout_weight="1"
+                android:numColumns="2"
+                android:listSelector="@android:color/transparent"
+                android:verticalSpacing="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_height="wrap_content"></GridView>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:orientation="horizontal"
+                android:layout_gravity="bottom"
+                android:gravity="bottom">
+
+                <TextView
+                    android:id="@+id/tv_again"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/again"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:textColor="@color/bg_background_white"
+                    android:background="@color/color_air_blue"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_confirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/confirm"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/bg_background_white"
+                    android:gravity="center"
+                    android:background="@color/bg_old_blue"
+                    />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+    </android.support.v4.widget.DrawerLayout>
 </LinearLayout>

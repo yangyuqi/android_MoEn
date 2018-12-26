@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -43,10 +42,10 @@ public class OrderListAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == TYPE_ONE_IMAGE) {
-            View view = layoutInflater.inflate(R.layout.item_orderlist, null);
+            View view = layoutInflater.inflate(R.layout.item_orderlist, parent,false);
             return new OneImageHolder(view);
         } else {
-            View view = layoutInflater.inflate(R.layout.item_order_style, null);
+            View view = layoutInflater.inflate(R.layout.item_order_style, parent,false);
             return new MoreImageHolder(view);
         }
     }
@@ -61,15 +60,16 @@ public class OrderListAdapter extends RecyclerView.Adapter {
     }
 
     private void setMoreImageData(MoreImageHolder holder,int position) {
-
-        MoreGoodAdapter moreGoodAdapter=new MoreGoodAdapter(piclist,context);
-        holder.mRvListPic.setAdapter(moreGoodAdapter);
-        moreGoodAdapter.notifyDataSetChanged();
-
-        holder.mTvDate.setText(list.get(position).getText());
-        holder.mTvOrderNum.setText(list.get(position).getText());
-        holder.mTvCount.setText(list.get(position).getText());
-        holder.mTvMoney.setText(list.get(position).getText());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        holder.mRvListPic.setLayoutManager(linearLayoutManager);
+        MoreGoodsAdapter moreGoodsAdapter=new MoreGoodsAdapter(piclist,context);
+        holder.mRvListPic.setAdapter(moreGoodsAdapter);
+        moreGoodsAdapter.notifyDataSetChanged();
+//        holder.mTvDate.setText(list.get(position).getText());
+//        holder.mTvOrderNum.setText(list.get(position).getText());
+//        holder.mTvCount.setText(list.get(position).getText());
+//        holder.mTvMoney.setText(list.get(position).getText());
 
     }
 
@@ -115,7 +115,7 @@ public class OrderListAdapter extends RecyclerView.Adapter {
     private class MoreImageHolder extends RecyclerView.ViewHolder {
         TextView mTvDate;
         TextView mTvOrderNum;
-        GridView mRvListPic;
+        RecyclerView mRvListPic;
         TextView mTvCount;
         TextView mTvMoney;
         public MoreImageHolder(View itemView) {

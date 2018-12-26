@@ -10,12 +10,12 @@
     <include layout="@layout/title_bar"/>
 
 
-    <ListView
+    <com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView
         android:id="@+id/lv_list"
         android:layout_width="match_parent"
         android:divider="@color/divider_color_item"
-        android:dividerHeight="1px"
+        android:dividerHeight="1dp"
         android:scrollbars="none"
-        android:layout_height="match_parent"></ListView>
+        android:layout_height="match_parent"></com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView>
 
 </LinearLayout>

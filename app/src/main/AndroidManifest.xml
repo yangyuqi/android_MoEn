@@ -51,9 +51,25 @@
         <activity
             android:name=".Home.activity.AddNewAddressActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".Store.activity.StoreCustomerActivity" />
-        <activity android:name=".Store.activity.StoreCustomerInsideActivity" />
-        <activity android:name=".Store.activity.OrderListActivity"></activity>
+        <activity
+            android:name=".Store.activity.StoreCustomerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Store.activity.StoreCustomerInsideActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Store.activity.OrderListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Store.activity.GoodsManageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Store.activity.GoodsDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Store.activity.ProfessionalCustomerActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Store.activity.AddCustomerActivity"></activity>
     </application>
 
 </manifest>

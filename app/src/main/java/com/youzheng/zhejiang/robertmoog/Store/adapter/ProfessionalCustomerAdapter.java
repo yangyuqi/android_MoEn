@@ -5,19 +5,18 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.TextView;
 
 import com.youzheng.zhejiang.robertmoog.R;
 
 import java.util.List;
 
-public class StoreCustomerInsideAdapter extends RecyclerView.Adapter<StoreCustomerInsideAdapter.InsideHolder> {
+public class ProfessionalCustomerAdapter extends RecyclerView.Adapter<ProfessionalCustomerAdapter.InsideHolder> {
       private List<String> list;
       private LayoutInflater layoutInflater;
       private Context context;
 
-    public StoreCustomerInsideAdapter(List<String> list, Context context) {
+    public ProfessionalCustomerAdapter(List<String> list, Context context) {
         this.list = list;
         this.context = context;
         layoutInflater=LayoutInflater.from(context);

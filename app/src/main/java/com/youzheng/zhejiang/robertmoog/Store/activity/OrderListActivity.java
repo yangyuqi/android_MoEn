@@ -2,20 +2,26 @@ package com.youzheng.zhejiang.robertmoog.Store.activity;
 
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView;
 import com.youzheng.zhejiang.robertmoog.R;
+import com.youzheng.zhejiang.robertmoog.Store.adapter.GoodsTimeAdapter;
 import com.youzheng.zhejiang.robertmoog.Store.adapter.OrderListAdapter;
 import com.youzheng.zhejiang.robertmoog.Store.bean.OrderList;
-import com.youzheng.zhejiang.robertmoog.Store.view.RecyclerViewDivider;
+import com.youzheng.zhejiang.robertmoog.Store.view.RecycleViewDivider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +29,7 @@ import java.util.List;
 /**
  * 订单列表界面
  */
-public class OrderListActivity extends AppCompatActivity implements View.OnClickListener {
+public class OrderListActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
 
     private ImageView btnBack;
@@ -43,10 +49,23 @@ public class OrderListActivity extends AppCompatActivity implements View.OnClick
      * 时间
      */
     private TextView tv_time;
-    private RecyclerView rv_list;
+    private PullLoadMoreRecyclerView rv_list;
     private OrderListAdapter adapter;
     private List<OrderList> list = new ArrayList<>();
     private List<Integer> piclist = new ArrayList<>();
+    private GridView gv_time;
+    /**
+     * 重置
+     */
+    private TextView tv_again;
+    /**
+     * 确定
+     */
+    private TextView tv_confirm;
+    private DrawerLayout drawer_layout;
+    private GoodsTimeAdapter goodsTimeAdapter;
+    private List<String> strlist=new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +77,7 @@ public class OrderListActivity extends AppCompatActivity implements View.OnClick
     private void initView() {
         btnBack = (ImageView) findViewById(R.id.btnBack);
         textHeadTitle = (TextView) findViewById(R.id.textHeadTitle);
+        textHeadTitle.setText("订单列表");
         textHeadNext = (TextView) findViewById(R.id.textHeadNext);
         iv_next = (ImageView) findViewById(R.id.iv_next);
         layout_header = (RelativeLayout) findViewById(R.id.layout_header);
@@ -67,15 +87,24 @@ public class OrderListActivity extends AppCompatActivity implements View.OnClick
         lin_search = (LinearLayout) findViewById(R.id.lin_search);
         tv_time = (TextView) findViewById(R.id.tv_time);
         tv_time.setOnClickListener(this);
-        rv_list = (RecyclerView) findViewById(R.id.rv_list);
+        rv_list = (PullLoadMoreRecyclerView) findViewById(R.id.rv_list);
+        gv_time = (GridView) findViewById(R.id.gv_time);
+        tv_again = (TextView) findViewById(R.id.tv_again);
+        tv_confirm = (TextView) findViewById(R.id.tv_confirm);
+        drawer_layout= (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);//禁止手势滑动
+        gv_time.setOnItemClickListener(this);
+        btnBack.setOnClickListener(this);
         initData();
     }
 
     private void initData() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        rv_list.addItemDecoration(new RecyclerViewDivider(this, LinearLayoutManager.VERTICAL, 10, ContextCompat.getColor(this, R.color.bg_all)));
-        rv_list.setLayoutManager(linearLayoutManager);
+        rv_list.addItemDecoration(new RecycleViewDivider(
+                this, LinearLayoutManager.VERTICAL, 15, getResources().getColor(R.color.bg_all)));
+        rv_list.setLinearLayout();
+        rv_list.setColorSchemeResources(R.color.colorPrimary);
 
         OrderList orderList = new OrderList();
         orderList.setType(0);
@@ -97,6 +126,18 @@ public class OrderListActivity extends AppCompatActivity implements View.OnClick
         rv_list.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
+        strlist.add("全部");
+        strlist.add("一到三个月");
+        strlist.add("一到三个月");
+        strlist.add("一到三个月");
+        strlist.add("一到三个月");
+        strlist.add("一到三个月");
+
+        goodsTimeAdapter=new GoodsTimeAdapter(strlist,this);
+        gv_time.setAdapter(goodsTimeAdapter);
+        goodsTimeAdapter.notifyDataSetChanged();
+
+
 
     }
 
@@ -108,7 +149,17 @@ public class OrderListActivity extends AppCompatActivity implements View.OnClick
             case R.id.iv_search:
                 break;
             case R.id.tv_time:
+                drawer_layout.openDrawer(GravityCompat.END);
+                break;
+
+            case R.id.btnBack:
+                finish();
                 break;
         }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        goodsTimeAdapter.setSelectItem(position);
     }
 }
