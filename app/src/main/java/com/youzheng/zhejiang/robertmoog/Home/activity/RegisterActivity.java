@@ -14,6 +14,7 @@ import com.youzheng.zhejiang.robertmoog.Base.request.OkHttpClientManager;
 import com.youzheng.zhejiang.robertmoog.Base.utils.PublicUtils;
 import com.youzheng.zhejiang.robertmoog.Base.utils.UrlUtils;
 import com.youzheng.zhejiang.robertmoog.Model.BaseModel;
+import com.youzheng.zhejiang.robertmoog.Model.login.RegisterBean;
 import com.youzheng.zhejiang.robertmoog.R;
 import com.youzheng.zhejiang.robertmoog.utils.View.MyCountDownTimer;
 
@@ -61,11 +62,10 @@ public class RegisterActivity  extends BaseActivity {
                     showToast(getString(R.string.code_not_null));
                     return;
                 }
-
                 Map<String,Object> map = new HashMap<>();
                 map.put("phone",edt_phone.getText().toString());
                 map.put("checkCode",edt_code.getText().toString());
-                OkHttpClientManager.postAsynJson(gson.toJson(map), UrlUtils.REGISTER_USER, new OkHttpClientManager.StringCallback() {
+                OkHttpClientManager.postAsynJson(gson.toJson(map), UrlUtils.REGISTER_USER+"?access_token="+access_token, new OkHttpClientManager.StringCallback() {
                     @Override
                     public void onFailure(Request request, IOException e) {
 
@@ -73,11 +73,18 @@ public class RegisterActivity  extends BaseActivity {
 
                     @Override
                     public void onResponse(String response) {
-
+                        BaseModel baseModel = gson.fromJson(response,BaseModel.class);
+                        showToast(baseModel.getMsg());
+                        if (baseModel.getCode()==PublicUtils.code){
+                            RegisterBean registerBean = gson.fromJson(gson.toJson(baseModel.getDatas()),RegisterBean.class);
+                            Intent intent = new Intent(mContext,RegisterSuccessActivity.class);
+                            intent.putExtra("registerBean",registerBean);
+                            startActivity(intent);
+                            finish();
+                        }
                     }
                 });
 
-                startActivity(new Intent(mContext,RegisterSuccessActivity.class));
             }
         });
 
@@ -90,6 +97,7 @@ public class RegisterActivity  extends BaseActivity {
                 }
                 Map<String,Object> map = new HashMap<>();
                 map.put("phone",edt_phone.getText().toString());
+                timer.start();
                 OkHttpClientManager.postAsynJson(gson.toJson(map), UrlUtils.SEND_CODE, new OkHttpClientManager.StringCallback() {
                     @Override
                     public void onFailure(Request request, IOException e) {
@@ -106,5 +114,14 @@ public class RegisterActivity  extends BaseActivity {
                 });
             }
         });
+
+
+        ((ImageView)findViewById(R.id.iv_next)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
+
     }
 }
