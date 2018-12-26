@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@color/bg_background_white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/lin_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="29dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/search_bg_rl"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/tv_search"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:cursorVisible="true"
+                        android:hint="搜索订单编号"
+                        android:inputType="phone"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:textColorHint="#B7B7B7"
+                        android:textSize="@dimen/text_size_13" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/group_5_1" />
+
+                    <ImageView
+                        android:id="@+id/iv_search"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/space_15"
+                        android:paddingRight="@dimen/space_15"
+                        android:src="@mipmap/group_5_2" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:layout_toRightOf="@id/lin_search"
+                    android:drawableTop="@mipmap/group_59_2"
+                    android:text="时间"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView
+                android:id="@+id/rv_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/bg_background_white"
+                android:scrollbars="none"></com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="end"
+            android:background="@color/bg_background_white"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/order_time"
+                android:textSize="14sp"
+                android:textColor="@color/text_main"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"/>
+
+
+            <GridView
+                android:id="@+id/gv_time"
+                android:layout_width="match_parent"
+                android:layout_marginTop="11dp"
+                android:layout_weight="1"
+                android:numColumns="2"
+                android:listSelector="@android:color/transparent"
+                android:verticalSpacing="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_height="wrap_content"></GridView>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:orientation="horizontal"
+                android:layout_gravity="bottom"
+                android:gravity="bottom">
+
+                <TextView
+                    android:id="@+id/tv_again"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/again"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:textColor="@color/bg_background_white"
+                    android:background="@color/color_air_blue"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_confirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/confirm"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/bg_background_white"
+                    android:gravity="center"
+                    android:background="@color/bg_old_blue"
+                    />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+    </android.support.v4.widget.DrawerLayout>
+
+</LinearLayout>

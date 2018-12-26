@@ -19,5 +19,6 @@
     <color name="bg_old_blue">#1A355C</color>
     <color name="bg_rou">#F6F6F6</color>
     <color name="dark1">#aad3d7d4</color>
+    <color name="bg_dialog">#F8F8F8</color>
 
 </resources>
