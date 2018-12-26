@@ -25,7 +25,7 @@ public class MyCountDownTimer extends CountDownTimer {
     public void onTick(long millisUntilFinished) {
         btn.setClickable(false);
         btn.setText(millisUntilFinished/1000+"s");
-        btn.setBackgroundResource(R.color.text_drak_gray);
+        btn.setBackgroundResource(R.color.bg_background_white);
     }
 
     @Override
@@ -33,6 +33,6 @@ public class MyCountDownTimer extends CountDownTimer {
         btn.setText("获取验证码");
         //设置可点击
         btn.setClickable(true);
-        btn.setBackgroundResource(R.color.colorPrimary);
+        btn.setBackgroundResource(R.color.bg_background_white);
     }
 }

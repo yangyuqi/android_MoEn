@@ -25,6 +25,7 @@
         android:orientation="vertical"
         >
        <EditText
+           android:id="@+id/edt_phone"
            android:maxLength="11"
            android:inputType="phone"
            android:gravity="center_vertical"
@@ -36,6 +37,7 @@
            android:hint="@string/login_input_phone"
            android:textColor="@color/color_air_blue"
            android:textSize="@dimen/text_size_13"
+           android:text="15812312311"
            />
         <View
             android:layout_marginTop="@dimen/space_3"
@@ -51,6 +53,8 @@
             android:orientation="vertical"
             >
         <EditText
+            android:id="@+id/edt_password"
+            android:text="000000"
             android:inputType="textPassword"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
@@ -183,7 +187,5 @@
         android:id="@+id/iv_back"
         android:visibility="gone"
         />
-
-
 
 </RelativeLayout>

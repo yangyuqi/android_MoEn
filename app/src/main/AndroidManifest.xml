@@ -76,6 +76,7 @@
             android:name=".Store.activity.ProfessionalCustomerOrderActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".Store.activity.ProfessionalOrderDetailActivity"></activity>
+        <activity android:name=".Home.activity.AttentionIntentActivity"/>
     </application>
 
 </manifest>

@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.youzheng.zhejiang.robertmoog.Base.BaseActivity;
 import com.youzheng.zhejiang.robertmoog.Home.HomeFragment;
+import com.youzheng.zhejiang.robertmoog.Model.login.RegisterBean;
 import com.youzheng.zhejiang.robertmoog.R;
 import com.youzheng.zhejiang.robertmoog.utils.CommonAdapter;
 import com.youzheng.zhejiang.robertmoog.utils.ViewHolder;
@@ -22,6 +23,8 @@ public class RegisterSuccessActivity extends BaseActivity {
     GridView gv ;
     CommonAdapter<HomeBean> adapter ;
     List<HomeBean> data = new ArrayList<>();
+    RegisterBean registerBean ;
+    TextView tv_phone ;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,9 +56,15 @@ public class RegisterSuccessActivity extends BaseActivity {
                 finish();
             }
         });
+        tv_phone = (TextView) findViewById(R.id.tv_phone);
 
         gv = (GridView) findViewById(R.id.gv);
         data.clear();
+        registerBean = (RegisterBean) getIntent().getSerializableExtra("registerBean");
+        if (registerBean!=null){
+            tv_phone.setText(registerBean.getPhone());
+        }
+
 //        data.add(new HomeBean("卖货",R.mipmap.group_34_2));data.add(new HomeBean("客户活动",R.mipmap.group_34_3));data.add(new HomeBean("客户账户",R.mipmap.group_34_4));data.add(new HomeBean("地址管理",R.mipmap.group_34_5));data.add(new HomeBean(getString(R.string.home_gv_six),R.mipmap.group_34_6));
         data.add(new HomeBean("卖货",R.mipmap.group_34_2));data.add(new HomeBean("客户活动",R.mipmap.group_34_3));data.add(new HomeBean("客户账户",R.mipmap.group_34_4));data.add(new HomeBean("地址管理",R.mipmap.group_34_5));
         data.add(new HomeBean("意向管理",R.mipmap.group_5_6));data.add(new HomeBean("客户订单",R.mipmap.group_35_1));data.add(new HomeBean("退货",R.mipmap.group_7_10));data.add(new HomeBean("退货单",R.mipmap.group_7_11));

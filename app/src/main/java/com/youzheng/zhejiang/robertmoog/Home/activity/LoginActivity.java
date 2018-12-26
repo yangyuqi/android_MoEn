@@ -3,24 +3,24 @@ package com.youzheng.zhejiang.robertmoog.Home.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 
 import com.youzheng.zhejiang.robertmoog.Base.BaseActivity;
 import com.youzheng.zhejiang.robertmoog.Base.request.OkHttpClientManager;
 import com.youzheng.zhejiang.robertmoog.Base.utils.PublicUtils;
 import com.youzheng.zhejiang.robertmoog.Base.utils.UrlUtils;
+import com.youzheng.zhejiang.robertmoog.Model.BaseModel;
+import com.youzheng.zhejiang.robertmoog.Model.login.LoginBean;
 import com.youzheng.zhejiang.robertmoog.R;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import okhttp3.Request;
 
 public class LoginActivity extends BaseActivity {
 
+    private EditText edt_phone ,edt_password ;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,17 +58,28 @@ public class LoginActivity extends BaseActivity {
             }
         });
 
+        edt_phone = (EditText) findViewById(R.id.edt_phone);
+        edt_password = (EditText) findViewById(R.id.edt_password);
+
         findViewById(R.id.tv_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (edt_phone.getText().toString().equals("")){
+                    showToast(getString(R.string.phone_not_null));
+                    return;
+                }
+                if (edt_password.getText().toString().equals("")){
+                    showToast(getString(R.string.pwd_not_null));
+                    return;
+                }
+
                 initLogin();
             }
         });
     }
 
     private void initLogin() {
-        Map<String,Object> map = new HashMap<>();
-       OkHttpClientManager.getAsyn("https://demo.waycomtech.com/api/oauth/token?grant_type=password&username=18101399087&password="+ PublicUtils.getSHA256StrJava("111111")+"&client_id=app&client_secret=appSecret", new OkHttpClientManager.StringCallback() {
+       OkHttpClientManager.getAsyn(UrlUtils.LOGIN+"?grant_type=password&username="+edt_phone.getText().toString()+"&password="+ PublicUtils.getSHA256StrJava(edt_password.getText().toString())+"&client_id=app&client_secret=appSecret", new OkHttpClientManager.StringCallback() {
            @Override
            public void onFailure(Request request, IOException e) {
 
@@ -76,7 +87,14 @@ public class LoginActivity extends BaseActivity {
 
            @Override
            public void onResponse(String response) {
-               Log.e("ssssssss",response);
+               BaseModel model = gson.fromJson(response,BaseModel.class);
+               if (model.getCode()==PublicUtils.code){
+                   LoginBean loginBean = gson.fromJson(gson.toJson(model.getDatas()), LoginBean.class);
+                   com.youzheng.tongxiang.huntingjob.UI.Utils.SharedPreferencesUtils.setParam(mContext,PublicUtils.access_token,loginBean.getAccess_token());
+                   finish();
+               }else {
+                   showToast(model.getMsg());
+               }
            }
        });
     }
