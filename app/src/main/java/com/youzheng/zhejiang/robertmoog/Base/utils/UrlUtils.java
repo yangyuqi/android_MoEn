@@ -9,4 +9,8 @@ public class UrlUtils {
     public static String CUSTOMER_ONTENT = BASE_URL+"/v1/app/customer/shopCustomerIntent";
     public static String SHOP_PERSONAL = BASE_URL+"/v1/app/customer/shopPersonal";
     public static String NOT_LABEEL = BASE_URL+"/v1/app/customer/notLabel";
+    public static String SHOP_SCVAN = BASE_URL+"/v1/app/customer/shopQRCode";
+    public static String ATTENTION_GOODS_LIST = BASE_URL+"/v1/app/customer/intentProductList";
+    public static String HOME_INFO = BASE_URL+"/v1/app/user/getHomePage";
+    public static String GET_CUSTOMER = BASE_URL+"/v1/app/customer/getCustomer ";
 }

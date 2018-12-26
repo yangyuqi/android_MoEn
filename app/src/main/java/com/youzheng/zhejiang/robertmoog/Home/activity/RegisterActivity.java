@@ -9,12 +9,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.youzheng.zhejiang.robertmoog.Base.BaseActivity;
 import com.youzheng.zhejiang.robertmoog.Base.request.OkHttpClientManager;
 import com.youzheng.zhejiang.robertmoog.Base.utils.PublicUtils;
 import com.youzheng.zhejiang.robertmoog.Base.utils.UrlUtils;
 import com.youzheng.zhejiang.robertmoog.Model.BaseModel;
 import com.youzheng.zhejiang.robertmoog.Model.login.RegisterBean;
+import com.youzheng.zhejiang.robertmoog.Model.login.ShopQRCodeBean;
 import com.youzheng.zhejiang.robertmoog.R;
 import com.youzheng.zhejiang.robertmoog.utils.View.MyCountDownTimer;
 
@@ -54,6 +56,11 @@ public class RegisterActivity  extends BaseActivity {
         findViewById(R.id.tv_register).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent intent = new Intent(mContext,RegisterSuccessActivity.class);
+                startActivity(intent);
+
+
                 if (edt_phone.getText().toString().equals("")){
                     showToast(getString(R.string.phone_not_null));
                     return;
@@ -119,7 +126,21 @@ public class RegisterActivity  extends BaseActivity {
         ((ImageView)findViewById(R.id.iv_next)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                OkHttpClientManager.postAsynJson(gson.toJson(new HashMap<>()), UrlUtils.SHOP_SCVAN+"?access_token="+access_token, new OkHttpClientManager.StringCallback() {
+                    @Override
+                    public void onFailure(Request request, IOException e) {
+
+                    }
+
+                    @Override
+                    public void onResponse(String response) {
+                        BaseModel baseModel = gson.fromJson(response,BaseModel.class);
+                        if (baseModel.getCode()==PublicUtils.code){
+                            ShopQRCodeBean qrCodeBean = gson.fromJson(gson.toJson(baseModel.getDatas()),ShopQRCodeBean.class);
+
+                        }
+                    }
+                });
             }
         });
 

@@ -44,6 +44,7 @@
             />
 
         <ImageView
+            android:id="@+id/iv_add"
             android:paddingLeft="@dimen/space_15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

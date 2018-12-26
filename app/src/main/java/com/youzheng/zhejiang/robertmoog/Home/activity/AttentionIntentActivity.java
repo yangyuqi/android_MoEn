@@ -125,13 +125,21 @@ public class AttentionIntentActivity extends BaseActivity {
 
         adapter = new CommonAdapter<ShopPersonalListBean>(mContext,list,layout_id) {
             @Override
-            public void convert(ViewHolder helper, ShopPersonalListBean item) {
+            public void convert(ViewHolder helper, final ShopPersonalListBean item) {
                 if (i==0) {
                     helper.setText(R.id.tv_name, item.getName() + "  (" + item.getBusinessRole() + ")");
                 }else if (i==1){
                     helper.setText(R.id.tv_time,item.getCreateDate());
                     helper.setText(R.id.tv_phone,item.getCustCode());
                     helper.setText(R.id.tv_from,item.getChannel());
+                    helper.getView(R.id.iv_add).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(mContext,AttentionGoodsActivity.class);
+                            intent.putExtra("label",item);
+                            startActivity(intent);
+                        }
+                    });
                 }
             }
         };

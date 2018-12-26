@@ -1,6 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/bg_all"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <include layout="@layout/title_bar"/>
+
+    <RelativeLayout
+        android:padding="@dimen/space_15"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="@color/bg_background_white"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_attention"
+            android:textSize="@dimen/text_size_14"
+            android:textColor="@color/text_main"
+            />
+
+        <TextView
+            android:drawablePadding="@dimen/space_10"
+            android:textColor="@color/text_blue"
+            android:gravity="center_vertical"
+            android:text="@string/xiugai_note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:drawableLeft="@mipmap/group_75_2"
+            />
+
+
+    </RelativeLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ls"
+        android:dividerHeight="@dimen/space_divider_2"
+        ></ListView>
+
+</LinearLayout>

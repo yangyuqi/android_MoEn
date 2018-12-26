@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.youzheng.zhejiang.robertmoog.Base.utils.PublicUtils;
 import com.youzheng.zhejiang.robertmoog.R;
 
 public class BaseFragment extends Fragment {
@@ -28,6 +29,8 @@ public class BaseFragment extends Fragment {
     LinearLayout ll_page_state_empty;//stateLayout无数据的布局
     Button btReload;//网络错误重新加载的布局
 
+    protected String access_token ;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +41,6 @@ public class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         return super.onCreateView(inflater,container,savedInstanceState);
     }
 

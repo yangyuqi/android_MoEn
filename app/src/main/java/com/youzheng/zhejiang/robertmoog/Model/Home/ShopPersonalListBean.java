@@ -1,6 +1,8 @@
 package com.youzheng.zhejiang.robertmoog.Model.Home;
 
-public class ShopPersonalListBean {
+import java.io.Serializable;
+
+public class ShopPersonalListBean implements Serializable{
     private String id ;
     private String name ;
     private String businessRole ;

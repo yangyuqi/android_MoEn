@@ -34,4 +34,5 @@
     <string name="select_manager">选择员工</string>
     <string name="goods_guide">导购</string>
     <string name="goods_manager">店长</string>
+    <string name="xiugai_note">修改备注</string>
 </resources>
