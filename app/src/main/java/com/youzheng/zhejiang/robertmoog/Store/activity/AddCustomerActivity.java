@@ -10,6 +10,10 @@ import android.widget.TextView;
 
 import com.youzheng.zhejiang.robertmoog.Base.BaseActivity;
 import com.youzheng.zhejiang.robertmoog.R;
+import com.youzheng.zhejiang.robertmoog.Store.view.SingleOptionsPicker;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 添加专业客户界面
@@ -20,7 +24,7 @@ public class AddCustomerActivity extends BaseActivity implements View.OnClickLis
     /**  */
     private TextView textHeadTitle;
     /**  */
-    private TextView textHeadNext;
+    private TextView textHeadNext,tv_degree;
     private ImageView iv_next;
     private RelativeLayout layout_header;
     /**
@@ -36,7 +40,7 @@ public class AddCustomerActivity extends BaseActivity implements View.OnClickLis
      * 添加
      */
     private TextView tv_add;
-
+    private List<String> list=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +61,7 @@ public class AddCustomerActivity extends BaseActivity implements View.OnClickLis
         lin_degree = (LinearLayout) findViewById(R.id.lin_degree);
         lin_degree.setOnClickListener(this);
         tv_add = (TextView) findViewById(R.id.tv_add);
+        tv_degree= (TextView) findViewById(R.id.tv_degree);
         tv_add.setOnClickListener(this);
     }
 
@@ -69,6 +74,10 @@ public class AddCustomerActivity extends BaseActivity implements View.OnClickLis
                 finish();
                 break;
             case R.id.lin_degree:
+                list.clear();
+                list.add("工长");
+                list.add("设计师");
+                SingleOptionsPicker.openOptionsPicker(this, list, tv_degree);
                 break;
             case R.id.tv_add:
                 break;

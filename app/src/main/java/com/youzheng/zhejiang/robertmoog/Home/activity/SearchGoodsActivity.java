@@ -18,7 +18,7 @@ import java.util.List;
 
 public class SearchGoodsActivity extends BaseActivity {
 
-    RecyclerView recyclerView ;
+    RecyclerView recyclerView;
 
     List<TestBean> data = new ArrayList<>();
 
@@ -31,7 +31,7 @@ public class SearchGoodsActivity extends BaseActivity {
     }
 
     private void initView() {
-        ((TextView)findViewById(R.id.textHeadTitle)).setText("查找商品套餐");
+        ((TextView) findViewById(R.id.textHeadTitle)).setText("查找商品套餐");
         findViewById(R.id.btnBack).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,16 +39,21 @@ public class SearchGoodsActivity extends BaseActivity {
             }
         });
         List<String> mm = new ArrayList<>();
-        mm.add("杨宇奇");mm.add("杨宇奇");mm.add("杨宇奇");
-        TestBean bean = new TestBean("按时归还大","1",new ArrayList<String>());
-        TestBean bean1 = new TestBean("按时归","2",mm);
-        data.add(bean1);data.add(bean);data.add(bean1);data.add(bean);
+        mm.add("杨宇奇");
+        mm.add("杨宇奇");
+        mm.add("杨宇奇");
+        TestBean bean = new TestBean("按时归还大", "1", new ArrayList<String>());
+        TestBean bean1 = new TestBean("按时归", "2", mm);
+        data.add(bean1);
+        data.add(bean);
+        data.add(bean1);
+        data.add(bean);
         recyclerView = (RecyclerView) findViewById(R.id.recycler);
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
         SearchResultAdapter addapter = new SearchResultAdapter();
         recyclerView.setAdapter(addapter);
-        addapter.setDate(data,mContext);
+        addapter.setDate(data, mContext);
         recyclerView.addItemDecoration(new RecycleViewDivider(
                 mContext, LinearLayoutManager.VERTICAL, 10, getResources().getColor(R.color.bg_all)));
 

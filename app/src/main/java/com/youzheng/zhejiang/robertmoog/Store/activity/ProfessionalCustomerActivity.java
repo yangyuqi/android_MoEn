@@ -1,5 +1,6 @@
 package com.youzheng.zhejiang.robertmoog.Store.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -53,6 +54,7 @@ public class ProfessionalCustomerActivity extends BaseActivity implements View.O
         iv_next = (ImageView) findViewById(R.id.iv_next);
         iv_next.setVisibility(View.VISIBLE);
         iv_next.setImageResource(R.mipmap.group_93_1);
+        iv_next.setOnClickListener(this);
         layout_header = (RelativeLayout) findViewById(R.id.layout_header);
         tv_number = (TextView) findViewById(R.id.tv_number);
         lv_list = (RecyclerView) findViewById(R.id.lv_list);
@@ -85,8 +87,7 @@ public class ProfessionalCustomerActivity extends BaseActivity implements View.O
                 finish();
                 break;
             case R.id.iv_next:
-
-
+                startActivity(new Intent(this,AddCustomerActivity.class));
                 break;
         }
     }
