@@ -29,5 +29,10 @@ public class UrlUtils {
     public static String PROFESSIONAL_CUSTOMER_LIST = BASE_URL+"/v1/app/shop/specialtyCustomer";
     public static String ADD_PROFESSIONAL_CUSTOMER = BASE_URL+"/v1/app/shop/addCustomer";
 
+    public static String PEOPLE_MAGER_LIST = BASE_URL+"/v1/app/shop/personal";
+    public static String ADD_SELLER = BASE_URL+"/v1/app/shop/addPersonal";
+
+
+
 
 }

@@ -57,6 +57,12 @@ public class ProfessionalCustomerActivity extends BaseActivity implements View.O
         setContentView(R.layout.activity_professional_customer);
         initView();
         setListener();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         initData(page,pageSize);
     }
 

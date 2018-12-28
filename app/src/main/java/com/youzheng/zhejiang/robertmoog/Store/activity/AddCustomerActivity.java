@@ -3,6 +3,7 @@ package com.youzheng.zhejiang.robertmoog.Store.activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -12,7 +13,9 @@ import android.widget.TextView;
 
 import com.youzheng.zhejiang.robertmoog.Base.BaseActivity;
 import com.youzheng.zhejiang.robertmoog.Base.request.OkHttpClientManager;
+import com.youzheng.zhejiang.robertmoog.Base.utils.PublicUtils;
 import com.youzheng.zhejiang.robertmoog.Base.utils.UrlUtils;
+import com.youzheng.zhejiang.robertmoog.Model.BaseModel;
 import com.youzheng.zhejiang.robertmoog.R;
 import com.youzheng.zhejiang.robertmoog.Store.bean.AddProfessionalCustomerRequest;
 import com.youzheng.zhejiang.robertmoog.Store.view.SingleOptionsPicker;
@@ -50,7 +53,7 @@ public class AddCustomerActivity extends BaseActivity implements View.OnClickLis
      */
     private TextView tv_add;
     private List<String> list=new ArrayList<>();
-    private String phone,name;
+    private String phone,name,id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,12 +98,19 @@ public class AddCustomerActivity extends BaseActivity implements View.OnClickLis
             case R.id.tv_add:
                 phone=edt_phone.getText().toString().trim();
                 name=edt_name.getText().toString().trim();
-                if (phone.equals("")||name.equals("")){
-                    showToast("手机号和姓名未填写");
+                if (phone.equals("")){
+                    showToast("手机号未填写");
+                }else if (name.equals("")){
+                    showToast("姓名未填写");
                 }else if (tv_degree.getText().toString().equals("请选择身份")||tv_degree.getText().toString().equals("")){
-                    showToast("请选择身份");
+                    showToast("未选择身份");
                 }else {
-                  //  addProfessionalCustomer(phone,name,);
+                    if (tv_degree.getText().toString().equals("工长")){
+                        id="FOREMAN";
+                    }else if (tv_degree.getText().toString().equals("设计师")){
+                        id="DESIGNER";
+                    }
+                    addProfessionalCustomer(phone,name,id);
                 }
                 break;
         }
@@ -122,6 +132,18 @@ public class AddCustomerActivity extends BaseActivity implements View.OnClickLis
 
             @Override
             public void onResponse(String response) {
+                Log.e("添加专业客户",response);
+                BaseModel baseModel = gson.fromJson(response,BaseModel.class);
+                if (baseModel!=null){
+                    if (baseModel.getCode()==PublicUtils.code){
+                        finish();
+                    }else {
+                        if (!baseModel.getMsg().equals("")){
+                            showToast(baseModel.getMsg());
+                        }
+                    }
+
+                }
 
             }
         });

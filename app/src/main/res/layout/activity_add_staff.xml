@@ -81,6 +81,7 @@
             android:gravity="center_vertical"
             android:hint="必填"
             android:paddingLeft="5dp"
+            android:inputType="phone"
             android:paddingRight="15dp"
             android:textColor="@color/text_main"
             android:textColorHint="@color/text_drak_gray"
@@ -95,6 +96,47 @@
         android:layout_height="1dp"
         android:background="@color/bg_all" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/bg_background_white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:background="@color/bg_background_white"
+            android:gravity="center_vertical"
+            android:text="姓名"
+            android:textColor="@color/text_main"
+            android:textSize="13sp" />
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="@color/bg_background_white"
+            android:gravity="center_vertical"
+            android:hint="必填"
+            android:paddingLeft="5dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/text_main"
+            android:textColorHint="@color/text_drak_gray"
+            android:textSize="13sp" />
+
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/bg_all" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
