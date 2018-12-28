@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_all"
+    tools:context=".Store.activity.PeopleMangerActivity">
+
+    <include layout="@layout/title_bar" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingLeft="14dp"
+                android:background="@color/bg_background_white">
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/group_90_1"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="摩恩十里河店"
+                    android:textSize="13sp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/text_main"/>
+
+            </LinearLayout>
+
+            <com.youzheng.zhejiang.robertmoog.Store.view.MyListView
+                android:id="@+id/lv_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:dividerHeight="1dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/bg_background_white"
+                android:divider="@color/bg_all"/>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+    <TextView
+        android:id="@+id/tv_add"
+        android:background="@color/text_blue"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_marginTop="10dp"
+        android:text="添加导购"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:textColor="@color/bg_background_white"
+        />
+
+</LinearLayout>

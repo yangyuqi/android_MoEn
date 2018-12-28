@@ -5,27 +5,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.youzheng.zhejiang.robertmoog.R;
-import com.youzheng.zhejiang.robertmoog.Store.bean.CustomerList;
 
 import java.util.List;
 
-public class StoreCustomerAdapter extends BaseAdapter {
-    private List<CustomerList.CoustomerListBean> list;
-    private LayoutInflater layoutInflater;
+public class CheckStoreDetailAdapter extends BaseAdapter {
+    private List<String> list;
     private Context context;
+    private LayoutInflater layoutInflater;
 
-    public StoreCustomerAdapter(List<CustomerList.CoustomerListBean> list, Context context) {
+    public CheckStoreDetailAdapter(List<String> list, Context context) {
         this.list = list;
         this.context = context;
         layoutInflater=LayoutInflater.from(context);
-    }
-
-    public void setListRefreshUi(List<CustomerList.CoustomerListBean> list){
-        this.list = list;
-        notifyDataSetChanged();
     }
 
     @Override
@@ -47,21 +42,24 @@ public class StoreCustomerAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder=null;
         if (convertView==null){
-            convertView=layoutInflater.inflate(R.layout.item_store_customer_list,null);
+            convertView=layoutInflater.inflate(R.layout.item_result_detail,null);
             viewHolder=new ViewHolder();
-            viewHolder.tv_date=convertView.findViewById(R.id.tv_date);
-            viewHolder.tv_number=convertView.findViewById(R.id.tv_number);
+            viewHolder.tv_content=convertView.findViewById(R.id.tv_content);
+            viewHolder.tv_yes_or_no=convertView.findViewById(R.id.tv_yes_or_no);
+            viewHolder.iv_ok=convertView.findViewById(R.id.iv_ok);
+            viewHolder.iv_no=convertView.findViewById(R.id.iv_no);
             convertView.setTag(viewHolder);
         }else {
             viewHolder= (ViewHolder) convertView.getTag();
         }
-        CustomerList.CoustomerListBean coustomerListBean=list.get(position);
-        viewHolder.tv_date.setText(coustomerListBean.getMonth());
-        viewHolder.tv_number.setText(coustomerListBean.getNum()+"");
+
+        viewHolder.tv_content.setText(list.get(position));
+
+
         return convertView;
     }
-
     class ViewHolder{
-        private TextView tv_date,tv_number;
+       private TextView tv_content,tv_yes_or_no;
+       private ImageView iv_ok,iv_no;
     }
 }

@@ -13,8 +13,13 @@ public class UrlUtils {
     public static String ATTENTION_GOODS_LIST = BASE_URL+"/v1/app/customer/intentProductList";
     public static String HOME_INFO = BASE_URL+"/v1/app/user/getHomePage";
     public static String GET_CUSTOMER = BASE_URL+"/v1/app/customer/getCustomer";
+
     public static String LOGIN_OUT = BASE_URL+"/v1/app/user/logout";
     public static String CUSTOMER_INTENT=BASE_URL+"/v1/app/customer/customerIntent";
     public static String DELETE_INTENT = BASE_URL+"/v1/app/customer/deleteIntent";
     public static String DELETE_GOODS = BASE_URL+"/v1/app/customer/deleteIntentProduct";
+
+    public static String GET_CUSTOMER_LIST = BASE_URL+"/v1/app/shop/coustomer";
+    public static String GET_CUSTOMER_LIST_DETAIL = BASE_URL+"/v1/app/shop/monthCoustomer";
+
 }

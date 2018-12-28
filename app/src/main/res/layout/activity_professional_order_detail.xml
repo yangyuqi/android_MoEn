@@ -94,6 +94,8 @@
                         android:textColor="@color/text_main"
                         android:textSize="13sp"
                         android:textStyle="bold"
+                        android:singleLine="true"
+                        android:ellipsize="end"
                         android:paddingLeft="5dp"
                         android:paddingRight="15dp"/>
                 </LinearLayout>
@@ -151,6 +153,8 @@
                            android:textColor="@color/text_main"
                            android:textSize="13sp"
                            android:textStyle="bold"
+                           android:singleLine="true"
+                           android:ellipsize="end"
                            android:paddingLeft="5dp"
                            android:paddingRight="15dp"/>
 
@@ -200,6 +204,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="187 0000 0009"
+            android:singleLine="true"
+            android:ellipsize="end"
             android:textColor="@color/text_main"
             android:textSize="13sp"
             android:textStyle="bold"
@@ -212,14 +218,15 @@
 
                 <TextView
                     android:id="@+id/tv_address"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="北京东城区内环三环银河sohoD座809"
                     android:textColor="@color/text_main"
                     android:textSize="13sp"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
-                    android:paddingLeft="15dp"/>
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"/>
 
             </LinearLayout>
 
@@ -299,6 +306,7 @@
                     android:paddingBottom="5dp"
                     android:paddingTop="5dp"
                     android:layout_marginTop="9dp"
+                    android:layout_marginRight="15dp"
                     android:gravity="center_vertical"
                     android:background="@drawable/bg_order">
 
@@ -391,7 +399,7 @@
                     android:textColor="@color/text_main"
                     android:textSize="13sp"
                     android:gravity="center_vertical"
-                    android:layout_marginTop="2dp"
+
                     android:paddingLeft="15dp"
                     android:background="@color/bg_background_white"
                     />
@@ -403,7 +411,6 @@
                     android:textColor="@color/text_main"
                     android:textSize="13sp"
                     android:gravity="center_vertical"
-                    android:layout_marginTop="2dp"
                      android:paddingRight="15dp"
                     android:background="@color/bg_background_white"
                     />
@@ -428,7 +435,6 @@
                     android:textColor="@color/text_main"
                     android:textSize="13sp"
                     android:gravity="center_vertical"
-                    android:layout_marginTop="2dp"
                     android:paddingLeft="15dp"
                     android:background="@color/bg_background_white"
                     />
@@ -440,7 +446,6 @@
                     android:textColor="@color/text_main"
                     android:textSize="13sp"
                     android:gravity="center_vertical"
-                    android:layout_marginTop="2dp"
                     android:paddingRight="15dp"
                     android:background="@color/bg_background_white"
                     />
@@ -465,7 +470,6 @@
                     android:textColor="@color/text_main"
                     android:textSize="13sp"
                     android:gravity="center_vertical"
-                    android:layout_marginTop="2dp"
                     android:paddingLeft="15dp"
                     android:background="@color/bg_background_white"
                     />
@@ -477,7 +481,7 @@
                     android:textColor="@color/text_main"
                     android:textSize="13sp"
                     android:gravity="center_vertical"
-                    android:layout_marginTop="2dp"
+
                     android:paddingRight="15dp"
                     android:background="@color/bg_background_white"
                     />
@@ -492,6 +496,7 @@
                 android:orientation="vertical"
                 android:layout_marginTop="5dp"
                 android:paddingLeft="15dp"
+                android:paddingBottom="5dp"
                 android:background="@color/bg_background_white">
 
                 <LinearLayout
@@ -712,6 +717,54 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="30dp"
+                android:background="@color/bg_background_white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="备注:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="13sp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/bg_background_white"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="该订单是长工CC推荐来的，未结算"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:paddingLeft="5dp"
+                    android:background="@color/bg_background_white"
+                    />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tv_commit"
+                android:background="@color/text_blue"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginTop="10dp"
+                android:text="提交修改"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:textColor="@color/bg_background_white"
+                />
 
 
         </LinearLayout>

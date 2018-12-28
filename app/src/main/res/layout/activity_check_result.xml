@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Store.activity.CheckResultActivity">
+
+    <include layout="@layout/title_bar"/>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:textSize="14sp"
+        android:gravity="center_vertical"
+        android:background="@color/color_air_blue"
+        android:textColor="@color/text_main"
+        android:text="2018年"
+        android:paddingLeft="17dp"
+        android:textStyle="bold"/>
+
+    <com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView
+        android:id="@+id/pr_list"
+        android:layout_width="match_parent"
+        android:scrollbars="none"
+        android:layout_height="match_parent"></com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView>
+
+
+</LinearLayout>

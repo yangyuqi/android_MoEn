@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:background="@color/bg_background_white"
+    android:gravity="center_vertical">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:layout_weight="1"
+        >
+
+        <ImageView
+            android:id="@+id/iv_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/group_100_2"/>
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LOGO，灯箱和品牌广告画面符合公司品牌形象要求"
+            android:textSize="13sp"
+            android:paddingLeft="10dp"
+            android:textColor="@color/text_main"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        >
+
+        <ImageView
+            android:id="@+id/iv_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/group_57_3"/>
+
+        <TextView
+            android:id="@+id/tv_yes_or_no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="不合格"
+            android:textSize="13sp"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:textColor="@color/text_main"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

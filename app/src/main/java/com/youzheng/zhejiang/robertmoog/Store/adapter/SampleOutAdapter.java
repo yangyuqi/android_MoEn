@@ -8,24 +8,19 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.youzheng.zhejiang.robertmoog.R;
-import com.youzheng.zhejiang.robertmoog.Store.bean.CustomerList;
 
 import java.util.List;
 
-public class StoreCustomerAdapter extends BaseAdapter {
-    private List<CustomerList.CoustomerListBean> list;
-    private LayoutInflater layoutInflater;
+public class SampleOutAdapter extends BaseAdapter {
+    private List<String> list;
     private Context context;
+    private LayoutInflater layoutInflater;
 
-    public StoreCustomerAdapter(List<CustomerList.CoustomerListBean> list, Context context) {
+
+    public SampleOutAdapter(List<String> list, Context context) {
         this.list = list;
         this.context = context;
         layoutInflater=LayoutInflater.from(context);
-    }
-
-    public void setListRefreshUi(List<CustomerList.CoustomerListBean> list){
-        this.list = list;
-        notifyDataSetChanged();
     }
 
     @Override
@@ -47,21 +42,21 @@ public class StoreCustomerAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder=null;
         if (convertView==null){
-            convertView=layoutInflater.inflate(R.layout.item_store_customer_list,null);
+            convertView=layoutInflater.inflate(R.layout.item_sample_out,null);
             viewHolder=new ViewHolder();
-            viewHolder.tv_date=convertView.findViewById(R.id.tv_date);
+            viewHolder.tv_content=convertView.findViewById(R.id.tv_content);
             viewHolder.tv_number=convertView.findViewById(R.id.tv_number);
             convertView.setTag(viewHolder);
         }else {
             viewHolder= (ViewHolder) convertView.getTag();
         }
-        CustomerList.CoustomerListBean coustomerListBean=list.get(position);
-        viewHolder.tv_date.setText(coustomerListBean.getMonth());
-        viewHolder.tv_number.setText(coustomerListBean.getNum()+"");
+
+        viewHolder.tv_content.setText(list.get(position));
+        viewHolder.tv_number.setText(list.get(position));
+
         return convertView;
     }
-
     class ViewHolder{
-        private TextView tv_date,tv_number;
+       private TextView tv_content,tv_number;
     }
 }

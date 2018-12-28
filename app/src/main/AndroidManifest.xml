@@ -76,11 +76,27 @@
             android:name=".Store.activity.ProfessionalCustomerOrderActivity"
             android:screenOrientation="portrait" />
 
+
         <activity android:name=".Home.activity.AttentionManagerActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".Store.activity.ProfessionalOrderDetailActivity"></activity>
         <activity android:name=".Home.activity.AttentionIntentActivity"/>
         <activity android:name=".Home.activity.AttentionGoodsActivity"/>
+
+        <activity android:name=".Store.activity.ProfessionalOrderDetailActivity" />
+        <activity android:name=".Home.activity.AttentionIntentActivity" />
+        <activity android:name=".Home.activity.AttentionGoodsActivity" />
+        <activity android:name=".Store.activity.SampleOutInformationActivity" />
+        <activity android:name=".Store.activity.SampleOutEditActivity" />
+        <activity android:name=".Store.activity.PeopleMangerActivity" />
+        <activity android:name=".Store.activity.SampleOutMangerActivity" />
+        <activity android:name=".Store.activity.UpPhotoActivity" />
+        <activity android:name=".Store.activity.SampleOutDetailActivity" />
+        <activity android:name=".Store.activity.AddStaffActivity" />
+        <activity android:name=".Store.activity.CheckResultActivity" />
+        <activity android:name=".Store.activity.ReturnGoodsListActivity" />
+        <activity android:name=".Store.activity.CheckStoreDetailActivity"></activity>
+
     </application>
 
 </manifest>

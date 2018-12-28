@@ -30,7 +30,7 @@
             android:id="@+id/tv_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="78"
+            android:text=""
             android:layout_gravity="center_horizontal"
             android:textColor="@color/text_golden2"
             android:textSize="32sp"
