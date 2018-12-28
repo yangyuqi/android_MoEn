@@ -38,4 +38,5 @@
     <string name="goods_manager">店长</string>
     <string name="xiugai_note">修改备注</string>
     <string name="load_list_erron">没有更多的数据了</string>
+    <string name="please_write_sku">请输入商品SKU</string>
 </resources>

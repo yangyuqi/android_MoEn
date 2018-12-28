@@ -8,19 +8,25 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.youzheng.zhejiang.robertmoog.R;
+import com.youzheng.zhejiang.robertmoog.Store.bean.GoodsType;
 
 import java.util.List;
 
 public class GoodsTitleAdapter extends BaseAdapter {
-    private List<String> list;
+    private List<GoodsType.ListDataBean> list;
     private Context context;
     private LayoutInflater layoutInflater;
     private int selectItem =0;
 
-    public GoodsTitleAdapter(List<String> list, Context context) {
+    public GoodsTitleAdapter(List<GoodsType.ListDataBean> list, Context context) {
         this.list = list;
         this.context = context;
         layoutInflater=LayoutInflater.from(context);
+    }
+
+    public void refresgUI(List<GoodsType.ListDataBean> list){
+        this.list=list;
+        notifyDataSetChanged();
     }
 
     public void setSelectItem(int selectItem) {
@@ -53,7 +59,7 @@ public class GoodsTitleAdapter extends BaseAdapter {
         }else {
             viewHolder= (ViewHolder) convertView.getTag();
         }
-        viewHolder.tv_title.setText(list.get(position));
+        viewHolder.tv_title.setText(list.get(position).getName());
 
         if (selectItem==position){
             viewHolder.tv_title.setSelected(true);

@@ -15,5 +15,9 @@ public class UrlUtils {
     public static String GET_CUSTOMER = BASE_URL+"/v1/app/customer/getCustomer";
     public static String GET_CUSTOMER_LIST = BASE_URL+"/v1/app/shop/coustomer";
     public static String GET_CUSTOMER_LIST_DETAIL = BASE_URL+"/v1/app/shop/monthCoustomer";
+    public static String GOODS_LIST_TYPE = BASE_URL+"/v1/app/shop/getProductCategory";
+    public static String GOODS_LIST = BASE_URL+"/v1/app/shop/getProductList";
+    public static String GOODS_LIST_DETAIL = BASE_URL+"/v1/app/shop/getProductDetail";
+
 
 }
