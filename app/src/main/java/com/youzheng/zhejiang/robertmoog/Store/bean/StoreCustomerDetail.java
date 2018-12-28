@@ -75,6 +75,7 @@ public class StoreCustomerDetail {
             private String updateUserName;
             private String customerType;
 
+
             public String getSourceChannelEnum() {
                 return sourceChannelEnum;
             }

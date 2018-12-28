@@ -39,13 +39,13 @@
 
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView
         android:id="@+id/lv_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:scrollbars="none"
-        android:background="@color/bg_background_white"></android.support.v7.widget.RecyclerView>
+        android:background="@color/bg_background_white"></com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView>
 
 
 

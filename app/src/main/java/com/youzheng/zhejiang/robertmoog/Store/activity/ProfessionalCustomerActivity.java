@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView;
 import com.youzheng.zhejiang.robertmoog.Base.BaseActivity;
 import com.youzheng.zhejiang.robertmoog.R;
 import com.youzheng.zhejiang.robertmoog.Store.adapter.ProfessionalCustomerAdapter;
@@ -33,7 +34,7 @@ public class ProfessionalCustomerActivity extends BaseActivity implements View.O
      * 3
      */
     private TextView tv_number;
-    private RecyclerView lv_list;
+    private PullLoadMoreRecyclerView lv_list;
     private List<String> list=new ArrayList<>();
     private ProfessionalCustomerAdapter adapter;
 
@@ -57,14 +58,15 @@ public class ProfessionalCustomerActivity extends BaseActivity implements View.O
         iv_next.setOnClickListener(this);
         layout_header = (RelativeLayout) findViewById(R.id.layout_header);
         tv_number = (TextView) findViewById(R.id.tv_number);
-        lv_list = (RecyclerView) findViewById(R.id.lv_list);
+        lv_list = (PullLoadMoreRecyclerView) findViewById(R.id.lv_list);
         initData();
     }
 
     private void initData() {
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        lv_list.setLayoutManager(linearLayoutManager);
+        lv_list.setLinearLayout();
+        lv_list.setColorSchemeResources(R.color.colorPrimary);
         lv_list.addItemDecoration(new RecycleViewDivider(
                 this, LinearLayoutManager.VERTICAL, 5, getResources().getColor(R.color.divider_color_item)));
         list.add("吴奇隆");

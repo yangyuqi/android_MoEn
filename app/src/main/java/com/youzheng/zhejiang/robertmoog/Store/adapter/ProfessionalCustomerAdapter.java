@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.youzheng.zhejiang.robertmoog.R;
+import com.youzheng.zhejiang.robertmoog.Store.listener.OnRecyclerViewAdapterItemClickListener;
 
 import java.util.List;
 
@@ -15,6 +16,11 @@ public class ProfessionalCustomerAdapter extends RecyclerView.Adapter<Profession
       private List<String> list;
       private LayoutInflater layoutInflater;
       private Context context;
+      private OnRecyclerViewAdapterItemClickListener mOnItemClickListener;
+
+    public void setOnItemClickListener(OnRecyclerViewAdapterItemClickListener mOnItemClickListener) {
+        this.mOnItemClickListener = mOnItemClickListener;
+    }
 
     public ProfessionalCustomerAdapter(List<String> list, Context context) {
         this.list = list;
@@ -25,7 +31,34 @@ public class ProfessionalCustomerAdapter extends RecyclerView.Adapter<Profession
     @Override
     public InsideHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view=layoutInflater.inflate(R.layout.item_customer_inside,parent,false);
-        InsideHolder insideHolder=new InsideHolder(view);
+        final InsideHolder insideHolder=new InsideHolder(view);
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int position = insideHolder.getLayoutPosition();
+                //设置监听
+                if (mOnItemClickListener != null) {
+                    mOnItemClickListener.onItemClick(view ,position );
+                }
+
+            }
+        });
+
+        view.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                //自己获取position
+                int position = insideHolder.getLayoutPosition();
+                //设置监听
+                if (mOnItemClickListener != null) {
+                    mOnItemClickListener.onItemLongClick( v,position);
+                }
+                //true代表消费事件 不继续传递
+                return true;
+            }
+        });
+
         return insideHolder;
     }
 

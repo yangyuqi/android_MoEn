@@ -75,6 +75,14 @@
         <activity
             android:name=".Store.activity.ProfessionalCustomerOrderActivity"
             android:screenOrientation="portrait" />
+
+
+        <activity android:name=".Home.activity.AttentionManagerActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Store.activity.ProfessionalOrderDetailActivity"></activity>
+        <activity android:name=".Home.activity.AttentionIntentActivity"/>
+        <activity android:name=".Home.activity.AttentionGoodsActivity"/>
+
         <activity android:name=".Store.activity.ProfessionalOrderDetailActivity" />
         <activity android:name=".Home.activity.AttentionIntentActivity" />
         <activity android:name=".Home.activity.AttentionGoodsActivity" />
@@ -88,6 +96,7 @@
         <activity android:name=".Store.activity.CheckResultActivity" />
         <activity android:name=".Store.activity.ReturnGoodsListActivity" />
         <activity android:name=".Store.activity.CheckStoreDetailActivity"></activity>
+
     </application>
 
 </manifest>
