@@ -55,6 +55,11 @@ public class AttentionIntentActivity extends BaseActivity {
         });
         tabLayout = (TabLayout) findViewById(R.id.tab);
         ls = (ListView) findViewById(R.id.ls);
+        if (role.equals(PublicUtils.SHOP_SELLER)){
+            tabLayout.setVisibility(View.VISIBLE);
+        }else if (role.equals(PublicUtils.SHOP_LEADER)){
+            tabLayout.setVisibility(View.GONE);
+        }
         initEvent();
         initData(0);
     }
@@ -128,6 +133,16 @@ public class AttentionIntentActivity extends BaseActivity {
             public void convert(ViewHolder helper, final ShopPersonalListBean item) {
                 if (i==0) {
                     helper.setText(R.id.tv_name, item.getName() + "  (" + item.getBusinessRole() + ")");
+
+                    helper.getConvertView().setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(mContext,AttentionManagerActivity.class);
+                            intent.putExtra("label",item);
+                            startActivity(intent);
+                        }
+                    });
+
                 }else if (i==1){
                     helper.setText(R.id.tv_time,item.getCreateDate());
                     helper.setText(R.id.tv_phone,item.getCustCode());

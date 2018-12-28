@@ -12,9 +12,12 @@ import com.youzheng.zhejiang.robertmoog.Base.utils.PublicUtils;
 import com.youzheng.zhejiang.robertmoog.Base.utils.UrlUtils;
 import com.youzheng.zhejiang.robertmoog.Model.BaseModel;
 import com.youzheng.zhejiang.robertmoog.Model.login.LoginBean;
+import com.youzheng.zhejiang.robertmoog.Model.login.UserConfigDataBean;
 import com.youzheng.zhejiang.robertmoog.R;
+import com.youzheng.zhejiang.robertmoog.utils.SharedPreferencesUtils;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import okhttp3.Request;
 
@@ -90,8 +93,24 @@ public class LoginActivity extends BaseActivity {
                BaseModel model = gson.fromJson(response,BaseModel.class);
                if (model.getCode()==PublicUtils.code){
                    LoginBean loginBean = gson.fromJson(gson.toJson(model.getDatas()), LoginBean.class);
-                   com.youzheng.tongxiang.huntingjob.UI.Utils.SharedPreferencesUtils.setParam(mContext,PublicUtils.access_token,loginBean.getAccess_token());
-                   finish();
+                   SharedPreferencesUtils.setParam(mContext,PublicUtils.access_token,loginBean.getAccess_token());
+                   OkHttpClientManager.postAsynJson(gson.toJson(new HashMap<>()), UrlUtils.GET_USER_ONFO + "?access_token=" + loginBean.getAccess_token(), new OkHttpClientManager.StringCallback() {
+                       @Override
+                       public void onFailure(Request request, IOException e) {
+
+                       }
+
+                       @Override
+                       public void onResponse(String response) {
+                           BaseModel baseModel = gson.fromJson(response,BaseModel.class);
+                           if (baseModel.getCode()==PublicUtils.code){
+                               UserConfigDataBean dataBean = gson.fromJson(gson.toJson(baseModel.getDatas()),UserConfigDataBean.class);
+                               SharedPreferencesUtils.setParam(mContext,PublicUtils.role,dataBean.getUserConfigData().getUserRole());
+                               finish();
+                           }
+                       }
+                   });
+
                }else {
                    showToast(model.getMsg());
                }

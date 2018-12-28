@@ -15,16 +15,20 @@ import com.youzheng.zhejiang.robertmoog.Base.utils.UrlUtils;
 import com.youzheng.zhejiang.robertmoog.Model.BaseModel;
 import com.youzheng.zhejiang.robertmoog.Model.login.UserConfigDataBean;
 import com.youzheng.zhejiang.robertmoog.R;
+import com.youzheng.zhejiang.robertmoog.utils.SharedPreferencesUtils;
+import com.youzheng.zhejiang.robertmoog.utils.View.DeleteDialog;
+import com.youzheng.zhejiang.robertmoog.utils.View.DeleteDialogInterface;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 import okhttp3.Request;
 
 public class MyFragment extends BaseFragment implements BaseFragment.ReloadInterface{
 
     View mView ;
-    TextView tv_shop_name ,tv_role ;
+    TextView tv_shop_name ,tv_role ,tv_loginOut ;
 
     @Nullable
     @Override
@@ -39,12 +43,13 @@ public class MyFragment extends BaseFragment implements BaseFragment.ReloadInter
     private void initView(View mView) {
         tv_shop_name = mView.findViewById(R.id.tv_shop_name);
         tv_role = mView.findViewById(R.id.tv_role);
+        tv_loginOut = mView.findViewById(R.id.tv_loginOut);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        String token = (String) com.youzheng.tongxiang.huntingjob.UI.Utils.SharedPreferencesUtils.getParam(mContext, PublicUtils.access_token,"");
+        final String token = (String) SharedPreferencesUtils.getParam(mContext, PublicUtils.access_token,"");
         if (!token.equals("")){
             OkHttpClientManager.postAsynJson(gson.toJson(new HashMap<>()), UrlUtils.GET_USER_ONFO + "?access_token=" + token, new OkHttpClientManager.StringCallback() {
                 @Override
@@ -64,6 +69,35 @@ public class MyFragment extends BaseFragment implements BaseFragment.ReloadInter
                         }
                         tv_shop_name.setText(dataBean.getUserConfigData().getShopName());
                     }
+                }
+            });
+
+            tv_loginOut.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DeleteDialog deleteDialog = new DeleteDialog(mContext, "提示", "是否退出登录", "确定");
+                    deleteDialog.show();
+                    deleteDialog.OnDeleteBtn(new DeleteDialogInterface() {
+                        @Override
+                        public void isDelete(boolean isdelete) {
+                            OkHttpClientManager.postAsynJson(gson.toJson(new HashMap<>()), UrlUtils.LOGIN_OUT + "?access_token=" + token, new OkHttpClientManager.StringCallback() {
+                                @Override
+                                public void onFailure(Request request, IOException e) {
+
+                                }
+
+                                @Override
+                                public void onResponse(String response) {
+                                    BaseModel baseModel = gson.fromJson(response,BaseModel.class);
+                                    if (baseModel.getCode()==PublicUtils.code){
+                                        getActivity().finish();
+                                    }else {
+                                        showToast(baseModel.getMsg());
+                                    }
+                                }
+                            });
+                        }
+                    });
                 }
             });
         }

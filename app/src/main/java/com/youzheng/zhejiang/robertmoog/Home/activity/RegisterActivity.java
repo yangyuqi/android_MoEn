@@ -57,10 +57,6 @@ public class RegisterActivity  extends BaseActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(mContext,RegisterSuccessActivity.class);
-                startActivity(intent);
-
-
                 if (edt_phone.getText().toString().equals("")){
                     showToast(getString(R.string.phone_not_null));
                     return;
@@ -85,7 +81,7 @@ public class RegisterActivity  extends BaseActivity {
                         if (baseModel.getCode()==PublicUtils.code){
                             RegisterBean registerBean = gson.fromJson(gson.toJson(baseModel.getDatas()),RegisterBean.class);
                             Intent intent = new Intent(mContext,RegisterSuccessActivity.class);
-                            intent.putExtra("registerBean",registerBean);
+                            intent.putExtra("register",registerBean);
                             startActivity(intent);
                             finish();
                         }

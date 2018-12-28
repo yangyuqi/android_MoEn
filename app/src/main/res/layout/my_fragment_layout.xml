@@ -93,6 +93,7 @@
 
         
         <TextView
+            android:id="@+id/tv_loginOut"
             android:background="@color/text_blue"
             android:layout_width="match_parent"
             android:layout_height="43dp"

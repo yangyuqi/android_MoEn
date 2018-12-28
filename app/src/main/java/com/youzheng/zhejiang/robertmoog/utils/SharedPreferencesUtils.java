@@ -1,4 +1,4 @@
-package com.youzheng.tongxiang.huntingjob.UI.Utils;
+package com.youzheng.zhejiang.robertmoog.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

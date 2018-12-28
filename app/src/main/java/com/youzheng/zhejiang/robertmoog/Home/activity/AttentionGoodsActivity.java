@@ -63,7 +63,7 @@ public class AttentionGoodsActivity extends BaseActivity {
     }
 
     private void initView() {
-        ((TextView)findViewById(R.id.textHeadTitle)).setText("客户注册");
+        ((TextView)findViewById(R.id.textHeadTitle)).setText("意向商品");
         findViewById(R.id.btnBack).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

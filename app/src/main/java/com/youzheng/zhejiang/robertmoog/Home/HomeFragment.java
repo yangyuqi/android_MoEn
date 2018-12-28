@@ -24,11 +24,13 @@ import com.youzheng.zhejiang.robertmoog.Home.activity.RegisterSuccessActivity;
 import com.youzheng.zhejiang.robertmoog.Home.activity.SearchGoodsActivity;
 import com.youzheng.zhejiang.robertmoog.Home.adapter.BannerNormalAdapter;
 import com.youzheng.zhejiang.robertmoog.Model.BaseModel;
+import com.youzheng.zhejiang.robertmoog.Model.Home.CustomerBean;
 import com.youzheng.zhejiang.robertmoog.Model.Home.HomePageBean;
 import com.youzheng.zhejiang.robertmoog.Model.Home.HomePageData;
 import com.youzheng.zhejiang.robertmoog.R;
 
 import com.youzheng.zhejiang.robertmoog.utils.CommonAdapter;
+import com.youzheng.zhejiang.robertmoog.utils.SharedPreferencesUtils;
 import com.youzheng.zhejiang.robertmoog.utils.ViewHolder;
 
 import java.io.IOException;
@@ -112,12 +114,15 @@ public class HomeFragment extends BaseFragment  implements BaseFragment.ReloadIn
                     }
 
                     @Override
-                    public void onResponse(String response) {
+                    public void  onResponse(String response) {
                         BaseModel baseModel = gson.fromJson(response,BaseModel.class);
                         if (baseModel.getCode()==PublicUtils.code){
+                            CustomerBean customerBean = gson.fromJson(gson.toJson(baseModel.getDatas()),CustomerBean.class);
                             Intent intent = new Intent(mContext, RegisterSuccessActivity.class);
-                            intent.putExtra("type","scan");
+                            intent.putExtra("customer",customerBean.getCustomer());
                             startActivity(intent);
+                        }else {
+                            showToast(baseModel.getMsg());
                         }
                     }
                 });
@@ -136,7 +141,7 @@ public class HomeFragment extends BaseFragment  implements BaseFragment.ReloadIn
     }
 
     private void initData() {
-        access_token = (String) com.youzheng.tongxiang.huntingjob.UI.Utils.SharedPreferencesUtils.getParam(mContext, PublicUtils.access_token,"");
+        access_token = (String) SharedPreferencesUtils.getParam(mContext, PublicUtils.access_token,"");
         if (!access_token.equals("")) {
             OkHttpClientManager.postAsynJson(gson.toJson(new HashMap<>()), UrlUtils.HOME_INFO + "?access_token=" + access_token, new OkHttpClientManager.StringCallback() {
                 @Override

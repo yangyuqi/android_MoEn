@@ -1,4 +1,4 @@
-package com.youzheng.tongxiang.huntingjob.UI.dialog;
+package com.youzheng.zhejiang.robertmoog.utils.View;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -10,7 +10,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import com.youzheng.tongxiang.huntingjob.R;
+
+import com.youzheng.zhejiang.robertmoog.R;
 
 
 /**
