@@ -8,12 +8,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.youzheng.zhejiang.robertmoog.R;
+import com.youzheng.zhejiang.robertmoog.Store.bean.CustomerList;
+import com.youzheng.zhejiang.robertmoog.Store.bean.ProfessionalCustomerList;
 import com.youzheng.zhejiang.robertmoog.Store.listener.OnRecyclerViewAdapterItemClickListener;
 
 import java.util.List;
 
 public class ProfessionalCustomerAdapter extends RecyclerView.Adapter<ProfessionalCustomerAdapter.InsideHolder> {
-      private List<String> list;
+      private List<ProfessionalCustomerList.SpecialtyCustomerListBean> list;
       private LayoutInflater layoutInflater;
       private Context context;
       private OnRecyclerViewAdapterItemClickListener mOnItemClickListener;
@@ -22,7 +24,12 @@ public class ProfessionalCustomerAdapter extends RecyclerView.Adapter<Profession
         this.mOnItemClickListener = mOnItemClickListener;
     }
 
-    public ProfessionalCustomerAdapter(List<String> list, Context context) {
+    public void setListRefreshUi(List<ProfessionalCustomerList.SpecialtyCustomerListBean> list){
+        this.list = list;
+        notifyDataSetChanged();
+    }
+
+    public ProfessionalCustomerAdapter(List<ProfessionalCustomerList.SpecialtyCustomerListBean> list, Context context) {
         this.list = list;
         this.context = context;
         layoutInflater=LayoutInflater.from(context);
@@ -64,10 +71,11 @@ public class ProfessionalCustomerAdapter extends RecyclerView.Adapter<Profession
 
     @Override
     public void onBindViewHolder(InsideHolder holder, int position) {
-       holder.tv_date.setText(list.get(position));
-        holder.tv_way.setText(list.get(position));
-        holder.tv_phone.setText(list.get(position));
-        holder.tv_people.setText(list.get(position));
+        ProfessionalCustomerList.SpecialtyCustomerListBean bean=list.get(position);
+        holder.tv_date.setText(bean.getRegisterDate());
+        holder.tv_way.setText(bean.getSpecialtyType());
+        holder.tv_phone.setText(bean.getCustCode());
+        holder.tv_people.setText(bean.getCustName());
     }
 
     @Override

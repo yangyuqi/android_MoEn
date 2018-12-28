@@ -102,6 +102,8 @@ public class GoodsFragment extends BaseFragment {
             showToast(getString(R.string.load_list_erron));
         }
 
+        pr_goods.setPullLoadMoreCompleted();
+
     }
 
     private void initView() {
@@ -135,6 +137,7 @@ public class GoodsFragment extends BaseFragment {
             @Override
             public void onRefresh() {
               page=1;
+              list.clear();
               initData(page,pageSize);
             }
 
