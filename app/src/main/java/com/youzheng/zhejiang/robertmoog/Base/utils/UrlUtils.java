@@ -12,5 +12,8 @@ public class UrlUtils {
     public static String SHOP_SCVAN = BASE_URL+"/v1/app/customer/shopQRCode";
     public static String ATTENTION_GOODS_LIST = BASE_URL+"/v1/app/customer/intentProductList";
     public static String HOME_INFO = BASE_URL+"/v1/app/user/getHomePage";
-    public static String GET_CUSTOMER = BASE_URL+"/v1/app/customer/getCustomer ";
+    public static String GET_CUSTOMER = BASE_URL+"/v1/app/customer/getCustomer";
+    public static String GET_CUSTOMER_LIST = BASE_URL+"/v1/app/shop/coustomer";
+    public static String GET_CUSTOMER_LIST_DETAIL = BASE_URL+"/v1/app/shop/monthCoustomer";
+
 }

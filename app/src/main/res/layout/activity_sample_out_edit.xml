@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_all"
+    tools:context=".Store.activity.SampleOutEditActivity">
+
+    <include layout="@layout/title_bar" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:scrollbars="none"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="出样信息"
+                android:textSize="13sp"
+                android:gravity="center_vertical"
+                android:background="@color/color_air_blue"
+                android:paddingLeft="15dp"
+                android:textColor="@color/text_main"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/bg_background_white"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_yu_shi_gui_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="浴室柜组数"
+                    android:layout_weight="1"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/bg_background_white"
+                    />
+                <EditText
+                    android:id="@+id/et_number1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/text_drak_gray"
+                    android:hint="请输入数量"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:paddingLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:paddingRight="15dp"
+
+                    android:background="@color/bg_background_white"
+                    />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/bg_background_white"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_la_ji_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="垃圾处理器出样数量"
+                    android:layout_weight="1"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/bg_background_white"
+                    />
+                <EditText
+                    android:id="@+id/et_number2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/text_drak_gray"
+                    android:hint="请输入数量"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:paddingLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:paddingRight="15dp"
+
+                    android:background="@color/bg_background_white"
+                    />
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/bg_background_white"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_tao_ci_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="陶瓷坐便器出样坑位数量"
+                    android:layout_weight="1"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/bg_background_white"
+                    />
+                <EditText
+                    android:id="@+id/et_number3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/text_drak_gray"
+                    android:hint="请输入数量"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:paddingLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:paddingRight="15dp"
+
+                    android:background="@color/bg_background_white"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/bg_background_white"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_zhi_neng_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="智能一体机出样坑位数量"
+                    android:layout_weight="1"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/bg_background_white"
+                    />
+                <EditText
+                    android:id="@+id/et_number4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/text_drak_gray"
+                    android:hint="请输入数量"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:paddingLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:paddingRight="15dp"
+                    android:background="@color/bg_background_white"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/bg_background_white"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_gai_ban_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="智能盖板出样数量"
+                    android:layout_weight="1"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/bg_background_white"
+                    />
+                <EditText
+                    android:id="@+id/et_number5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/text_drak_gray"
+                    android:hint="请输入数量"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:paddingLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:paddingRight="15dp"
+                    android:background="@color/bg_background_white"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/bg_background_white"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_lian_pen_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="陶瓷脸盆出样数量"
+                    android:layout_weight="1"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/bg_background_white"
+                    />
+                <EditText
+                    android:id="@+id/et_number6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/text_drak_gray"
+                    android:hint="请输入数量"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:paddingLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:paddingRight="15dp"
+
+                    android:background="@color/bg_background_white"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/bg_background_white"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_jing_shui_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="净水器出样数量"
+                    android:layout_weight="1"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/bg_background_white"
+                    />
+                <EditText
+                    android:id="@+id/et_number7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/text_drak_gray"
+                    android:hint="请输入数量"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:paddingLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:paddingRight="15dp"
+
+                    android:background="@color/bg_background_white"
+                    />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="试水台信息"
+                android:textSize="13sp"
+                android:gravity="center_vertical"
+                android:background="@color/color_air_blue"
+                android:paddingLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/text_main"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/bg_background_white"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_rain_old_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="雨林试水台 - 旧款"
+                android:layout_weight="1"
+                android:textColor="@color/text_main"
+                android:textSize="13sp"
+                android:gravity="center_vertical"
+                android:layout_marginTop="2dp"
+                android:background="@color/bg_background_white"
+                />
+            <EditText
+                android:id="@+id/et_number8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/text_drak_gray"
+                android:hint="请输入数量"
+                android:textColor="@color/text_main"
+                android:textSize="13sp"
+                android:paddingLeft="5dp"
+                android:gravity="center_vertical"
+                android:layout_marginTop="2dp"
+                android:paddingRight="15dp"
+
+                android:background="@color/bg_background_white"
+                />
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/bg_background_white"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_rain_new_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="雨林试水台 - 新款"
+                    android:layout_weight="1"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/bg_background_white"
+                    />
+                <EditText
+                    android:id="@+id/et_number9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/text_drak_gray"
+                    android:hint="请输入数量"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:paddingLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:paddingRight="15dp"
+
+                    android:background="@color/bg_background_white"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/bg_background_white"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_small_rain_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="小试水台"
+                    android:layout_weight="1"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/bg_background_white"
+                    />
+                <EditText
+                    android:id="@+id/et_number10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/text_drak_gray"
+                    android:hint="请输入数量"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:paddingLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:paddingRight="15dp"
+
+                    android:background="@color/bg_background_white"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/bg_background_white"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_cu_pen_rain_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="厨盆试水台"
+                    android:layout_weight="1"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/bg_background_white"
+                    />
+                <EditText
+                    android:id="@+id/et_number11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/text_drak_gray"
+                    android:hint="请输入数量"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:paddingLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:paddingRight="15dp"
+                    android:background="@color/bg_background_white"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/bg_background_white"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_VI4_rain_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="VI4.0试水台"
+                    android:layout_weight="1"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/bg_background_white"
+                    />
+                <EditText
+                    android:id="@+id/et_number12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/text_drak_gray"
+                    android:hint="请输入数量"
+                    android:textColor="@color/text_main"
+                    android:textSize="13sp"
+                    android:paddingLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:paddingRight="15dp"
+                    android:background="@color/bg_background_white"
+                    />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_commit"
+                android:background="@color/text_blue"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginTop="10dp"
+                android:text="提交"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:textColor="@color/bg_background_white"
+                />
+
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+</LinearLayout>

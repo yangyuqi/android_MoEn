@@ -37,4 +37,5 @@
     <string name="goods_guide">导购</string>
     <string name="goods_manager">店长</string>
     <string name="xiugai_note">修改备注</string>
+    <string name="load_list_erron">没有更多的数据了</string>
 </resources>

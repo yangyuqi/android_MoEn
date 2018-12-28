@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:background="@color/bg_background_white">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+          >
+
+            <ImageView
+                android:id="@+id/iv_manger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/group_100_2"/>
+
+            <TextView
+                android:id="@+id/tv_manger"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="店长"
+                android:textSize="13sp"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:textColor="@color/text_main"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:gravity="center_vertical"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/group_90_4"/>
+
+                <TextView
+                    android:id="@+id/tv_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="187 9898 8989"
+                    android:textSize="13sp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/text_main"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lin_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/group_90_5"/>
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="187 9898 8989"
+                    android:textSize="13sp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/text_main"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_stop"
+        android:layout_width="70dp"
+        android:layout_height="30dp"
+        android:text="停用"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/title_off"
+        android:textColor="@color/colorPrimary"
+        android:visibility="gone"/>
+
+
+    <ImageView
+        android:id="@+id/iv_already_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/group_90_6"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:visibility="visible"
+        android:layout_marginRight="15dp"/>
+
+</LinearLayout>

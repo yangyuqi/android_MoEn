@@ -1,5 +1,6 @@
 package com.youzheng.zhejiang.robertmoog.Store.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -18,15 +20,17 @@ import android.widget.TextView;
 import com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView;
 import com.youzheng.zhejiang.robertmoog.Base.BaseFragment;
 import com.youzheng.zhejiang.robertmoog.R;
+import com.youzheng.zhejiang.robertmoog.Store.activity.ProfessionalOrderDetailActivity;
 import com.youzheng.zhejiang.robertmoog.Store.adapter.GoodsTimeAdapter;
 import com.youzheng.zhejiang.robertmoog.Store.adapter.ProfessionalCustomerOrderListAdapter;
 import com.youzheng.zhejiang.robertmoog.Store.bean.OrderList;
+import com.youzheng.zhejiang.robertmoog.Store.listener.OnRecyclerViewAdapterItemClickListener;
 import com.youzheng.zhejiang.robertmoog.Store.view.RecycleViewDivider;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerOrderFragment extends BaseFragment implements View.OnClickListener {
+public class CustomerOrderFragment extends BaseFragment implements View.OnClickListener, AdapterView.OnItemClickListener {
     private View view;
     /**
      * 搜索订单编号
@@ -80,6 +84,7 @@ public class CustomerOrderFragment extends BaseFragment implements View.OnClickL
         drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);//禁止手势滑动
         tv_again.setOnClickListener(this);
         tv_confirm.setOnClickListener(this);
+        gv_time.setOnItemClickListener(this);
         initData();
     }
 
@@ -110,6 +115,18 @@ public class CustomerOrderFragment extends BaseFragment implements View.OnClickL
         adapter = new ProfessionalCustomerOrderListAdapter(list, piclist, getActivity());
         rv_list.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+        adapter.setOnItemClickListener(new OnRecyclerViewAdapterItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                startActivity(new Intent(getActivity(),ProfessionalOrderDetailActivity.class));
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+
+            }
+        });
+
 
         strlist.add("全部");
         strlist.add("一到三个月");
@@ -140,5 +157,10 @@ public class CustomerOrderFragment extends BaseFragment implements View.OnClickL
             case R.id.tv_confirm:
                 break;
         }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        goodsTimeAdapter.setSelectItem(position);
     }
 }

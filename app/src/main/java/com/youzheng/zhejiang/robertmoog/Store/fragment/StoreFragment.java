@@ -12,11 +12,18 @@ import android.widget.GridView;
 
 import com.youzheng.zhejiang.robertmoog.Base.BaseFragment;
 import com.youzheng.zhejiang.robertmoog.Home.HomeFragment;
+import com.youzheng.zhejiang.robertmoog.Home.activity.ClientViewActivity;
+import com.youzheng.zhejiang.robertmoog.Home.activity.SearchGoodsActivity;
 import com.youzheng.zhejiang.robertmoog.R;
+import com.youzheng.zhejiang.robertmoog.Store.activity.CheckResultActivity;
 import com.youzheng.zhejiang.robertmoog.Store.activity.GoodsManageActivity;
 import com.youzheng.zhejiang.robertmoog.Store.activity.OrderListActivity;
+import com.youzheng.zhejiang.robertmoog.Store.activity.PeopleMangerActivity;
 import com.youzheng.zhejiang.robertmoog.Store.activity.ProfessionalCustomerActivity;
 import com.youzheng.zhejiang.robertmoog.Store.activity.ProfessionalCustomerOrderActivity;
+import com.youzheng.zhejiang.robertmoog.Store.activity.ReturnGoodsListActivity;
+import com.youzheng.zhejiang.robertmoog.Store.activity.SampleOutInformationActivity;
+import com.youzheng.zhejiang.robertmoog.Store.activity.SampleOutMangerActivity;
 import com.youzheng.zhejiang.robertmoog.Store.activity.StoreCustomerActivity;
 import com.youzheng.zhejiang.robertmoog.utils.CommonAdapter;
 import com.youzheng.zhejiang.robertmoog.utils.ViewHolder;
@@ -82,6 +89,30 @@ public class StoreFragment extends BaseFragment implements BaseFragment.ReloadIn
 
                    case 4:
                        startActivity(new Intent(getActivity(),ProfessionalCustomerOrderActivity.class));
+                       break;
+
+                   case 5:
+                       startActivity(new Intent(getActivity(),PeopleMangerActivity.class));
+                       break;
+
+                   case 6:
+                       startActivity(new Intent(getActivity(),SampleOutInformationActivity.class));
+                       break;
+
+                   case 7:
+                       startActivity(new Intent(getActivity(),SampleOutMangerActivity.class));
+                       break;
+
+                   case 8:
+                       startActivity(new Intent(getActivity(),CheckResultActivity.class));
+                       break;
+
+                   case 9:
+                       startActivity(new Intent(getActivity(),ClientViewActivity.class));
+                       break;
+
+                   case 10:
+                       startActivity(new Intent(getActivity(),ReturnGoodsListActivity.class));
                        break;
                }
             }

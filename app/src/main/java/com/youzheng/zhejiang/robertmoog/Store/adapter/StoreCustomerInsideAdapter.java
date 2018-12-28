@@ -9,18 +9,24 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.youzheng.zhejiang.robertmoog.R;
+import com.youzheng.zhejiang.robertmoog.Store.bean.StoreCustomerDetail;
 
 import java.util.List;
 
 public class StoreCustomerInsideAdapter extends RecyclerView.Adapter<StoreCustomerInsideAdapter.InsideHolder> {
-      private List<String> list;
+      private List<StoreCustomerDetail.MonthCoustomerDetailBean> list;
       private LayoutInflater layoutInflater;
       private Context context;
 
-    public StoreCustomerInsideAdapter(List<String> list, Context context) {
+    public StoreCustomerInsideAdapter(List<StoreCustomerDetail.MonthCoustomerDetailBean> list, Context context) {
         this.list = list;
         this.context = context;
         layoutInflater=LayoutInflater.from(context);
+    }
+
+    public  void refreshUI(List<StoreCustomerDetail.MonthCoustomerDetailBean> list){
+        this.list=list;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -32,10 +38,11 @@ public class StoreCustomerInsideAdapter extends RecyclerView.Adapter<StoreCustom
 
     @Override
     public void onBindViewHolder(InsideHolder holder, int position) {
-       holder.tv_date.setText(list.get(position));
-        holder.tv_way.setText(list.get(position));
-        holder.tv_phone.setText(list.get(position));
-        holder.tv_people.setText(list.get(position));
+        StoreCustomerDetail.MonthCoustomerDetailBean monthCoustomerDetailBean=list.get(position);
+        holder.tv_date.setText(monthCoustomerDetailBean.getRegisterDate());
+        holder.tv_way.setText(monthCoustomerDetailBean.getSourceChannelEnum());
+        holder.tv_phone.setText(monthCoustomerDetailBean.getAccount());
+        holder.tv_people.setText(monthCoustomerDetailBean.getCustomerType()+":"+monthCoustomerDetailBean.getUpdateUserName());
     }
 
     @Override

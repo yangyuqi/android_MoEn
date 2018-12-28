@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_all"
+    tools:context=".Store.activity.SampleOutDetailActivity">
+
+
+    <include layout="@layout/title_bar" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:textColor="@color/text_main"
+        android:text="李学东"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="35dp"/>
+
+    <GridView
+        android:scrollbars="none"
+        android:id="@+id/gv_photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginLeft="36dp"
+        android:verticalSpacing="5dp"
+        android:horizontalSpacing="5dp"
+        android:numColumns="3"></GridView>
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:textColor="@color/text_main"
+        android:text="2016/01/19 09:19:04"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="35dp"/>
+
+</LinearLayout>

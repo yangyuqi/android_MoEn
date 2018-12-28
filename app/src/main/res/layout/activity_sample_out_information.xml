@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_all"
+    tools:context=".Store.activity.SampleOutInformationActivity">
+    <include layout="@layout/title_bar" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="出样信息"
+            android:textSize="13sp"
+            android:gravity="center_vertical"
+            android:background="@color/color_air_blue"
+            android:paddingLeft="15dp"
+            android:textColor="@color/text_main"/>
+
+            <com.youzheng.zhejiang.robertmoog.Store.view.MyListView
+                android:id="@+id/lv_information"
+                android:layout_width="match_parent"
+                android:dividerHeight="1dp"
+                android:divider="@color/bg_all"
+                android:layout_height="wrap_content"></com.youzheng.zhejiang.robertmoog.Store.view.MyListView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="试水台信息"
+                android:textSize="13sp"
+                android:gravity="center_vertical"
+                android:background="@color/color_air_blue"
+                android:paddingLeft="15dp"
+                android:textColor="@color/text_main"/>
+
+
+            <com.youzheng.zhejiang.robertmoog.Store.view.MyListView
+                android:id="@+id/lv_rain_information"
+                android:layout_width="match_parent"
+                android:dividerHeight="1dp"
+                android:divider="@color/bg_all"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content"></com.youzheng.zhejiang.robertmoog.Store.view.MyListView>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>
