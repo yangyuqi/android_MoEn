@@ -46,7 +46,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1px"
+        android:layout_height="1dp"
         android:background="@color/bg_all"/>
 
     <LinearLayout
@@ -85,7 +85,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1px"
+        android:layout_height="1dp"
         android:background="@color/bg_all"/>
     <LinearLayout
         android:id="@+id/lin_degree"
@@ -127,7 +127,7 @@
     </LinearLayout>
     <View
         android:layout_width="match_parent"
-        android:layout_height="1px"
+        android:layout_height="1dp"
         android:background="@color/bg_all"/>
 
     <TextView

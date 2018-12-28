@@ -8,13 +8,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.youzheng.zhejiang.robertmoog.R;
+import com.youzheng.zhejiang.robertmoog.Store.bean.GoodsList;
 import com.youzheng.zhejiang.robertmoog.Store.listener.OnRecyclerViewAdapterItemClickListener;
 
 import java.util.List;
 
 public class GoodsListAdapter extends RecyclerView.Adapter<GoodsListAdapter.GoodsHolder> {
-    private List<String> list;
+    private List<GoodsList.ProductListDetailDataBean> list;
     private Context context;
     private LayoutInflater layoutInflater;
     private OnRecyclerViewAdapterItemClickListener mOnItemClickListener;
@@ -23,10 +25,16 @@ public class GoodsListAdapter extends RecyclerView.Adapter<GoodsListAdapter.Good
         this.mOnItemClickListener = mOnItemClickListener;
     }
 
-    public GoodsListAdapter(List<String> list, Context context) {
+    public GoodsListAdapter(List<GoodsList.ProductListDetailDataBean> list, Context context) {
         this.list = list;
         this.context = context;
         layoutInflater=LayoutInflater.from(context);
+    }
+
+    public void  setRefreshUI(List<GoodsList.ProductListDetailDataBean> list){
+        this.list=list;
+        notifyDataSetChanged();
+
     }
 
     @Override
@@ -67,10 +75,11 @@ public class GoodsListAdapter extends RecyclerView.Adapter<GoodsListAdapter.Good
 
     @Override
     public void onBindViewHolder(GoodsHolder holder, int position) {
-        holder.iv_goods.setImageResource(R.mipmap.ic_launcher);
-        holder.tv_goods_number.setText(list.get(position));
-        holder.tv_goods_content.setText(list.get(position));
-        holder.tv_goods_money.setText(list.get(position));
+        GoodsList.ProductListDetailDataBean bean=list.get(position);
+        Glide.with(context).load(bean.getSmallImageUrl()).into(holder.iv_goods);
+        holder.tv_goods_name.setText(bean.getSkuId());
+        holder.tv_goods_content.setText(bean.getName());
+        holder.tv_goods_money.setText("￥"+bean.getPrice());
     }
 
     @Override
@@ -80,11 +89,11 @@ public class GoodsListAdapter extends RecyclerView.Adapter<GoodsListAdapter.Good
 
     public class GoodsHolder extends RecyclerView.ViewHolder {
         private ImageView iv_goods;
-        private TextView tv_goods_number,tv_goods_content,tv_goods_money;
+        private TextView tv_goods_name,tv_goods_content,tv_goods_money;
         public GoodsHolder(View itemView) {
             super(itemView);
             iv_goods=itemView.findViewById(R.id.iv_goods);
-            tv_goods_number=itemView.findViewById(R.id.tv_goods_number);
+            tv_goods_name=itemView.findViewById(R.id.tv_goods_name);
             tv_goods_content=itemView.findViewById(R.id.tv_goods_content);
             tv_goods_money=itemView.findViewById(R.id.tv_goods_money);
 

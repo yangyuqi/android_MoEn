@@ -43,5 +43,6 @@
     <string name="attention_intent_user">意向管理</string>
 
     <string name="load_list_erron">没有更多的数据了</string>
+    <string name="please_write_sku">请输入商品SKU</string>
 
 </resources>
