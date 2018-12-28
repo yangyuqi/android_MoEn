@@ -40,6 +40,7 @@ import com.youzheng.zhejiang.robertmoog.Store.adapter.GoodsTitleAdapter;
 import com.youzheng.zhejiang.robertmoog.Store.bean.GoodsList;
 import com.youzheng.zhejiang.robertmoog.Store.bean.GoodsType;
 import com.youzheng.zhejiang.robertmoog.Store.fragment.GoodsFragment;
+import com.youzheng.zhejiang.robertmoog.utils.SharedPreferencesUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -198,7 +199,7 @@ public class GoodsManageActivity extends BaseActivity implements View.OnClickLis
 //        map.put("sku",goodsName);
         map.put("sku",str);//测试用
         map.put("firstCategoryId",0);
-        String token = (String) com.youzheng.tongxiang.huntingjob.UI.Utils.SharedPreferencesUtils.getParam(mContext, PublicUtils.access_token,"");
+        String token = (String) SharedPreferencesUtils.getParam(mContext, PublicUtils.access_token,"");
         if (token!=null){
             OkHttpClientManager.postAsynJson(gson.toJson(map), UrlUtils.GOODS_LIST + "?access_token=" + token, new OkHttpClientManager.StringCallback() {
                 @Override

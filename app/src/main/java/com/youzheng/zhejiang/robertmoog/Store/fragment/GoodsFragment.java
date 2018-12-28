@@ -23,6 +23,7 @@ import com.youzheng.zhejiang.robertmoog.Store.adapter.GoodsListAdapter;
 import com.youzheng.zhejiang.robertmoog.Store.bean.GoodsList;
 import com.youzheng.zhejiang.robertmoog.Store.listener.OnRecyclerViewAdapterItemClickListener;
 import com.youzheng.zhejiang.robertmoog.Store.view.RecycleViewDivider;
+import com.youzheng.zhejiang.robertmoog.utils.SharedPreferencesUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -68,7 +69,7 @@ public class GoodsFragment extends BaseFragment {
 //        map.put("sku",goodsName);
         map.put("sku","cs1003");//测试用
         map.put("firstCategoryId",goodsId);
-        String token = (String) com.youzheng.tongxiang.huntingjob.UI.Utils.SharedPreferencesUtils.getParam(mContext, PublicUtils.access_token,"");
+        String token = (String) SharedPreferencesUtils.getParam(mContext, PublicUtils.access_token,"");
         if (token!=null){
             OkHttpClientManager.postAsynJson(gson.toJson(map), UrlUtils.GOODS_LIST + "?access_token=" + token, new OkHttpClientManager.StringCallback() {
                 @Override
