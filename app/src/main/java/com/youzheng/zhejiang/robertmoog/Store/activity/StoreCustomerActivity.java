@@ -115,7 +115,7 @@ public class StoreCustomerActivity extends BaseActivity implements View.OnClickL
             int num=customerList.getTotalAmount();
             tv_number.setText(num+"");
         }else {
-            tv_number.setText(0);
+            tv_number.setText("0");
         }
 
         List<CustomerList.CoustomerListBean> coustomerListBeans=customerList.getCoustomerList();

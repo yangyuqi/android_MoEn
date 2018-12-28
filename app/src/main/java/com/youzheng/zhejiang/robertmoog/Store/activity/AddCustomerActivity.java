@@ -1,6 +1,8 @@
 package com.youzheng.zhejiang.robertmoog.Store.activity;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -9,16 +11,23 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.youzheng.zhejiang.robertmoog.Base.BaseActivity;
+import com.youzheng.zhejiang.robertmoog.Base.request.OkHttpClientManager;
+import com.youzheng.zhejiang.robertmoog.Base.utils.UrlUtils;
 import com.youzheng.zhejiang.robertmoog.R;
+import com.youzheng.zhejiang.robertmoog.Store.bean.AddProfessionalCustomerRequest;
 import com.youzheng.zhejiang.robertmoog.Store.view.SingleOptionsPicker;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import okhttp3.Request;
 
 /**
  * 添加专业客户界面
  */
-public class AddCustomerActivity extends BaseActivity implements View.OnClickListener {
+public class AddCustomerActivity extends BaseActivity implements View.OnClickListener, TextWatcher {
 
     private ImageView btnBack;
     /**  */
@@ -41,6 +50,7 @@ public class AddCustomerActivity extends BaseActivity implements View.OnClickLis
      */
     private TextView tv_add;
     private List<String> list=new ArrayList<>();
+    private String phone,name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +73,9 @@ public class AddCustomerActivity extends BaseActivity implements View.OnClickLis
         tv_add = (TextView) findViewById(R.id.tv_add);
         tv_degree= (TextView) findViewById(R.id.tv_degree);
         tv_add.setOnClickListener(this);
+
+        edt_name.addTextChangedListener(this);
+        edt_phone.addTextChangedListener(this);
     }
 
     @Override
@@ -80,7 +93,61 @@ public class AddCustomerActivity extends BaseActivity implements View.OnClickLis
                 SingleOptionsPicker.openOptionsPicker(this, list, tv_degree);
                 break;
             case R.id.tv_add:
+                phone=edt_phone.getText().toString().trim();
+                name=edt_name.getText().toString().trim();
+                if (phone.equals("")||name.equals("")){
+                    showToast("手机号和姓名未填写");
+                }else if (tv_degree.getText().toString().equals("请选择身份")||tv_degree.getText().toString().equals("")){
+                    showToast("请选择身份");
+                }else {
+                  //  addProfessionalCustomer(phone,name,);
+                }
                 break;
         }
+    }
+
+    private void  addProfessionalCustomer(String phone, String name,String id){
+        HashMap<String,Object> map=new HashMap<>();
+        map.put("custCode",phone);
+        map.put("custName",name);
+        AddProfessionalCustomerRequest request=new AddProfessionalCustomerRequest();
+        request.setId(id);
+        map.put("career",request);
+
+        OkHttpClientManager.postAsynJson(gson.toJson(map), UrlUtils.ADD_PROFESSIONAL_CUSTOMER + "?access_token=" + access_token, new OkHttpClientManager.StringCallback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(String response) {
+
+            }
+        });
+    }
+
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+
+        if (edt_phone.getText().toString().equals("")||edt_name.getText().toString().equals("")){
+
+
+        }else {
+
+
+        }
+
     }
 }

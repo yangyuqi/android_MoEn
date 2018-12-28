@@ -76,7 +76,6 @@
             android:maxLength="11"
             android:gravity="right|center_vertical"
             android:paddingRight="35dp"
-            android:inputType="phone"
             android:textColor="@color/text_drak_gray"
             android:hint="请输入姓名"
             />

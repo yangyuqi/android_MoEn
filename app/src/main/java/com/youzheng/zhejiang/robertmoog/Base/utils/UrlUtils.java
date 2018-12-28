@@ -26,5 +26,7 @@ public class UrlUtils {
     public static String GOODS_LIST_DETAIL = BASE_URL+"/v1/app/shop/getProductDetail";
 
     public static String PROFESSIONAL_CUSTOMER_LIST = BASE_URL+"/v1/app/shop/specialtyCustomer";
+    public static String ADD_PROFESSIONAL_CUSTOMER = BASE_URL+"/v1/app/shop/addCustomer";
+
 
 }
