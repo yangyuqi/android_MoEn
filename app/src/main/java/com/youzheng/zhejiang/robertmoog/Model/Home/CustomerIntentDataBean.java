@@ -1,12 +1,13 @@
 package com.youzheng.zhejiang.robertmoog.Model.Home;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerIntentDataBean {
     private boolean isIntent ;
     private String id ;
     private String remark ;
-    private List<IntentProductList> intentProductList ;
+    private List<IntentProductList> intentProductList = new ArrayList<>();
 
     public boolean isIntent() {
         return isIntent;

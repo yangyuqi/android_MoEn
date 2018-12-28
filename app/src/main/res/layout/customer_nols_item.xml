@@ -127,8 +127,7 @@
                      >
                      <TextView
                          android:textSize="@dimen/text_size_15"
-                         android:textColor="@color/text_main"
-                         android:ems="1"
+                         android:textColor="@color/bg_background_white"
                          android:id="@+id/tv_test"
                          android:layout_width="wrap_content"
                          android:layout_height="wrap_content"

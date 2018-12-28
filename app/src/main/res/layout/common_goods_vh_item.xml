@@ -7,11 +7,19 @@
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></HorizontalScrollView>
+        android:layout_height="115dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
 
     <RelativeLayout
+        android:id="@+id/rl_width"
+        android:paddingRight="@dimen/space_20"
         android:background="@color/bg_background_white"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="115dp">
 
         <ImageView
@@ -41,6 +49,7 @@
                 />
 
             <TextView
+                android:id="@+id/tv_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_name"
@@ -51,6 +60,7 @@
                 />
 
             <TextView
+                android:id="@+id/tv_price"
                 android:text="8888"
                 android:textSize="@dimen/text_size_14"
                 android:textColor="@color/text_golden"
@@ -74,5 +84,32 @@
 
 
     </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                >
+                <RelativeLayout
+                    android:id="@+id/main_right_drawer_layout"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/text_golden"
+                    >
+                    <TextView
+                        android:textSize="@dimen/text_size_15"
+                        android:textColor="@color/bg_background_white"
+                        android:id="@+id/tv_test"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="删除" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+</HorizontalScrollView>
 
 </RelativeLayout>

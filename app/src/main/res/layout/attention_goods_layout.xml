@@ -25,6 +25,7 @@
             />
 
         <TextView
+            android:id="@+id/tv_update_intent"
             android:drawablePadding="@dimen/space_10"
             android:textColor="@color/text_blue"
             android:gravity="center_vertical"

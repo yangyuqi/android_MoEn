@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_layout"
+    android:layout_width="300dp"
+    android:background="@color/bg_background_white"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:layout_marginBottom="10dp"
+    >
+    <TextView
+        android:background="@color/colorPrimary"
+        android:id="@+id/confrim_dialog_tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:padding="15dp"
+        android:text="添加备注信息"
+        android:textColor="@color/bg_background_white"
+        android:textSize="18sp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+
+        <RelativeLayout
+            android:background="@drawable/bg_order"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_margin="@dimen/space_18"
+            >
+            <EditText
+               android:padding="@dimen/space_10"
+                android:id="@+id/confrim_dialog_tv_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="添加备注"
+                android:textSize="15sp"
+                android:textColor="#383838"
+                android:background="@null"
+                />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:paddingBottom="@dimen/space_25"
+        android:layout_marginRight="@dimen/space_15"
+        android:layout_marginLeft="@dimen/space_15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:background="@drawable/bg_order"
+            android:id="@+id/tv_no"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:textSize="16sp"
+            android:paddingTop="13dp"
+            android:paddingBottom="13dp"
+            android:focusable="true"
+            android:clickable="true"
+            android:gravity="center"
+            android:textColor="@color/text_main"
+            />
+
+        <View
+            android:layout_width="@dimen/space_30"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:background="@drawable/bg_order_two"
+            android:id="@+id/tv_ok"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="确定"
+            android:textSize="16sp"
+            android:paddingTop="13dp"
+            android:paddingBottom="13dp"
+            android:focusable="true"
+            android:clickable="true"
+            android:gravity="center"
+            android:textColor="@color/text_blue"
+            />
+    </LinearLayout>
+
+</LinearLayout>

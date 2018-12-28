@@ -41,7 +41,7 @@
     <string name="register_success">注册成功</string>
     <string name="attention_customer">意向客户</string>
     <string name="attention_intent_user">意向管理</string>
-
+    <string name="label_money">¥</string>
     <string name="load_list_erron">没有更多的数据了</string>
     <string name="please_write_sku">请输入商品SKU</string>
 

@@ -13,6 +13,7 @@ public class UrlUtils {
     public static String ATTENTION_GOODS_LIST = BASE_URL+"/v1/app/customer/intentProductList";
     public static String HOME_INFO = BASE_URL+"/v1/app/user/getHomePage";
     public static String GET_CUSTOMER = BASE_URL+"/v1/app/customer/getCustomer";
+    public static String UPDATE_INTENT_REMARK = BASE_URL+"/v1/app/customer/updateRemark";
 
     public static String LOGIN_OUT = BASE_URL+"/v1/app/user/logout";
     public static String CUSTOMER_INTENT=BASE_URL+"/v1/app/customer/customerIntent";
