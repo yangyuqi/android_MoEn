@@ -1,31 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/bg_all"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/include_state"
-        layout="@layout/title_bar"/>
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_below="@+id/include_state"
-        android:background="@color/bg_main"
+        android:layout_height="match_parent">
+        <include
+            android:id="@+id/include_state"
+            layout="@layout/title_bar"/>
+    <SurfaceView
+        android:id="@+id/sv_preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></SurfaceView>
+
+    <com.youzheng.zhejiang.robertmoog.utils.RQCode.view.CaptureView
+        android:layout_marginTop="-300dp"
+        android:id="@+id/cv_capture"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         >
-        
-        <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_centerInParent="true"
-            android:src="@mipmap/group_12_2"
-            />
-        
+
+    </com.youzheng.zhejiang.robertmoog.utils.RQCode.view.CaptureView>
+
+</RelativeLayout>
+
+    <RelativeLayout
+        android:background="@color/bg_background_white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="300dp"
+        android:layout_above="@+id/tv_confrim"
+        >
+        <ListView
+            android:dividerHeight="@dimen/space_divider_2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/ls"
+            ></ListView>
+
     </RelativeLayout>
-    
+
+
     <TextView
+        android:id="@+id/tv_confrim"
         android:textColor="@color/bg_background_white"
         android:text="确认信息"
         android:gravity="center"
@@ -37,3 +65,5 @@
         />
 
 </RelativeLayout>
+
+</LinearLayout>

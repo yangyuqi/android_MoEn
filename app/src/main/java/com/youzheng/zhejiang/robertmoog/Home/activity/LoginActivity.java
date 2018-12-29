@@ -14,6 +14,7 @@ import com.youzheng.zhejiang.robertmoog.Model.BaseModel;
 import com.youzheng.zhejiang.robertmoog.Model.login.LoginBean;
 import com.youzheng.zhejiang.robertmoog.Model.login.UserConfigDataBean;
 import com.youzheng.zhejiang.robertmoog.R;
+import com.youzheng.zhejiang.robertmoog.utils.QRcode.android.CaptureActivity;
 import com.youzheng.zhejiang.robertmoog.utils.SharedPreferencesUtils;
 
 import java.io.IOException;
