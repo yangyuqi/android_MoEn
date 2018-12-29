@@ -1,6 +1,8 @@
 package com.youzheng.zhejiang.robertmoog.Store.adapter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,64 +12,101 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.youzheng.zhejiang.robertmoog.R;
+import com.youzheng.zhejiang.robertmoog.Store.bean.PeopleMangerList;
+import com.youzheng.zhejiang.robertmoog.Store.listener.OnRecyclerViewAdapterItemClickListener;
 
 import java.util.List;
 
-public class PeopleMangerAdapter extends BaseAdapter {
-    private List<String> list;
+public class PeopleMangerAdapter extends RecyclerView.Adapter<PeopleMangerAdapter.ViewHolder> {
+    private List<PeopleMangerList.ShopPersonalListBean> list;
     private Context context;
     private LayoutInflater layoutInflater;
+    private OnRecyclerViewAdapterItemClickListener mOnItemClickListener;
+
+    public void setOnItemClickListener(OnRecyclerViewAdapterItemClickListener mOnItemClickListener) {
+        this.mOnItemClickListener = mOnItemClickListener;
+    }
 
 
-    public PeopleMangerAdapter(List<String> list, Context context) {
+    public PeopleMangerAdapter(List<PeopleMangerList.ShopPersonalListBean> list, Context context) {
         this.list = list;
         this.context = context;
         layoutInflater=LayoutInflater.from(context);
     }
 
+    public void setUI(List<PeopleMangerList.ShopPersonalListBean> list){
+        this.list=list;
+        notifyDataSetChanged();
+    }
+
+
+
+    @NonNull
     @Override
-    public int getCount() {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
+        View view=layoutInflater.inflate(R.layout.item_people,viewGroup,false);
+        final ViewHolder viewHolder=new ViewHolder(view);
+
+
+        viewHolder.tv_stop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int position = viewHolder.getLayoutPosition();
+                //设置监听
+                if (mOnItemClickListener != null) {
+                    mOnItemClickListener.onItemClick(view ,position );
+                }
+            }
+        });
+
+
+
+        return viewHolder;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
+        PeopleMangerList.ShopPersonalListBean bean=list.get(position);
+        viewHolder.tv_phone.setText(bean.getPhone());
+        viewHolder.tv_manger.setText(bean.getBusinessRole());
+        viewHolder.tv_name.setText(bean.getName());
+
+        if (bean.getBusinessRole().equals("店长")){
+            viewHolder.iv_manger.setImageResource(R.mipmap.group_100_2);
+        }else {
+            viewHolder.iv_manger.setImageResource(R.mipmap.group_90_3);
+        }
+
+        if (bean.getStatus().equals("Use")){
+            viewHolder.iv_already_stop.setVisibility(View.GONE);
+            viewHolder.tv_stop.setVisibility(View.VISIBLE);
+        }else if (bean.getStatus().equals("Stop")){
+           viewHolder.iv_already_stop.setVisibility(View.VISIBLE);
+           viewHolder.tv_stop.setVisibility(View.GONE);
+        }
+
+    }
+
+    @Override
+    public int getItemCount() {
         return list.size();
     }
 
-    @Override
-    public Object getItem(int position) {
-        return list.get(position);
-    }
 
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder=null;
-        if (convertView==null){
-            convertView=layoutInflater.inflate(R.layout.item_people,null);
-            viewHolder=new ViewHolder();
-            viewHolder.tv_phone=convertView.findViewById(R.id.tv_phone);
-            viewHolder.tv_manger=convertView.findViewById(R.id.tv_manger);
-            viewHolder.tv_name=convertView.findViewById(R.id.tv_name);
-            viewHolder.tv_stop=convertView.findViewById(R.id.tv_stop);
-            viewHolder.iv_manger=convertView.findViewById(R.id.iv_manger);
-            viewHolder.iv_already_stop=convertView.findViewById(R.id.iv_already_stop);
-            viewHolder.lin_name=convertView.findViewById(R.id.lin_name);
-            convertView.setTag(viewHolder);
-        }else {
-            viewHolder= (ViewHolder) convertView.getTag();
-        }
-
-        //viewHolder.tv_phone.setText(list.get(position));
-        viewHolder.tv_manger.setText(list.get(position));
-
-        return convertView;
-    }
-
-
-    class ViewHolder{
+   public class ViewHolder extends RecyclerView.ViewHolder {
        private TextView tv_phone,tv_manger,tv_name,tv_stop;
        private ImageView iv_manger,iv_already_stop;
        private LinearLayout lin_name;
-    }
+
+       public ViewHolder(@NonNull View itemView) {
+           super(itemView);
+           tv_phone=itemView.findViewById(R.id.tv_phone);
+           tv_manger=itemView.findViewById(R.id.tv_manger);
+           tv_name=itemView.findViewById(R.id.tv_name);
+           tv_stop=itemView.findViewById(R.id.tv_stop);
+           iv_manger=itemView.findViewById(R.id.iv_manger);
+           iv_already_stop=itemView.findViewById(R.id.iv_already_stop);
+           lin_name=itemView.findViewById(R.id.lin_name);
+       }
+   }
 }

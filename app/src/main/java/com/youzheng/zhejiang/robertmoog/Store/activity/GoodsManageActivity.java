@@ -82,6 +82,8 @@ public class GoodsManageActivity extends BaseActivity implements View.OnClickLis
     private List<GoodsList.ProductListDetailDataBean> searchlist = new ArrayList<>();
     private int pageSize = 10;
     private int page = 1;
+    public static GoodsFragment goodsFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,8 +149,9 @@ public class GoodsManageActivity extends BaseActivity implements View.OnClickLis
         if (listDataBeans.size() != 0) {
             stringList.addAll(listDataBeans);
             adapter.setUI(listDataBeans);
+
             for (int i = 0; i < listDataBeans.size(); i++) {
-                GoodsFragment goodsFragment = new GoodsFragment();
+               goodsFragment=new GoodsFragment();
                 Bundle bundle = new Bundle();
                 // bundle.putString(MyConstant.GOODS_LIST_TYPE,stringList.get(i).getName());
                 bundle.putInt(MyConstant.GOODS_ID, stringList.get(i).getId());
