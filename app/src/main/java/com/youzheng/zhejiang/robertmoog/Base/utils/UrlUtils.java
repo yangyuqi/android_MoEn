@@ -32,6 +32,8 @@ public class UrlUtils {
 
     public static String PEOPLE_MAGER_LIST = BASE_URL+"/v1/app/shop/personal";
     public static String ADD_SELLER = BASE_URL+"/v1/app/shop/addPersonal";
-
+    public static String ADDRESS_MANAGER = BASE_URL+"/v1/app/customer/customerAddress";
+    public static String ADD_ADDRESS = BASE_URL+"/v1/app/customer/save/customerAddress";
+    public static String SALES_GOODS = BASE_URL+"/v1/app/customer/sale";
 
 }

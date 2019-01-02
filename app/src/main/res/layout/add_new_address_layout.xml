@@ -1,6 +1,216 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/bg_all"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
     <include layout="@layout/title_bar" />
-</android.support.constraint.ConstraintLayout>
+
+    <RelativeLayout
+        android:background="@color/bg_background_white"
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/space_15"
+            android:textSize="@dimen/text_size_15"
+            android:textColor="@color/text_main"
+            android:text="收货人"
+            />
+
+        <EditText
+            android:background="@null"
+            android:gravity="end"
+            android:id="@+id/edt_name"
+            android:layout_alignParentRight="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/space_15"
+            android:textSize="@dimen/text_size_15"
+            android:textColor="@color/text_main"
+            android:text=""
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/space_divider_2"
+        android:background="@color/bg_background_white"
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/space_15"
+            android:textSize="@dimen/text_size_15"
+            android:textColor="@color/text_main"
+            android:text="手机号码"
+            />
+
+        <EditText
+            android:background="@null"
+            android:gravity="end"
+            android:id="@+id/edt_phone"
+            android:layout_alignParentRight="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/space_15"
+            android:textSize="@dimen/text_size_15"
+            android:textColor="@color/text_main"
+            android:text=""
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/space_divider_2"
+        android:background="@color/bg_background_white"
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/space_15"
+            android:textSize="@dimen/text_size_15"
+            android:textColor="@color/text_main"
+            android:text="省份"
+            />
+
+        <EditText
+            android:id="@+id/edt_provice"
+            android:background="@null"
+            android:gravity="end"
+            android:layout_alignParentRight="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/space_15"
+            android:textSize="@dimen/text_size_15"
+            android:textColor="@color/text_main"
+            android:text=""
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:background="@color/bg_background_white"
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/space_15"
+            android:textSize="@dimen/text_size_15"
+            android:textColor="@color/text_main"
+            android:text="城市"
+            />
+
+        <EditText
+            android:id="@+id/edt_city"
+            android:background="@null"
+            android:gravity="end"
+            android:layout_alignParentRight="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/space_15"
+            android:textSize="@dimen/text_size_15"
+            android:textColor="@color/text_main"
+            android:text=""
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/space_divider_2"
+        android:background="@color/bg_background_white"
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/space_15"
+            android:textSize="@dimen/text_size_15"
+            android:textColor="@color/text_main"
+            android:text="县／区"
+            />
+
+        <EditText
+            android:id="@+id/edt_town"
+            android:background="@null"
+            android:gravity="end"
+            android:layout_alignParentRight="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/space_15"
+            android:textSize="@dimen/text_size_15"
+            android:textColor="@color/text_main"
+            android:text=""
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/space_divider_2"
+        android:background="@color/bg_background_white"
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/space_15"
+            android:textSize="@dimen/text_size_15"
+            android:textColor="@color/text_main"
+            android:text="详细地址"
+            />
+
+        <EditText
+            android:id="@+id/edt_address"
+            android:background="@null"
+            android:gravity="end"
+            android:layout_alignParentRight="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/space_15"
+            android:textSize="@dimen/text_size_15"
+            android:textColor="@color/text_main"
+            android:text=""
+            />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_marginRight="@dimen/space_30"
+        android:layout_marginLeft="@dimen/space_30"
+        android:layout_marginTop="40dp"
+        android:id="@+id/tv_add"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/text_blue"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_15"
+        android:textColor="@color/bg_background_white"
+        android:text="新建地址"
+        />
+
+
+</LinearLayout>

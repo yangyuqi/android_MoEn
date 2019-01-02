@@ -12,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.LinearLayoutCompat;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -30,7 +32,12 @@ import com.google.zxing.Result;
 import com.youzheng.zhejiang.robertmoog.Base.request.OkHttpClientManager;
 import com.youzheng.zhejiang.robertmoog.Base.utils.PublicUtils;
 import com.youzheng.zhejiang.robertmoog.Base.utils.UrlUtils;
+import com.youzheng.zhejiang.robertmoog.Home.activity.SalesActivity;
+import com.youzheng.zhejiang.robertmoog.Home.activity.SearchGoodsActivity;
+import com.youzheng.zhejiang.robertmoog.Home.adapter.RecycleViewDivider;
+import com.youzheng.zhejiang.robertmoog.Home.adapter.SearchResultAdapter;
 import com.youzheng.zhejiang.robertmoog.Model.BaseModel;
+import com.youzheng.zhejiang.robertmoog.Model.Home.OrderSetMealDatasBean;
 import com.youzheng.zhejiang.robertmoog.Model.Home.ProductListBean;
 import com.youzheng.zhejiang.robertmoog.Model.Home.ScanDatas;
 import com.youzheng.zhejiang.robertmoog.Model.Home.ScanDatasBean;
@@ -73,18 +80,22 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
     private CameraManager cameraManager;
     private CaptureActivityHandler handler;
     private SurfaceHolder surfaceHolder;
-    private ListView ls ;
+    private RecyclerView recycler_view ;
     private String token ;
     private Gson gson = new Gson();
-    private List<ScanDatasBean> data = new ArrayList<>();
-    private CommonAdapter<ScanDatasBean> adapter ;
+    SearchResultAdapter addapter ;
+
     public ViewfinderView getViewfinderView() {
         return viewfinderView;
     }
-
+    private TextView tv_confrim ;
+    private String customerId ;
     public Handler getHandler() {
         return handler;
     }
+
+    private String addressId;
+    private List<OrderSetMealDatasBean> orderSetMealDatas = new ArrayList<>();
 
     public CameraManager getCameraManager() {
         return cameraManager;
@@ -150,18 +161,30 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
             }
         });
         findViewById(R.id.iv_next).setVisibility(View.VISIBLE);
-        ls = findViewById(R.id.ls);
+        recycler_view = findViewById(R.id.recycler_view);
+        tv_confrim = findViewById(R.id.tv_confrim);
+        customerId = getIntent().getStringExtra("customerId");
+        addapter = new SearchResultAdapter();
+        LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        recycler_view.setLayoutManager(manager);
+        recycler_view.setAdapter(addapter);
+        recycler_view.addItemDecoration(new RecycleViewDivider(CaptureActivity.this, LinearLayoutManager.VERTICAL, 10, getResources().getColor(R.color.bg_all)));
 
-        adapter = new CommonAdapter<ScanDatasBean>(this,data,R.layout.common_ls_otem) {
+        findViewById(R.id.iv_next).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void convert(ViewHolder helper, ScanDatasBean item) {
-                helper.setText(R.id.tv_name,item.getCode());
-                helper.setText(R.id.tv_desc,item.getName());
-                helper.setText(R.id.tv_price,"¥"+item.getPrice());
-                Glide.with(mContext).load(item.getPhoto()).error(R.mipmap.group_9_1).into((ImageView) helper.getView(R.id.iv_icon));
+            public void onClick(View v) {
+                startActivity(new Intent(CaptureActivity.this, SearchGoodsActivity.class));
             }
-        };
-        ls.setAdapter(adapter);
+        });
+
+        tv_confrim.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CaptureActivity.this, SalesActivity.class);
+                intent.putExtra("customerId",customerId);
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -327,8 +350,7 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
                 if (baseModel.getCode()==PublicUtils.code){
                     ScanDatas scanDatas = gson.fromJson(gson.toJson(baseModel.getDatas()),ScanDatas.class);
                     if (scanDatas.getSelectProducts().size()>0){
-                        adapter.setData(scanDatas.getSelectProducts());
-                        adapter.notifyDataSetChanged();
+                        addapter.setDate(scanDatas.getSelectProducts(),CaptureActivity.this,"2");
                     }
                 }
             }

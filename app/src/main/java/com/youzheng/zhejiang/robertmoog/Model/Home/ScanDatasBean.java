@@ -28,6 +28,16 @@ public class ScanDatasBean {
     private boolean isSpecial;
     private List<ProductListBean> productList;
 
+    private boolean isexpress ;//是否展开
+
+    public boolean isIsexpress() {
+        return isexpress;
+    }
+
+    public void setIsexpress(boolean isexpress) {
+        this.isexpress = isexpress;
+    }
+
     public String getName() {
         return name;
     }

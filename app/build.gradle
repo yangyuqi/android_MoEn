@@ -44,5 +44,5 @@ dependencies {
     implementation 'com.tbruyelle.rxpermissions:rxpermissions:0.9.4@aar'
     implementation 'io.reactivex:rxjava:1.0.14'
     implementation 'com.google.zxing:core:3.3.2'
-
+    implementation 'de.greenrobot:eventbus:3.0.0-beta1'
 }

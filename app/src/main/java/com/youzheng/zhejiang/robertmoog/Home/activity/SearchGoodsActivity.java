@@ -5,22 +5,36 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.youzheng.zhejiang.robertmoog.Base.BaseActivity;
+import com.youzheng.zhejiang.robertmoog.Base.request.OkHttpClientManager;
+import com.youzheng.zhejiang.robertmoog.Base.utils.PublicUtils;
+import com.youzheng.zhejiang.robertmoog.Base.utils.UrlUtils;
 import com.youzheng.zhejiang.robertmoog.Home.adapter.RecycleViewDivider;
 import com.youzheng.zhejiang.robertmoog.Home.adapter.SearchResultAdapter;
+import com.youzheng.zhejiang.robertmoog.Model.BaseModel;
+import com.youzheng.zhejiang.robertmoog.Model.Home.ScanDatas;
+import com.youzheng.zhejiang.robertmoog.Model.Home.ScanDatasBean;
 import com.youzheng.zhejiang.robertmoog.Model.TestBean;
 import com.youzheng.zhejiang.robertmoog.R;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import okhttp3.Request;
 
 public class SearchGoodsActivity extends BaseActivity {
 
     RecyclerView recyclerView;
-
-    List<TestBean> data = new ArrayList<>();
+    ImageView iv_click ;
+    EditText tv_search ;
+    List<ScanDatasBean> data = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,8 +42,44 @@ public class SearchGoodsActivity extends BaseActivity {
         setContentView(R.layout.search_goods_layout);
 
         initView();
+
+        initClick();
     }
 
+    private void initClick() {
+        iv_click.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (tv_search.getText().toString().equals("")){
+                    showToast("请输入搜索条件");
+                    return;
+                }
+
+                Map<String,Object> map = new HashMap<>();
+                map.put("code",tv_search.getText().toString());
+                OkHttpClientManager.postAsynJson(gson.toJson(map), UrlUtils.SCAN_GOODS + "?access_token=" + "f36451db-3efa-4ccb-8260-d7fb7e2128f9", new OkHttpClientManager.StringCallback() {
+                    @Override
+                    public void onFailure(Request request, IOException e) {
+
+                    }
+
+                    @Override
+                    public void onResponse(String response) {
+                        BaseModel baseModel = gson.fromJson(response,BaseModel.class);
+                        if (baseModel.getCode()== PublicUtils.code){
+                            ScanDatas scanDatas = gson.fromJson(gson.toJson(baseModel.getDatas()),ScanDatas.class);
+                            if (scanDatas.getSelectProducts().size()>0){
+                                addapter.setDate(scanDatas.getSelectProducts(),mContext,"1");
+                            }
+                        }
+                    }
+                });
+
+            }
+        });
+    }
+    SearchResultAdapter addapter ;
     private void initView() {
         ((TextView) findViewById(R.id.textHeadTitle)).setText("查找商品套餐");
         findViewById(R.id.btnBack).setOnClickListener(new View.OnClickListener() {
@@ -38,24 +88,15 @@ public class SearchGoodsActivity extends BaseActivity {
                 finish();
             }
         });
-        List<String> mm = new ArrayList<>();
-        mm.add("杨宇奇");
-        mm.add("杨宇奇");
-        mm.add("杨宇奇");
-        TestBean bean = new TestBean("按时归还大", "1", new ArrayList<String>());
-        TestBean bean1 = new TestBean("按时归", "2", mm);
-        data.add(bean1);
-        data.add(bean);
-        data.add(bean1);
-        data.add(bean);
+        iv_click = findViewById(R.id.iv_click);
+        tv_search = findViewById(R.id.tv_search);
+
         recyclerView = (RecyclerView) findViewById(R.id.recycler);
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
-        SearchResultAdapter addapter = new SearchResultAdapter();
+        addapter = new SearchResultAdapter();
         recyclerView.setAdapter(addapter);
-        addapter.setDate(data, mContext);
-        recyclerView.addItemDecoration(new RecycleViewDivider(
-                mContext, LinearLayoutManager.VERTICAL, 10, getResources().getColor(R.color.bg_all)));
+        recyclerView.addItemDecoration(new RecycleViewDivider(mContext, LinearLayoutManager.VERTICAL, 10, getResources().getColor(R.color.bg_all)));
 
     }
 }
