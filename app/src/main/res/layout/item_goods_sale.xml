@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingLeft="15dp"
+    android:paddingRight="50dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    android:gravity="center_vertical"
+    android:background="@color/bg_background_white">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_marginRight="10dp"
+       >
+
+        <TextView
+            android:id="@+id/tv_goods_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SKU987568"
+            android:textSize="13sp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/text_main"/>
+
+
+        <TextView
+            android:id="@+id/tv_goods_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="摩恩抽拉式水龙头冷热洗脸盆冷热洗手盆"
+            android:textSize="13sp"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/text_main"/>
+
+
+
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_goods_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="90"
+        android:textSize="13sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/text_main"/>
+
+
+
+</LinearLayout>

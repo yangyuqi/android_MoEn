@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <LinearLayout
@@ -35,6 +35,23 @@
             android:layout_marginTop="2dp"
             android:paddingRight="15dp"
             android:textStyle="bold"
+            android:background="@color/bg_background_white"
+            />
+
+        <EditText
+            android:id="@+id/et_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/text_drak_gray"
+            android:hint="请输入数量"
+            android:textColor="@color/text_main"
+            android:textSize="13sp"
+            android:paddingLeft="5dp"
+            android:visibility="gone"
+            android:inputType="number"
+            android:gravity="center_vertical"
+            android:layout_marginTop="2dp"
+            android:paddingRight="15dp"
             android:background="@color/bg_background_white"
             />
 

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_all"
+    tools:context=".Count.activity.StoreSalesNumberActivity">
+
+    <include layout="@layout/title_bar" />
+
+    <LinearLayout
+        android:id="@+id/lin_search"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:background="@color/bg_background_white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="起止时间"
+            android:textSize="12sp"
+            android:textColor="@color/text_main"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_weight="1">
+
+
+            <TextView
+                android:id="@+id/tv_startDate"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="请选择时间"
+                android:gravity="center_vertical"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/text_golden2"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="至"
+                android:textSize="12sp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/text_main"/>
+
+
+            <TextView
+                android:id="@+id/tv_endDate"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="请选择时间"
+                android:textSize="12sp"
+                android:gravity="center_vertical"
+                android:textStyle="bold"
+                android:textColor="@color/text_golden2"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="查询"
+            android:textSize="12sp"
+            android:padding="10dp"
+            android:textColor="@color/colorPrimary"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="5dp"
+        android:background="@color/bg_background_white"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="日期"
+            android:layout_weight="1"
+            android:textSize="13sp"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textColor="@color/text_main"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="订单总数"
+            android:layout_weight="1"
+            android:textSize="13sp"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textColor="@color/text_main"/>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="订单金额"
+            android:textSize="13sp"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textColor="@color/text_main"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="客单价"
+            android:textSize="13sp"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textColor="@color/text_main"/>
+
+
+    </LinearLayout>
+
+    <com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView
+        android:id="@+id/pr_list"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_marginTop="1dp"
+        android:background="@color/bg_background_white"
+        android:layout_height="match_parent"></com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="合计"
+            android:layout_weight="1"
+            android:textSize="13sp"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textColor="@color/bg_background_white"/>
+
+        <TextView
+            android:id="@+id/tv_order_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="800"
+            android:layout_weight="1"
+            android:textSize="13sp"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/bg_background_white"/>
+
+        <TextView
+            android:id="@+id/tv_order_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10000"
+            android:textSize="13sp"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/bg_background_white"/>
+
+        <TextView
+            android:id="@+id/tv_order_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2000"
+            android:textSize="13sp"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/bg_background_white"/>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

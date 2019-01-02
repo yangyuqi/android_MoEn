@@ -2,5 +2,5 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 <solid android:color="@color/bg_background_white"/>
     <stroke android:color="@color/divider_color"
-        android:width="@dimen/space_divider_2"/>
+        android:width="@dimen/space_1"/>
 </shape>

@@ -31,6 +31,17 @@ public class UrlUtils {
 
     public static String PEOPLE_MAGER_LIST = BASE_URL+"/v1/app/shop/personal";
     public static String ADD_SELLER = BASE_URL+"/v1/app/shop/addPersonal";
+    public static String STOP_SELLER = BASE_URL+"/v1/app/shop/disablePersonal";
+
+
+    public static String SAMPLE_OUT_LIST = BASE_URL+"/v1/app/shop/getProductSample";
+    public static String SAMPLE_OUT_COMMIT = BASE_URL+"/v1/app/shop/updateProductSample";
+
+
+    public static String CHECK_STORE_LIST = BASE_URL+"/v1/app/shop/patrolShopList";
+    public static String CHECK_STORE_DETAIL = BASE_URL+"/v1/app/shop/patrolShopDetail";
+    public static String UNQUALIFIED_DETAIL = BASE_URL+"/v1/app/shop/patrolShopProblemDetail";
+
 
 
 

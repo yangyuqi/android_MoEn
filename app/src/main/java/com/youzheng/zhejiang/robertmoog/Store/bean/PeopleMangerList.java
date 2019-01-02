@@ -4,9 +4,10 @@ import java.util.List;
 
 public class PeopleMangerList {
 
+
         /**
          * shopName : 23qwe
-         * shopPersonalList : [{"name":"mock","phone":"mock","businessRole":"mock","id":1,"status":"mock"}]
+         * shopPersonalList : [{"name":"mock","phone":"mock","businessRole":{"id":"mock","des":"mock"},"id":1,"status":{"id":"mock","des":"mock"}}]
          */
 
         private String shopName;
@@ -32,16 +33,16 @@ public class PeopleMangerList {
             /**
              * name : mock
              * phone : mock
-             * businessRole : mock
+             * businessRole : {"id":"mock","des":"mock"}
              * id : 1
-             * status : mock
+             * status : {"id":"mock","des":"mock"}
              */
 
             private String name;
             private String phone;
-            private String businessRole;
+            private BusinessRoleBean businessRole;
             private int id;
-            private String status;
+            private StatusBean status;
 
             public String getName() {
                 return name;
@@ -59,11 +60,11 @@ public class PeopleMangerList {
                 this.phone = phone;
             }
 
-            public String getBusinessRole() {
+            public BusinessRoleBean getBusinessRole() {
                 return businessRole;
             }
 
-            public void setBusinessRole(String businessRole) {
+            public void setBusinessRole(BusinessRoleBean businessRole) {
                 this.businessRole = businessRole;
             }
 
@@ -75,12 +76,64 @@ public class PeopleMangerList {
                 this.id = id;
             }
 
-            public String getStatus() {
+            public StatusBean getStatus() {
                 return status;
             }
 
-            public void setStatus(String status) {
+            public void setStatus(StatusBean status) {
                 this.status = status;
+            }
+
+            public static class BusinessRoleBean {
+                /**
+                 * id : mock
+                 * des : mock
+                 */
+
+                private String id;
+                private String des;
+
+                public String getId() {
+                    return id;
+                }
+
+                public void setId(String id) {
+                    this.id = id;
+                }
+
+                public String getDes() {
+                    return des;
+                }
+
+                public void setDes(String des) {
+                    this.des = des;
+                }
+            }
+
+            public static class StatusBean {
+                /**
+                 * id : mock
+                 * des : mock
+                 */
+
+                private String id;
+                private String des;
+
+                public String getId() {
+                    return id;
+                }
+
+                public void setId(String id) {
+                    this.id = id;
+                }
+
+                public String getDes() {
+                    return des;
+                }
+
+                public void setDes(String des) {
+                    this.des = des;
+                }
             }
         }
 

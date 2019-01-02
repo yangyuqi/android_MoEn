@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_all"
+    tools:context=".Count.activity.GoodsSaleActivity">
+    <include layout="@layout/title_bar" />
+
+    <LinearLayout
+        android:id="@+id/lin_search"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:background="@color/bg_background_white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="起止时间"
+            android:textSize="12sp"
+            android:textColor="@color/text_main"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_weight="1">
+
+
+            <TextView
+                android:id="@+id/tv_startDate"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="请选择时间"
+                android:gravity="center_vertical"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/text_golden2"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="至"
+                android:textSize="12sp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/text_main"/>
+
+
+            <TextView
+                android:id="@+id/tv_endDate"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="请选择时间"
+                android:textSize="12sp"
+                android:gravity="center_vertical"
+                android:textStyle="bold"
+                android:textColor="@color/text_golden2"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="查询"
+            android:textSize="12sp"
+            android:padding="10dp"
+            android:textColor="@color/colorPrimary"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="5dp"
+        android:background="@color/bg_background_white"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="商品编号"
+            android:layout_weight="1"
+            android:textSize="13sp"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="15dp"
+            android:textColor="@color/text_main"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="销售数量"
+            android:layout_weight="1"
+            android:textSize="13sp"
+            android:paddingRight="30dp"
+            android:gravity="right|center_vertical"
+            android:textColor="@color/text_main"/>
+    </LinearLayout>
+
+
+
+    <com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView
+        android:id="@+id/pr_list"
+        android:layout_width="match_parent"
+        android:layout_marginTop="1dp"
+        android:background="@color/bg_background_white"
+        android:layout_height="wrap_content"></com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView>
+
+</LinearLayout>

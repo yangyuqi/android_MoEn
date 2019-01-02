@@ -9,12 +9,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.youzheng.zhejiang.robertmoog.R;
+import com.youzheng.zhejiang.robertmoog.Store.bean.CheckStoreList;
 import com.youzheng.zhejiang.robertmoog.Store.listener.OnRecyclerViewAdapterItemClickListener;
 
 import java.util.List;
 
 public class CheckResultAdapter extends RecyclerView.Adapter<CheckResultAdapter.CheckHolder> {
-    private List<String> list;//调接口实体类为 CheckResultList
+    private List<CheckStoreList.PatrolShopListBean> list;//调接口实体类为 CheckResultList
     private Context context;
     private LayoutInflater layoutInflater;
     private OnRecyclerViewAdapterItemClickListener mOnItemClickListener;
@@ -24,10 +25,15 @@ public class CheckResultAdapter extends RecyclerView.Adapter<CheckResultAdapter.
     }
 
 
-    public CheckResultAdapter(List<String> list, Context context) {
+    public CheckResultAdapter(List<CheckStoreList.PatrolShopListBean> list, Context context) {
         this.list = list;
         this.context = context;
         layoutInflater = LayoutInflater.from(context);
+    }
+
+    public void setUI(List<CheckStoreList.PatrolShopListBean> list){
+        this.list=list;
+        notifyDataSetChanged();
     }
 
 
@@ -68,8 +74,11 @@ public class CheckResultAdapter extends RecyclerView.Adapter<CheckResultAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull CheckHolder viewHolder, int i) {
-          viewHolder.tv_date.setText(list.get(i));
-       // viewHolder.tv_is_yes.setText(list.get(i));
+
+        CheckStoreList.PatrolShopListBean bean=list.get(i);
+
+        viewHolder.tv_date.setText(bean.getTime());
+        viewHolder.tv_is_yes.setText(bean.getResult());
     }
 
     @Override

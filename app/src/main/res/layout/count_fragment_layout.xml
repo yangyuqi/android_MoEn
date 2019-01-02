@@ -28,7 +28,8 @@
             android:orientation="horizontal"
             >
             <RelativeLayout
-                android:background="@color/bg_background_white"
+                android:id="@+id/rv_store_number"
+                android:background="@drawable/layout_bg_select"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="125dp">
@@ -66,7 +67,8 @@
                 android:layout_height="match_parent"
                 android:background="@color/bg_all"/>
             <RelativeLayout
-                android:background="@color/bg_background_white"
+                android:id="@+id/rv_goods_number"
+                android:background="@drawable/layout_bg_select"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="125dp">
@@ -107,7 +109,8 @@
                 android:background="@color/bg_all"/>
 
             <RelativeLayout
-                android:background="@color/bg_background_white"
+                android:id="@+id/rv_ranking"
+                android:background="@drawable/layout_bg_select"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="125dp">
@@ -154,7 +157,8 @@
             android:orientation="horizontal"
             >
             <RelativeLayout
-                android:background="@color/bg_background_white"
+                android:id="@+id/rv_sort_ranking_number"
+                android:background="@drawable/layout_bg_select"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="125dp">
@@ -235,7 +239,8 @@
                 >
 
                 <RelativeLayout
-                    android:background="@color/bg_background_white"
+                    android:id="@+id/rv_today_store_number"
+                    android:background="@drawable/layout_bg_select"
                     android:layout_width="match_parent"
                     android:layout_height="56dp">
 
@@ -252,6 +257,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/tv_sale_number"
                         android:textSize="@dimen/text_size_16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -259,14 +265,16 @@
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="@dimen/space_15"
                         android:textColor="@color/text_golden"
+                        android:text="哈哈哈"
                         />
 
                 </RelativeLayout>
                 <LinearLayout
+                    android:id="@+id/lin_best_meal"
+                    android:background="@drawable/layout_bg_select"
                     android:paddingTop="@dimen/space_15"
                     android:layout_width="match_parent"
                     android:layout_height="67dp"
-                    android:background="@color/bg_background_white"
                     android:layout_marginTop="@dimen/space_divider_2"
                     >
 
@@ -294,6 +302,7 @@
                             />
 
                         <TextView
+                            android:id="@+id/tv_today_meal_content"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/space_3"
@@ -305,6 +314,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/tv_best_today_meal"
                         android:textSize="@dimen/text_size_16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -319,7 +329,8 @@
 
                 <RelativeLayout
                     android:layout_marginTop="@dimen/space_divider_2"
-                    android:background="@color/bg_background_white"
+                    android:id="@+id/rv_best_meal_sort"
+                    android:background="@drawable/layout_bg_select"
                     android:layout_width="match_parent"
                     android:layout_height="56dp">
 
@@ -331,11 +342,12 @@
                         android:drawableLeft="@mipmap/group_8_5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="今日平类销量最佳"
+                        android:text="今日品类销量最佳"
                         android:textColor="@color/text_main"
                         />
 
                     <TextView
+                        android:id="@+id/tv_today_best_ranking"
                         android:textSize="@dimen/text_size_16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -343,6 +355,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="@dimen/space_15"
                         android:textColor="@color/text_golden"
+                        android:text="水槽"
                         />
 
                 </RelativeLayout>
@@ -351,7 +364,8 @@
                     android:paddingTop="@dimen/space_15"
                     android:layout_width="match_parent"
                     android:layout_height="67dp"
-                    android:background="@color/bg_background_white"
+                    android:id="@+id/lin_best_meal_one"
+                    android:background="@drawable/layout_bg_select"
                     android:layout_marginTop="@dimen/space_divider_2"
                     >
 
@@ -379,6 +393,7 @@
                             />
 
                         <TextView
+                            android:id="@+id/tv_today_one_content"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/space_3"
@@ -390,6 +405,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/tv_today_one"
                         android:textSize="@dimen/text_size_16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -406,7 +422,8 @@
                     android:paddingTop="@dimen/space_15"
                     android:layout_width="match_parent"
                     android:layout_height="67dp"
-                    android:background="@color/bg_background_white"
+                    android:id="@+id/lin_register_number"
+                    android:background="@drawable/layout_bg_select"
                     android:layout_marginTop="@dimen/space_divider_2"
                     >
 
@@ -434,6 +451,7 @@
                             />
 
                         <TextView
+                            android:id="@+id/tv_register_type"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/space_3"
@@ -445,6 +463,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/tv_number"
                         android:textSize="@dimen/text_size_16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

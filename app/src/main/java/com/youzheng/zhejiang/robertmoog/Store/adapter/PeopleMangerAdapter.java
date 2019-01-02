@@ -68,19 +68,19 @@ public class PeopleMangerAdapter extends RecyclerView.Adapter<PeopleMangerAdapte
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
         PeopleMangerList.ShopPersonalListBean bean=list.get(position);
         viewHolder.tv_phone.setText(bean.getPhone());
-        viewHolder.tv_manger.setText(bean.getBusinessRole());
+        viewHolder.tv_manger.setText(bean.getBusinessRole().getDes());
         viewHolder.tv_name.setText(bean.getName());
 
-        if (bean.getBusinessRole().equals("店长")){
+        if (bean.getBusinessRole().getId().equals("SHOPKEEPER")){
             viewHolder.iv_manger.setImageResource(R.mipmap.group_100_2);
         }else {
             viewHolder.iv_manger.setImageResource(R.mipmap.group_90_3);
         }
 
-        if (bean.getStatus().equals("Use")){
+        if (bean.getStatus().getId().equals("Use")){
             viewHolder.iv_already_stop.setVisibility(View.GONE);
             viewHolder.tv_stop.setVisibility(View.VISIBLE);
-        }else if (bean.getStatus().equals("Stop")){
+        }else if (bean.getStatus().getId().equals("Stop")){
            viewHolder.iv_already_stop.setVisibility(View.VISIBLE);
            viewHolder.tv_stop.setVisibility(View.GONE);
         }
