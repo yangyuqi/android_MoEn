@@ -6,6 +6,33 @@ public class ProductListBean {
     private String sku ;
     private String photo ;
     private String createDate ;
+    private String price ;
+    private Integer count ;
+    private String codePu ;
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
+
+    public String getCodePu() {
+        return codePu;
+    }
+
+    public void setCodePu(String codePu) {
+        this.codePu = codePu;
+    }
 
     public String getId() {
         return id;

@@ -44,5 +44,20 @@
     <string name="label_money">¥</string>
     <string name="load_list_erron">没有更多的数据了</string>
     <string name="please_write_sku">请输入商品SKU</string>
+    <string name="capture_camera_failed">Camera disabled</string>
+    <string name="capture_decode_failed">No QRCode found</string>
+    <string name="msg_camera_framework_bug">相机被占用或没有相机权限，请检查</string>
+    <string name="button_ok">退出</string>
+    <string name="viewfinderview_status_text1">将二维码/条码放入取景框内</string>
+    <string name="viewfinderview_status_text2">即可自动扫描</string>
+    <string name="seller_table">卖货柜台</string>
 
+    <string name="content_str">是否前往应用详情页面开启:</string>
+    <string name="content_str_camera">\n\n使用摄像头权限</string>
+    <string name="content_str_read">\n\n读写文件权限</string>
+    <string name="content_str_tele_phone">\n\n通话权限</string>
+    <string name="hint_msg">\n\n通知权限</string>
+    <string name="gps_might">\n\n定位权限</string>
+    <string name="public_hint">提示</string>
+    <string name="null_sd">没有SD卡</string>
 </resources>

@@ -341,7 +341,11 @@ public class OkHttpClientManager
             public void run()
             {
                 if (callback != null)
-                    callback.onResponse(string);
+                    try {
+                        callback.onResponse(string);
+                    }catch (Exception e){
+
+                    }
                     Log.e("http--response--",string);
             }
         });

@@ -47,6 +47,11 @@ public class RegisterSuccessActivity extends BaseActivity {
                         break;
 
                     case 4 :
+                        if (registerBean!=null){
+                            Intent intent = new Intent(mContext,AttentionGoodsActivity.class);
+                            intent.putExtra("registerBean",registerBean);
+                            startActivity(intent);
+                        }
 
                         break;
                 }
@@ -80,7 +85,7 @@ public class RegisterSuccessActivity extends BaseActivity {
             data.add(new HomeBean("客户活动", R.mipmap.group_34_3));
             data.add(new HomeBean("客户账户", R.mipmap.group_34_4));
             data.add(new HomeBean("地址管理", R.mipmap.group_34_5));
-            data.add(new HomeBean(getString(R.string.home_gv_six), R.mipmap.group_34_6));
+            data.add(new HomeBean("意向管理", R.mipmap.group_5_6));
         }else {
             data.add(new HomeBean("卖货", R.mipmap.group_34_2));
             data.add(new HomeBean("客户活动", R.mipmap.group_34_3));

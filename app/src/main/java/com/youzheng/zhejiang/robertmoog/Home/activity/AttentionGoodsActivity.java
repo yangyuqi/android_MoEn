@@ -1,5 +1,7 @@
 package com.youzheng.zhejiang.robertmoog.Home.activity;
 
+import android.Manifest;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
@@ -12,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.tbruyelle.rxpermissions.RxPermissions;
 import com.youzheng.zhejiang.robertmoog.Base.BaseActivity;
 import com.youzheng.zhejiang.robertmoog.Base.request.OkHttpClientManager;
 import com.youzheng.zhejiang.robertmoog.Base.utils.PublicUtils;
@@ -23,7 +26,9 @@ import com.youzheng.zhejiang.robertmoog.Model.BaseModel;
 import com.youzheng.zhejiang.robertmoog.Model.Home.CustomerIntentDataBean;
 import com.youzheng.zhejiang.robertmoog.Model.Home.IntentProductList;
 import com.youzheng.zhejiang.robertmoog.Model.Home.ShopPersonalListBean;
+import com.youzheng.zhejiang.robertmoog.Model.login.RegisterBean;
 import com.youzheng.zhejiang.robertmoog.R;
+import com.youzheng.zhejiang.robertmoog.utils.QRcode.android.CaptureActivity;
 import com.youzheng.zhejiang.robertmoog.utils.View.DeleteDialog;
 import com.youzheng.zhejiang.robertmoog.utils.View.DeleteDialogInterface;
 import com.youzheng.zhejiang.robertmoog.utils.View.RemarkDialog;
@@ -34,11 +39,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import okhttp3.Request;
+import rx.functions.Action1;
 
 public class AttentionGoodsActivity extends BaseActivity {
 
 
     ListView ls ;
+    RegisterBean registerBean ;
     ShopPersonalListBean bean ;
     CommonAdapter<IntentProductList> adapter ;
     TextView tv_attention ,tv_update_intent;
@@ -53,13 +60,38 @@ public class AttentionGoodsActivity extends BaseActivity {
         widWidth = outMetrics.widthPixels;
         initView();
         bean = (ShopPersonalListBean) getIntent().getSerializableExtra("label");
-
+        registerBean = (RegisterBean) getIntent().getSerializableExtra("registerBean");
         initData();
+
+        initClick();
+    }
+
+    private void initClick() {
+        ((ImageView)findViewById(R.id.iv_next)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RxPermissions permissions = new RxPermissions(AttentionGoodsActivity.this);
+                permissions.request(Manifest.permission.CAMERA,Manifest.permission.VIBRATE).subscribe(new Action1<Boolean>() {
+                    @Override
+                    public void call(Boolean aBoolean) {
+                        if (aBoolean){
+                            Intent intent = new Intent(mContext, CaptureActivity.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
+            }
+        });
     }
 
     private void initData() {
         Map<String,Object> map = new HashMap<>();
-        map.put("id",bean.getCustomerId());
+        if (bean!=null) {
+            map.put("id", bean.getCustomerId());
+        }
+        if (registerBean!=null){
+            map.put("id",registerBean.getCustomerId());
+        }
         OkHttpClientManager.postAsynJson(gson.toJson(map), UrlUtils.ATTENTION_GOODS_LIST + "?access_token=" + access_token, new OkHttpClientManager.StringCallback() {
             @Override
             public void onFailure(Request request, IOException e) {
@@ -70,7 +102,7 @@ public class AttentionGoodsActivity extends BaseActivity {
             public void onResponse(String response) {
                 BaseModel baseModel = gson.fromJson(response,BaseModel.class);
                 if (baseModel.getCode()== PublicUtils.code){
-                    CustomerIntentDataBean intentDataBean = gson.fromJson(gson.toJson(baseModel.getDatas()),CustomerIntentDataBean.class);
+                    final CustomerIntentDataBean intentDataBean = gson.fromJson(gson.toJson(baseModel.getDatas()),CustomerIntentDataBean.class);
                     if (intentDataBean.getRemark()!=null){
                         tv_attention.setText(intentDataBean.getRemark());
                     }
@@ -81,7 +113,7 @@ public class AttentionGoodsActivity extends BaseActivity {
                     tv_update_intent.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            RemarkDialog remarkDialog = new RemarkDialog(mContext);
+                            RemarkDialog remarkDialog = new RemarkDialog(mContext,intentDataBean.getId(),intentDataBean.getRemark());
                             remarkDialog.show();
                         }
                     });
