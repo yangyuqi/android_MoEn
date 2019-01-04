@@ -29,6 +29,7 @@ public class MyFragment extends BaseFragment implements BaseFragment.ReloadInter
 
     View mView ;
     TextView tv_shop_name ,tv_role ,tv_loginOut ;
+    public static String shopid;
 
     @Nullable
     @Override
@@ -62,6 +63,7 @@ public class MyFragment extends BaseFragment implements BaseFragment.ReloadInter
                     BaseModel baseModel = gson.fromJson(response,BaseModel.class);
                     if (baseModel.getCode()==PublicUtils.code){
                         UserConfigDataBean dataBean = gson.fromJson(gson.toJson(baseModel.getDatas()),UserConfigDataBean.class);
+                        shopid=dataBean.getUserConfigData().getShopId();
                         if (dataBean.getUserConfigData().getUserRole().equals("SHOP_SELLER")){
                             tv_role.setText(R.string.goods_guide);
                         }else {
@@ -70,6 +72,7 @@ public class MyFragment extends BaseFragment implements BaseFragment.ReloadInter
                         tv_shop_name.setText(dataBean.getUserConfigData().getShopName());
                     }
                 }
+
             });
 
             tv_loginOut.setOnClickListener(new View.OnClickListener() {

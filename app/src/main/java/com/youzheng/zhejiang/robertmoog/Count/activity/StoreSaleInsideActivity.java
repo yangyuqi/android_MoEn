@@ -3,6 +3,7 @@ package com.youzheng.zhejiang.robertmoog.Count.activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -15,16 +16,26 @@ import com.bigkoo.pickerview.listener.OnTimeSelectListener;
 import com.bigkoo.pickerview.view.TimePickerView;
 import com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView;
 import com.youzheng.zhejiang.robertmoog.Base.BaseActivity;
+import com.youzheng.zhejiang.robertmoog.Base.request.OkHttpClientManager;
+import com.youzheng.zhejiang.robertmoog.Base.utils.PublicUtils;
+import com.youzheng.zhejiang.robertmoog.Base.utils.UrlUtils;
 import com.youzheng.zhejiang.robertmoog.Count.adapter.StoreSaleAdapter;
 import com.youzheng.zhejiang.robertmoog.Count.adapter.StoreSaleInsideAdapter;
+import com.youzheng.zhejiang.robertmoog.Count.bean.ShopSale;
+import com.youzheng.zhejiang.robertmoog.Count.bean.ShopSaleDetail;
+import com.youzheng.zhejiang.robertmoog.Model.BaseModel;
 import com.youzheng.zhejiang.robertmoog.R;
 import com.youzheng.zhejiang.robertmoog.Store.view.RecycleViewDivider;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+
+import okhttp3.Request;
 
 /**
  * 门店销量查看个人数据界面
@@ -65,17 +76,55 @@ public class StoreSaleInsideActivity extends BaseActivity implements View.OnClic
      */
     private TextView tv_order_value;
     private StoreSaleInsideAdapter adapter;
-    private List<String> list=new ArrayList<>();
+    private List<ShopSaleDetail.ShopDataBean> list=new ArrayList<>();
     private TimePickerView pvTime;
     private String time="";
     private int who;
+    private long shopid=0;
+    private int page=1;
+    private int pageSize=10;
+    private String startstr="";
+    private String endstr="";
+    private String orderCount,orderAmountCount,customerTransaction;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_sale_inside);
+        shopid=getIntent().getLongExtra("shopPersonalId",0);
+        if (shopid==0){
+            shopid=0;
+        }
         initView();
+        setListener();
         initTimer();
+        initData(page,pageSize,shopid,startstr,endstr);
+    }
+
+    private void setListener() {
+        pr_list.setOnPullLoadMoreListener(new PullLoadMoreRecyclerView.PullLoadMoreListener() {
+            @Override
+            public void onRefresh() {
+                page=1;
+                list.clear();
+                initData(page,pageSize,shopid,startstr,endstr);
+            }
+
+            @Override
+            public void onLoadMore() {
+                page++;
+                initData(page,pageSize,shopid,startstr,endstr);
+            }
+        });
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
     }
 
     private void initView() {
@@ -102,21 +151,67 @@ public class StoreSaleInsideActivity extends BaseActivity implements View.OnClic
         pr_list.addItemDecoration(new RecycleViewDivider(
                 this, LinearLayoutManager.VERTICAL, 5, getResources().getColor(R.color.divider_color_item)));
         pr_list.setColorSchemeResources(R.color.colorPrimary);
-        initData();
-    }
-
-    private void initData() {
-        list.add("0520");
-        list.add("0520");
-        list.add("0520");
-        list.add("0520");
-        list.add("0520");
-        list.add("0520");
-
 
         adapter=new StoreSaleInsideAdapter(list,this);
         pr_list.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
+    }
+
+    private void initData(int page,int pageSize,long shopPersonalId,String startDate,String endDate) {
+        HashMap<String,Object> map=new HashMap<>();
+        map.put("pageNum",page);
+        map.put("pageSize",pageSize);
+        map.put("shopPersonalId",shopPersonalId);
+        map.put("startDate",startDate);
+        map.put("endDate",endDate);
+
+        OkHttpClientManager.postAsynJson(gson.toJson(map), UrlUtils.SHOP_SALE_INSIDE + "?access_token=" + access_token, new OkHttpClientManager.StringCallback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+                pr_list.setPullLoadMoreCompleted();
+            }
+
+            @Override
+            public void onResponse(String response) {
+                Log.e("门店销量详情",response);
+                pr_list.setPullLoadMoreCompleted();
+                BaseModel baseModel = gson.fromJson(response,BaseModel.class);
+                if (baseModel.getCode()==PublicUtils.code){
+                    ShopSaleDetail shopSaleDetail = gson.fromJson(gson.toJson(baseModel.getDatas()),ShopSaleDetail.class);
+                    setData(shopSaleDetail);
+                }
+            }
+        });
+
+    }
+
+    private void setData(ShopSaleDetail shopSaleDetail) {
+        if (shopSaleDetail==null) return;
+        if (shopSaleDetail.getShopData()==null) return;
+        orderCount=shopSaleDetail.getOrderCount();
+        orderAmountCount=shopSaleDetail.getOrderAmountCount();
+        customerTransaction=shopSaleDetail.getCustomerTransaction();
+
+        if (!orderCount.equals("")||orderCount!=null){
+            tv_order_total.setText(orderCount);
+        }
+
+        if (!orderAmountCount.equals("")||orderAmountCount!=null){
+            tv_order_money.setText(orderAmountCount);
+        }
+
+        if (!customerTransaction.equals("")||customerTransaction!=null){
+            tv_order_value.setText(customerTransaction);
+        }
+        List<ShopSaleDetail.ShopDataBean> shopDataBeans=shopSaleDetail.getShopData();
+        if (shopDataBeans.size()!=0){
+            list.addAll(shopDataBeans);
+            adapter.setUI(shopDataBeans);
+        }else {
+            showToast(getString(R.string.load_list_erron));
+        }
+        pr_list.setPullLoadMoreCompleted();
     }
 
     @Override
@@ -136,6 +231,8 @@ public class StoreSaleInsideActivity extends BaseActivity implements View.OnClic
                 pvTime.show(v, false);
                 break;
             case R.id.tv_check:
+                list.clear();
+                initData(page,pageSize,shopid,startstr,endstr);
                 break;
         }
     }
@@ -166,8 +263,10 @@ public class StoreSaleInsideActivity extends BaseActivity implements View.OnClic
                 if (!time.equals("")){
                     if (who==1){
                         tv_startDate.setText(time);
+                        startstr=time;
                     }else {
                         tv_endDate.setText(time);
+                        endstr=time;
                     }
                 }
 

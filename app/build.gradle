@@ -52,4 +52,6 @@ dependencies {
     implementation 'de.greenrobot:eventbus:3.0.0-beta1'
     implementation 'com.necer.ndialog2:ndialog:1.0.2'
     implementation 'com.github.yalantis:ucrop:2.2.2'
+    implementation 'cn.finalteam:galleryfinal:1.4.8.7'
+
 }

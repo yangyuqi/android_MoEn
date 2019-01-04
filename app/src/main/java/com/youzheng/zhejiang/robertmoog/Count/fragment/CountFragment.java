@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.youzheng.zhejiang.robertmoog.Base.BaseFragment;
+import com.youzheng.zhejiang.robertmoog.Base.request.OkHttpClientManager;
+import com.youzheng.zhejiang.robertmoog.Base.utils.PublicUtils;
+import com.youzheng.zhejiang.robertmoog.Base.utils.UrlUtils;
 import com.youzheng.zhejiang.robertmoog.Count.activity.GoodsSaleActivity;
 import com.youzheng.zhejiang.robertmoog.Count.activity.GoodsTypeRankingActivity;
 import com.youzheng.zhejiang.robertmoog.Count.activity.MealRankingActivity;
@@ -23,7 +27,15 @@ import com.youzheng.zhejiang.robertmoog.Count.activity.TodayMealSalesBestActivit
 import com.youzheng.zhejiang.robertmoog.Count.activity.TodayRegisterNumberActivity;
 import com.youzheng.zhejiang.robertmoog.Count.activity.TodaySingleGoodsSalesBestDetailActivity;
 import com.youzheng.zhejiang.robertmoog.Count.activity.TodayStoreSalesActivity;
+import com.youzheng.zhejiang.robertmoog.Count.bean.CountAll;
+import com.youzheng.zhejiang.robertmoog.Model.BaseModel;
 import com.youzheng.zhejiang.robertmoog.R;
+import com.youzheng.zhejiang.robertmoog.utils.SharedPreferencesUtils;
+
+import java.io.IOException;
+import java.util.HashMap;
+
+import okhttp3.Request;
 
 public class CountFragment extends BaseFragment implements BaseFragment.ReloadInterface, View.OnClickListener {
 
@@ -84,6 +96,7 @@ public class CountFragment extends BaseFragment implements BaseFragment.ReloadIn
      * 水槽
      */
     private TextView tv_today_best_ranking;
+    private String shopCount,setMealCount,categoryCount,singleProductCount,customerCount,productName,setMealInfo;
 
     @Nullable
     @Override
@@ -95,9 +108,69 @@ public class CountFragment extends BaseFragment implements BaseFragment.ReloadIn
         return mView;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        initData();
+    }
+
+    private void initData() {
+        final String token = (String) SharedPreferencesUtils.getParam(mContext, PublicUtils.access_token,"");
+        OkHttpClientManager.postAsynJson(gson.toJson(new HashMap<>()), UrlUtils.COUNT_ALL + "?access_token=" + token, new OkHttpClientManager.StringCallback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(String response) {
+                Log.e("统计全部",response);
+                BaseModel baseModel = gson.fromJson(response,BaseModel.class);
+                if (baseModel.getCode()==PublicUtils.code){
+                    CountAll countAll = gson.fromJson(gson.toJson(baseModel.getDatas()),CountAll.class);
+                    setData(countAll);
+                }
+            }
+        });
+    }
+
+    private void setData(CountAll countAll) {
+        if (countAll.getDayCountData()==null) return;
+        shopCount=countAll.getDayCountData().getShopCount();
+        setMealCount=countAll.getDayCountData().getSetMealName();
+        categoryCount=countAll.getDayCountData().getCategoryName();
+        singleProductCount=countAll.getDayCountData().getProductSku();
+        customerCount=countAll.getDayCountData().getCustomerCount();
+        productName=countAll.getDayCountData().getProductName();
+        setMealInfo=countAll.getDayCountData().getSetMealInfo();
+        if (!shopCount.equals("")||shopCount!=null){
+            tv_sale_number.setText(shopCount);
+        }
+        if (!setMealCount.equals("")||setMealCount!=null){
+            tv_best_today_meal.setText(setMealCount);
+        }
+        if (!categoryCount.equals("")||categoryCount!=null){
+            tv_today_best_ranking.setText(categoryCount);
+        }
+        if (!singleProductCount.equals("")||singleProductCount!=null){
+            tv_today_one.setText(singleProductCount);
+        }
+        if (!customerCount.equals("")||customerCount!=null){
+            tv_number.setText(customerCount);
+        }
+        if (!productName.equals("")||productName!=null){
+            tv_today_one_content.setText(productName);
+        }
+        if (!setMealInfo.equals("")||setMealInfo!=null){
+            tv_today_meal_content.setText(setMealInfo);
+        }
+
+    }
+
     private void initView() {
 
         btnBack = (ImageView) mView.findViewById(R.id.btnBack);
+        btnBack.setVisibility(View.GONE);
         textHeadTitle = (TextView) mView.findViewById(R.id.textHeadTitle);
         textHeadNext = (TextView) mView.findViewById(R.id.textHeadNext);
         iv_next = (ImageView) mView.findViewById(R.id.iv_next);

@@ -8,21 +8,28 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.youzheng.zhejiang.robertmoog.R;
+import com.youzheng.zhejiang.robertmoog.Store.listener.OnRecyclerViewAdapterItemClickListener;
 
 import java.util.List;
 
 public class AddphotoAdapter extends BaseAdapter {
-    private List<Integer> list;
+    private List<String> list;
     private Context context;
     private LayoutInflater layoutInflater;
+    private OnRecyclerViewAdapterItemClickListener mOnItemClickListener;
 
+    public void setOnItemClickListener(OnRecyclerViewAdapterItemClickListener mOnItemClickListener) {
+        this.mOnItemClickListener = mOnItemClickListener;
+    }
 
-    public AddphotoAdapter(List<Integer> list, Context context) {
+    public AddphotoAdapter(List<String> list, Context context) {
         this.list = list;
         this.context = context;
         layoutInflater=LayoutInflater.from(context);
     }
+
 
     @Override
     public int getCount() {
@@ -40,7 +47,7 @@ public class AddphotoAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder=null;
         if (convertView==null){
             convertView=layoutInflater.inflate(R.layout.item_photo,null);
@@ -50,11 +57,24 @@ public class AddphotoAdapter extends BaseAdapter {
         }else {
             viewHolder= (ViewHolder) convertView.getTag();
         }
-        if (position < list.size()) {
-            viewHolder.iv_photo.setImageResource(list.get(position));
-        }else{
+        if (position == list.size()) {
             viewHolder.iv_photo.setImageResource(R.mipmap.group_44_1);//最后一个显示加号图片
+            viewHolder.iv_photo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //设置监听
+                    if (mOnItemClickListener != null) {
+                        mOnItemClickListener.onItemClick(view ,position);
+                    }
+
+                }
+            });
+
+        }else{
+            Glide.with(context).load(list.get(position)).into(viewHolder.iv_photo);
         }
+
+
 
         return convertView;
     }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <external-path path="Android/data/huizhi_buff_com.buff.fileprovider/" name="files_root" />
+    <external-path path="." name="external_storage_root" />
+
+    <files-path name="my_images" path="images/"/>
+</paths>

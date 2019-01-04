@@ -4,6 +4,7 @@ package com.youzheng.zhejiang.robertmoog.Count.activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -16,15 +17,25 @@ import com.bigkoo.pickerview.listener.OnTimeSelectListener;
 import com.bigkoo.pickerview.view.TimePickerView;
 import com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView;
 import com.youzheng.zhejiang.robertmoog.Base.BaseActivity;
+import com.youzheng.zhejiang.robertmoog.Base.request.OkHttpClientManager;
+import com.youzheng.zhejiang.robertmoog.Base.utils.PublicUtils;
+import com.youzheng.zhejiang.robertmoog.Base.utils.UrlUtils;
 import com.youzheng.zhejiang.robertmoog.Count.adapter.GoodsSaleAdapter;
+import com.youzheng.zhejiang.robertmoog.Count.bean.GoodsSale;
+import com.youzheng.zhejiang.robertmoog.Count.bean.ShopSale;
+import com.youzheng.zhejiang.robertmoog.Model.BaseModel;
 import com.youzheng.zhejiang.robertmoog.R;
 import com.youzheng.zhejiang.robertmoog.Store.view.RecycleViewDivider;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+
+import okhttp3.Request;
 
 /**
  * 商品销量界面
@@ -55,16 +66,40 @@ public class GoodsSaleActivity extends BaseActivity implements View.OnClickListe
     private TimePickerView pvTime;
     private String time="";
     private int who;
-    private List<String> list=new ArrayList<>();
+    private List<GoodsSale.ProductListBean> list=new ArrayList<>();
     private GoodsSaleAdapter adapter;
-
+    private int page=1;
+    private int pageSize=10;
+    private boolean isDay=true;
+    private String starstDate="";
+    private String endsDate="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goods_sale);
         initView();
+        setListener();
         initTimer();
     }
+
+    private void setListener() {
+        pr_list.setOnPullLoadMoreListener(new PullLoadMoreRecyclerView.PullLoadMoreListener() {
+            @Override
+            public void onRefresh() {
+              page=1;
+              list.clear();
+                initData(page,pageSize,isDay,starstDate,endsDate);
+            }
+
+            @Override
+            public void onLoadMore() {
+             page++;
+             initData(page,pageSize,isDay,starstDate,endsDate);
+            }
+        });
+    }
+
+
 
     private void initView() {
         btnBack = (ImageView) findViewById(R.id.btnBack);
@@ -87,23 +122,61 @@ public class GoodsSaleActivity extends BaseActivity implements View.OnClickListe
         pr_list.addItemDecoration(new RecycleViewDivider(
                 this, LinearLayoutManager.VERTICAL, 5, getResources().getColor(R.color.divider_color_item)));
         pr_list.setColorSchemeResources(R.color.colorPrimary);
-        initData();
-    }
-
-    private void initData() {
-        list.add("SKU987568");
-        list.add("SKU987568");
-        list.add("SKU987568");
-        list.add("SKU987568");
-        list.add("SKU987568");
-        list.add("SKU987568");
-        list.add("SKU987568");
 
         adapter=new GoodsSaleAdapter(list,this);
         pr_list.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initData(page,pageSize,isDay,starstDate,endsDate);
+    }
+
+    private void initData(int page,int pageSize,boolean isDay,String startDate,String endDate) {
+        HashMap<String,Object> map=new HashMap<>();
+        map.put("pageNum",page);
+        map.put("pageSize",pageSize);
+        map.put("isDay",isDay);
+        map.put("startDate",startDate);
+        map.put("endDate",endDate);
+
+        OkHttpClientManager.postAsynJson(gson.toJson(map), UrlUtils.GOODS_SALE + "?access_token=" + access_token, new OkHttpClientManager.StringCallback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+                pr_list.setPullLoadMoreCompleted();
+            }
+
+            @Override
+            public void onResponse(String response) {
+                Log.e("商品销量",response);
+                pr_list.setPullLoadMoreCompleted();
+                BaseModel baseModel = gson.fromJson(response,BaseModel.class);
+                if (baseModel.getCode()==PublicUtils.code){
+                    GoodsSale goodsSale = gson.fromJson(gson.toJson(baseModel.getDatas()),GoodsSale.class);
+                    setData(goodsSale);
+                }
+            }
+        });
+
+
+
+    }
+
+    private void setData(GoodsSale goodsSale) {
+        if (goodsSale==null) return;
+        if (goodsSale.getProductList()==null) return;
+
+        List<GoodsSale.ProductListBean> beanList=goodsSale.getProductList();
+        if (beanList.size()!=0){
+            list.addAll(beanList);
+            adapter.setUI(beanList);
+        }else {
+            showToast(getString(R.string.load_list_erron));
+        }
+        pr_list.setPullLoadMoreCompleted();
 
     }
 
@@ -124,7 +197,9 @@ public class GoodsSaleActivity extends BaseActivity implements View.OnClickListe
                 pvTime.show(v, false);
                 break;
             case R.id.tv_check:
-
+                isDay=false;
+                list.clear();
+                initData(page,pageSize,isDay,starstDate,endsDate);
                 break;
         }
     }
@@ -139,7 +214,7 @@ public class GoodsSaleActivity extends BaseActivity implements View.OnClickListe
         //日
         int day = selectedDate.get(Calendar.DAY_OF_MONTH);
 
-        Calendar startDate = Calendar.getInstance();
+        final Calendar startDate = Calendar.getInstance();
         startDate.set(2010, 1, 1);
 
         final Calendar endDate = Calendar.getInstance();
@@ -155,8 +230,10 @@ public class GoodsSaleActivity extends BaseActivity implements View.OnClickListe
                 if (!time.equals("")){
                     if (who==1){
                         tv_startDate.setText(time);
+                        starstDate=time;
                     }else {
                         tv_endDate.setText(time);
+                        endsDate=time;
                     }
                 }
 

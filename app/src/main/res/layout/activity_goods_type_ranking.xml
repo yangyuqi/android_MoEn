@@ -104,7 +104,7 @@
             android:id="@+id/tv_rule"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="销售金额"
+            android:text="销售数量"
             android:layout_weight="1"
             android:textSize="13sp"
             android:gravity="right|center_vertical"

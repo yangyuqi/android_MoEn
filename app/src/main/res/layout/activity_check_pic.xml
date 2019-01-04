@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/text_drak_black"
+    android:fitsSystemWindows="true"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/bg_background_white"
+            android:textSize="15sp"
+            android:text="1/4"
+            android:layout_weight="1"
+            android:padding="10dp"/>
+
+
+        <ImageView
+            android:id="@+id/iv_more"
+            android:layout_width="22dp"
+            android:layout_height="20dp"
+            android:visibility="gone"
+            android:layout_marginRight="10dp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/lin_back"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_gravity="center_vertical"
+            ></android.support.v4.view.ViewPager>
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

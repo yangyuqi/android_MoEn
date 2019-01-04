@@ -143,6 +143,7 @@ public class StoreCustomerInsideActivity extends BaseActivity implements View.On
           showToast(getString(R.string.load_list_erron));
         }
 
+        lv_list.setPullLoadMoreCompleted();
 
     }
 

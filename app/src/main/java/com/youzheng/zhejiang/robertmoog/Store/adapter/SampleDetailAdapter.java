@@ -7,20 +7,27 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.youzheng.zhejiang.robertmoog.R;
+import com.youzheng.zhejiang.robertmoog.Store.bean.SampleOutPic;
 
 import java.util.List;
 
 public class SampleDetailAdapter extends BaseAdapter {
-    private List<Integer> list;
+    private List<SampleOutPic.ProductSampleResultDataBean.ImageUrlsBean> list;
     private Context context;
     private LayoutInflater layoutInflater;
 
 
-    public SampleDetailAdapter(List<Integer> list, Context context) {
+    public SampleDetailAdapter(List<SampleOutPic.ProductSampleResultDataBean.ImageUrlsBean> list, Context context) {
         this.list = list;
         this.context = context;
         layoutInflater=LayoutInflater.from(context);
+    }
+
+    public void setPic(List<SampleOutPic.ProductSampleResultDataBean.ImageUrlsBean> list){
+        this.list=list;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -49,7 +56,8 @@ public class SampleDetailAdapter extends BaseAdapter {
         }else {
             viewHolder= (ViewHolder) convertView.getTag();
         }
-            viewHolder.iv_photo.setImageResource(list.get(position));
+        SampleOutPic.ProductSampleResultDataBean.ImageUrlsBean bean=list.get(position);
+        Glide.with(context).load(bean.getSmallUrl()).into(viewHolder.iv_photo);
         return convertView;
     }
     class ViewHolder{

@@ -7,23 +7,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.youzheng.zhejiang.robertmoog.Count.bean.TodayRegisterList;
 import com.youzheng.zhejiang.robertmoog.R;
 import com.youzheng.zhejiang.robertmoog.Store.bean.StoreCustomerDetail;
 
 import java.util.List;
 
 public class TodayRegisterAdapter extends RecyclerView.Adapter<TodayRegisterAdapter.InsideHolder> {
-      private List<String> list;
+      private List<TodayRegisterList.CustomerListBean> list;
       private LayoutInflater layoutInflater;
       private Context context;
 
-    public TodayRegisterAdapter(List<String> list, Context context) {
+    public TodayRegisterAdapter(List<TodayRegisterList.CustomerListBean> list, Context context) {
         this.list = list;
         this.context = context;
         layoutInflater=LayoutInflater.from(context);
     }
 
-    public  void refreshUI(List<String> list){
+    public  void refreshUI(List<TodayRegisterList.CustomerListBean> list){
         this.list=list;
         notifyDataSetChanged();
     }
@@ -37,10 +38,11 @@ public class TodayRegisterAdapter extends RecyclerView.Adapter<TodayRegisterAdap
 
     @Override
     public void onBindViewHolder(InsideHolder holder, int position) {
-        holder.tv_date.setText(list.get(position));
-//        holder.tv_way.setText(monthCoustomerDetailBean.getSourceChannelEnum());
-//        holder.tv_phone.setText(monthCoustomerDetailBean.getAccount());
-//        holder.tv_people.setText(monthCoustomerDetailBean.getCustomerType()+":"+monthCoustomerDetailBean.getUpdateUserName());
+        TodayRegisterList.CustomerListBean bean=list.get(position);
+        holder.tv_date.setText(bean.getCreateDate());
+        holder.tv_way.setText(bean.getChannel());
+        holder.tv_phone.setText(bean.getPhone());
+        holder.tv_people.setText(bean.getOperatePersonal());
     }
 
     @Override

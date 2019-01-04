@@ -457,7 +457,7 @@
                             android:layout_marginTop="@dimen/space_3"
                             android:textSize="@dimen/text_size_12"
                             android:textColor="@color/text_drak_gray"
-                            android:text="是多久啊是觉得"
+                            android:text="通过门店和扫描门店二维码注册的普通客户数量"
                             />
 
                     </LinearLayout>

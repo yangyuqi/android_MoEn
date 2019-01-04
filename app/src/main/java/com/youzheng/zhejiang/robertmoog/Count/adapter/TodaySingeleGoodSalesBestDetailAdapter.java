@@ -8,22 +8,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.youzheng.zhejiang.robertmoog.Count.bean.GoodsSale;
+import com.youzheng.zhejiang.robertmoog.Count.bean.GoodsTypeDetail;
 import com.youzheng.zhejiang.robertmoog.R;
 
 import java.util.List;
 
 public class TodaySingeleGoodSalesBestDetailAdapter extends RecyclerView.Adapter<TodaySingeleGoodSalesBestDetailAdapter.SaleHolder> {
-    private List<String> list;
+    private List<GoodsSale.ProductListBean> list;
     private Context context;
     private LayoutInflater layoutInflater;
 
-    public TodaySingeleGoodSalesBestDetailAdapter(List<String> list, Context context) {
+    public TodaySingeleGoodSalesBestDetailAdapter(List<GoodsSale.ProductListBean> list, Context context) {
         this.list = list;
         this.context = context;
         layoutInflater=LayoutInflater.from(context);
     }
 
-    public void setUI(List<String> list){
+    public void setUI(List<GoodsSale.ProductListBean> list){
         this.list=list;
         notifyDataSetChanged();
     }
@@ -38,7 +40,10 @@ public class TodaySingeleGoodSalesBestDetailAdapter extends RecyclerView.Adapter
 
     @Override
     public void onBindViewHolder(@NonNull SaleHolder saleHolder, int position) {
-        saleHolder.tv_goods_id.setText(list.get(position));
+        GoodsSale.ProductListBean bean=list.get(position);
+        saleHolder.tv_goods_id.setText(bean.getSku());
+        saleHolder.tv_goods_name.setText(bean.getName());
+        saleHolder.tv_goods_number.setText(bean.getCount()+"");
 
 
     }

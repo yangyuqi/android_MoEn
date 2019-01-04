@@ -1,11 +1,13 @@
 package com.youzheng.zhejiang.robertmoog.Count.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -21,16 +23,27 @@ import com.bigkoo.pickerview.listener.OnTimeSelectListener;
 import com.bigkoo.pickerview.view.TimePickerView;
 import com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView;
 import com.youzheng.zhejiang.robertmoog.Base.BaseActivity;
+import com.youzheng.zhejiang.robertmoog.Base.request.OkHttpClientManager;
+import com.youzheng.zhejiang.robertmoog.Base.utils.PublicUtils;
+import com.youzheng.zhejiang.robertmoog.Base.utils.UrlUtils;
 import com.youzheng.zhejiang.robertmoog.Count.adapter.CheckRuleAdapter;
 import com.youzheng.zhejiang.robertmoog.Count.adapter.GoodsTypeRankingAdapter;
+import com.youzheng.zhejiang.robertmoog.Count.bean.GoodsTypeRankingList;
+import com.youzheng.zhejiang.robertmoog.Count.bean.MealRankingList;
+import com.youzheng.zhejiang.robertmoog.Model.BaseModel;
 import com.youzheng.zhejiang.robertmoog.R;
+import com.youzheng.zhejiang.robertmoog.Store.listener.OnRecyclerViewAdapterItemClickListener;
 import com.youzheng.zhejiang.robertmoog.Store.view.RecycleViewDivider;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+
+import okhttp3.Request;
 
 /**
  * 商品品类排名界面
@@ -70,8 +83,16 @@ public class GoodsTypeRankingActivity extends BaseActivity implements View.OnCli
     private PopupWindow window;
     private ListView listView;
     private CheckRuleAdapter ruleAdapter;
-    private List<String> list=new ArrayList<>();
+    private List<GoodsTypeRankingList.CategoryListBean> list=new ArrayList<>();
     private GoodsTypeRankingAdapter adapter;
+
+    private int page=1;
+    private int pageSize=10;
+    private boolean isDay=true;
+    private String startstr="";
+    private String endstr="";
+    private String rulestr="COUNT";//默认是数量
+    private String type="";
 
 
     @Override
@@ -79,7 +100,32 @@ public class GoodsTypeRankingActivity extends BaseActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goods_type_ranking);
         initView();
+        setListener();
         initTimer();
+    }
+
+    private void setListener() {
+        pr_list.setOnPullLoadMoreListener(new PullLoadMoreRecyclerView.PullLoadMoreListener() {
+            @Override
+            public void onRefresh() {
+                page=1;
+                list.clear();
+                initData(page,pageSize,isDay,startstr,endstr,rulestr);
+            }
+
+            @Override
+            public void onLoadMore() {
+               page++;
+                initData(page,pageSize,isDay,startstr,endstr,rulestr);
+            }
+        });
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initData(page,pageSize,isDay,startstr,endstr,rulestr);
     }
 
     private void initView() {
@@ -107,25 +153,77 @@ public class GoodsTypeRankingActivity extends BaseActivity implements View.OnCli
         pr_list.addItemDecoration(new RecycleViewDivider(
                 this, LinearLayoutManager.VERTICAL, 5, getResources().getColor(R.color.divider_color_item)));
         pr_list.setColorSchemeResources(R.color.colorPrimary);
-        initData();
-    }
-
-    private void initData() {
-        list.add("厨房龙头");
-        list.add("厨房龙头");
-        list.add("厨房龙头");
-        list.add("厨房龙头");
-        list.add("厨房龙头");
-        list.add("厨房龙头");
-        list.add("厨房龙头");
-
-
         adapter=new GoodsTypeRankingAdapter(list,this);
         pr_list.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
+        adapter.setOnItemClickListener(new OnRecyclerViewAdapterItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                if (tv_rule.getText().toString().equals("销售数量")){
+                    type="数量";
+                }else {
+                    type="金额";
+                }
+                Intent intent=new Intent(GoodsTypeRankingActivity.this,GoodsTypeRankingDetailActivity.class);
+                intent.putExtra("type",type);
+                intent.putExtra("goodsId",list.get(position).getId());
+                startActivity(intent);
+
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+
+            }
+        });
+
+    }
+
+    private void initData(int page, int pageSize, boolean isDay, String startDate, String endDate, String rule) {
+        HashMap<String,Object> map=new HashMap<>();
+        map.put("pageNum",page);
+        map.put("pageSize",pageSize);
+        map.put("isDay",isDay);
+        map.put("startDate",startDate);
+        map.put("endDate",endDate);
+        map.put("rule",rule);
+
+        OkHttpClientManager.postAsynJson(gson.toJson(map), UrlUtils.GOODS_TYPE_RANKING_LIST + "?access_token=" + access_token, new OkHttpClientManager.StringCallback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+                pr_list.setPullLoadMoreCompleted();
+            }
+
+            @Override
+            public void onResponse(String response) {
+                Log.e("商品品类排名",response);
+                pr_list.setPullLoadMoreCompleted();
+                BaseModel baseModel = gson.fromJson(response,BaseModel.class);
+                if (baseModel.getCode()==PublicUtils.code){
+                    GoodsTypeRankingList goodsTypeRankingList = gson.fromJson(gson.toJson(baseModel.getDatas()),GoodsTypeRankingList.class);
+                    setData(goodsTypeRankingList);
+                }
+            }
+        });
 
 
+
+
+    }
+
+    private void setData(GoodsTypeRankingList goodsTypeRankingList) {
+        if (goodsTypeRankingList==null) return;
+        if (goodsTypeRankingList.getCategoryList()==null) return;
+
+        List<GoodsTypeRankingList.CategoryListBean> beanList=goodsTypeRankingList.getCategoryList();
+        if (beanList.size()!=0){
+            list.addAll(beanList);
+            adapter.setUI(beanList);
+        }else {
+            showToast(getString(R.string.load_list_erron));
+        }
+        pr_list.setPullLoadMoreCompleted();
     }
 
     @Override
@@ -145,6 +243,9 @@ public class GoodsTypeRankingActivity extends BaseActivity implements View.OnCli
                 pvTime.show(v, false);
                 break;
             case R.id.tv_check:
+                isDay=false;
+                list.clear();
+                initData(page,pageSize,isDay,startstr,endstr,rulestr);
                 break;
             case R.id.iv_more:
                 if (tv_rule.getText().toString().equals("销售数量")){
@@ -159,11 +260,11 @@ public class GoodsTypeRankingActivity extends BaseActivity implements View.OnCli
     private void showPopuWindow(int who) {
         View inflate = getLayoutInflater().inflate(R.layout.popuwindow_rule, null);
         listView=inflate.findViewById(R.id.lv_list);
-        List<String> list=new ArrayList<>();
-        list.add("销售数量");
-        list.add("销售金额");
+        List<String> lists=new ArrayList<>();
+        lists.add("销售数量");
+        lists.add("销售金额");
 
-        ruleAdapter=new CheckRuleAdapter(list,this);
+        ruleAdapter=new CheckRuleAdapter(lists,this);
         listView.setAdapter(ruleAdapter);
 
         if (who==0){
@@ -179,9 +280,15 @@ public class GoodsTypeRankingActivity extends BaseActivity implements View.OnCli
                 if (position==0){
                     tv_rule.setText("销售数量");
                     // TODO: 2019/1/2 调用接口
+                    rulestr="COUNT";
+                    list.clear();
+                    initData(page,pageSize,isDay,startstr,endstr,rulestr);
                 }else if (position==1){
                     tv_rule.setText("销售金额");
                     // TODO: 2019/1/2 调用接口
+                    rulestr="PRICE";
+                    list.clear();
+                    initData(page,pageSize,isDay,startstr,endstr,rulestr);
                 }
                 window.dismiss();
             }
@@ -235,8 +342,10 @@ public class GoodsTypeRankingActivity extends BaseActivity implements View.OnCli
                 if (!time.equals("")){
                     if (who==1){
                         tv_startDate.setText(time);
+                        startstr=time;
                     }else {
                         tv_endDate.setText(time);
+                        endstr=time;
                     }
                 }
 
