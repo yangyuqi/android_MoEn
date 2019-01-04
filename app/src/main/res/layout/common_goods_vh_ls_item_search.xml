@@ -7,10 +7,32 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         >
+
+
+        <HorizontalScrollView
+            android:id="@+id/hsv"
+            android:scrollbars="none"
+            android:overScrollMode="never"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+        <LinearLayout
+            android:id="@+id/ll_width"
+            android:paddingRight="@dimen/space_20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
 
         <RelativeLayout
             android:background="@color/bg_background_white"
@@ -76,6 +98,75 @@
                     android:text="选定"
                     />
 
+                <TextView
+                    android:id="@+id/tv_get_num"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
+                    android:textColor="@color/text_drak_black"
+                    android:textSize="@dimen/text_size_15"
+                    android:text="选定"
+                    />
+
+                <LinearLayout
+                    android:visibility="invisible"
+                    android:id="@+id/ll_num"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/bg_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv_reduce"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/space_6"
+                        android:paddingLeft="@dimen/space_8"
+                        android:paddingRight="@dimen/space_8"
+                        android:text="—"
+                        android:textSize="@dimen/text_size_17"
+                        />
+                    <View
+                        android:background="@color/divider_color_item"
+                        android:layout_width="@dimen/space_divider_2"
+                        android:layout_height="match_parent" />
+
+                    <EditText
+                        android:id="@+id/edt_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:background="@null"
+                        android:text="1"
+                        android:paddingLeft="@dimen/space_8"
+                        android:paddingRight="@dimen/space_8"
+                        />
+
+                    <View
+                        android:background="@color/divider_color_item"
+                        android:layout_width="@dimen/space_divider_2"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+                        android:id="@+id/tv_add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/space_6"
+                        android:paddingLeft="@dimen/space_8"
+                        android:paddingRight="@dimen/space_8"
+                        android:text="+"
+                        android:textSize="@dimen/text_size_17"
+                        />
+
+                </LinearLayout>
+
             </RelativeLayout>
 
         </RelativeLayout>
@@ -110,6 +201,7 @@
 
 
             <ImageView
+                android:paddingLeft="@dimen/space_30"
                 android:id="@+id/iv_show"
                 android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
@@ -147,13 +239,40 @@
 
         </RelativeLayout>
 
-        <com.youzheng.zhejiang.robertmoog.utils.View.NoScrollListView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/no_ls"
-            ></com.youzheng.zhejiang.robertmoog.utils.View.NoScrollListView>
+        </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                >
+                <RelativeLayout
+                    android:id="@+id/main_right_drawer_layout"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/text_golden"
+                    >
+                    <TextView
+                        android:textSize="@dimen/text_size_15"
+                        android:textColor="@color/bg_background_white"
+                        android:id="@+id/tv_test"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="删除" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        </HorizontalScrollView>
     </LinearLayout>
-
+    <com.youzheng.zhejiang.robertmoog.utils.View.NoScrollListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/no_ls"
+        ></com.youzheng.zhejiang.robertmoog.utils.View.NoScrollListView>
 
 </LinearLayout>

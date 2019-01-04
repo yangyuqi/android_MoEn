@@ -24,6 +24,7 @@
             android:background="@drawable/search_bg_rl">
 
             <EditText
+                android:text="17602548965"
                 android:id="@+id/tv_search"
                 android:layout_width="0dp"
                 android:layout_weight="1"

@@ -1,8 +1,10 @@
 package com.youzheng.zhejiang.robertmoog.Model.Home;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-public class ScanDatasBean {
+public class ScanDatasBean implements Serializable{
 
     /**
      * name : 测试商品  淋浴房
@@ -26,7 +28,17 @@ public class ScanDatasBean {
     private String activityName;
     private String comboDescribe;
     private boolean isSpecial;
-    private List<ProductListBean> productList;
+    private int num = 1;//添加数量
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+
+    private ArrayList<ProductListBean> productList;
 
     private boolean isexpress ;//是否展开
 
@@ -110,11 +122,11 @@ public class ScanDatasBean {
         isSpecial = special;
     }
 
-    public List<ProductListBean> getProductList() {
+    public ArrayList<ProductListBean> getProductList() {
         return productList;
     }
 
-    public void setProductList(List<ProductListBean> productList) {
+    public void setProductList(ArrayList<ProductListBean> productList) {
         this.productList = productList;
     }
 }
