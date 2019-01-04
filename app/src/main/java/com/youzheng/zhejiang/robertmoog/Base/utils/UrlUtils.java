@@ -49,5 +49,7 @@ public class UrlUtils {
     public static String ADDRESS_MANAGER = BASE_URL+"/v1/app/customer/customerAddress";
     public static String ADD_ADDRESS = BASE_URL+"/v1/app/customer/save/customerAddress";
     public static String SALES_GOODS = BASE_URL+"/v1/app/customer/sale";
+    public static String LIST_DATA = BASE_URL+"/v1/app/customer/getEnums";
+    public static String ORDER_DETAOLS = BASE_URL+"/v1/app/customer/saveOrder";
 
 }

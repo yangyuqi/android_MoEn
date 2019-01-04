@@ -5,6 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <HorizontalScrollView
+        android:id="@+id/hsv"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="105dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -12,6 +18,7 @@
             >
 
             <RelativeLayout
+                android:paddingRight="@dimen/space_20"
                 android:id="@+id/rl_width"
                 android:background="@color/bg_background_white"
                 android:layout_width="wrap_content"
@@ -76,12 +83,106 @@
                         android:text="选定"
                         />
 
+                    <TextView
+                        android:id="@+id/tv_get_num"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="15dp"
+                        android:textColor="@color/text_drak_black"
+                        android:textSize="@dimen/text_size_15"
+                        android:text="选定"
+                        />
+
+                    <LinearLayout
+                        android:visibility="invisible"
+                        android:id="@+id/ll_num"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/bg_order"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+
+                        <TextView
+                            android:id="@+id/tv_reduce"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/space_6"
+                            android:paddingLeft="@dimen/space_8"
+                            android:paddingRight="@dimen/space_8"
+                            android:text="—"
+                            android:textSize="@dimen/text_size_17"
+                            />
+                        <View
+                            android:background="@color/divider_color_item"
+                            android:layout_width="@dimen/space_divider_2"
+                            android:layout_height="match_parent" />
+
+                        <EditText
+                            android:id="@+id/edt_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:background="@null"
+                            android:text="1"
+                            android:paddingLeft="@dimen/space_8"
+                            android:paddingRight="@dimen/space_8"
+                            />
+
+                        <View
+                            android:background="@color/divider_color_item"
+                            android:layout_width="@dimen/space_divider_2"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:id="@+id/tv_add"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/space_6"
+                            android:paddingLeft="@dimen/space_8"
+                            android:paddingRight="@dimen/space_8"
+                            android:text="+"
+                            android:textSize="@dimen/text_size_17"
+                            />
+
+                    </LinearLayout>
+
                 </RelativeLayout>
 
 
             </RelativeLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                >
+                <RelativeLayout
+                    android:id="@+id/main_right_drawer_layout"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/text_golden"
+                    >
+                    <TextView
+                        android:textSize="@dimen/text_size_15"
+                        android:textColor="@color/bg_background_white"
+                        android:id="@+id/tv_test"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="删除" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
         </LinearLayout>
 
+    </HorizontalScrollView>
 
 </RelativeLayout>

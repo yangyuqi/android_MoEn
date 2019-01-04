@@ -29,6 +29,7 @@ import com.youzheng.zhejiang.robertmoog.Model.Home.HomePageBean;
 import com.youzheng.zhejiang.robertmoog.Model.Home.HomePageData;
 import com.youzheng.zhejiang.robertmoog.R;
 
+import com.youzheng.zhejiang.robertmoog.Store.activity.GoodsManageActivity;
 import com.youzheng.zhejiang.robertmoog.utils.CommonAdapter;
 import com.youzheng.zhejiang.robertmoog.utils.SharedPreferencesUtils;
 import com.youzheng.zhejiang.robertmoog.utils.ViewHolder;
@@ -188,6 +189,10 @@ public class HomeFragment extends BaseFragment  implements BaseFragment.ReloadIn
 
                     case 3 :
                         startActivity(new Intent(mContext, AttentionIntentActivity.class));
+                        break;
+
+                    case 4 :
+                        startActivity(new Intent(mContext, GoodsManageActivity.class));
                         break;
                 }
             }

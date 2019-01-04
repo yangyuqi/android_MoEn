@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -35,12 +37,15 @@ public class SearchGoodsActivity extends BaseActivity {
     ImageView iv_click ;
     EditText tv_search ;
     List<ScanDatasBean> data = new ArrayList<>();
-
+    int widWidth ;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_goods_layout);
-
+        WindowManager manager = this.getWindowManager();
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        manager.getDefaultDisplay().getMetrics(outMetrics);
+        widWidth = outMetrics.widthPixels;
         initView();
 
         initClick();
@@ -57,8 +62,8 @@ public class SearchGoodsActivity extends BaseActivity {
                 }
 
                 Map<String,Object> map = new HashMap<>();
-                map.put("code",tv_search.getText().toString());
-                OkHttpClientManager.postAsynJson(gson.toJson(map), UrlUtils.SCAN_GOODS + "?access_token=" + "f36451db-3efa-4ccb-8260-d7fb7e2128f9", new OkHttpClientManager.StringCallback() {
+                map.put("code",tv_search.getText().toString());//f36451db-3efa-4ccb-8260-d7fb7e2128f9
+                OkHttpClientManager.postAsynJson(gson.toJson(map), UrlUtils.SCAN_GOODS + "?access_token=" + access_token, new OkHttpClientManager.StringCallback() {
                     @Override
                     public void onFailure(Request request, IOException e) {
 
@@ -70,7 +75,7 @@ public class SearchGoodsActivity extends BaseActivity {
                         if (baseModel.getCode()== PublicUtils.code){
                             ScanDatas scanDatas = gson.fromJson(gson.toJson(baseModel.getDatas()),ScanDatas.class);
                             if (scanDatas.getSelectProducts().size()>0){
-                                addapter.setDate(scanDatas.getSelectProducts(),mContext,"1");
+                                addapter.setDate(scanDatas.getSelectProducts(),mContext,"1",widWidth);
                             }
                         }
                     }

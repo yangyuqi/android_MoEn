@@ -48,6 +48,7 @@ public class LocationManageActivity extends BaseActivity {
     }
 
     private void initData() {
+        data.clear();
         Map<String,Object> map = new HashMap<>();
         map.put("pageNum",pageNum);
         map.put("pageSize",pageSize);
