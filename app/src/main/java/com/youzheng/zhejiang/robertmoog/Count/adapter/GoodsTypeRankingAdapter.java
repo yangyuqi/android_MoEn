@@ -11,22 +11,29 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.youzheng.zhejiang.robertmoog.Count.activity.GoodsTypeRankingDetailActivity;
+import com.youzheng.zhejiang.robertmoog.Count.bean.GoodsTypeRankingList;
 import com.youzheng.zhejiang.robertmoog.R;
+import com.youzheng.zhejiang.robertmoog.Store.listener.OnRecyclerViewAdapterItemClickListener;
 
 import java.util.List;
 
 public class GoodsTypeRankingAdapter extends RecyclerView.Adapter<GoodsTypeRankingAdapter.SaleHolder> {
-    private List<String> list;
+    private List<GoodsTypeRankingList.CategoryListBean> list;
     private Context context;
     private LayoutInflater layoutInflater;
+    private OnRecyclerViewAdapterItemClickListener mOnItemClickListener;
 
-    public GoodsTypeRankingAdapter(List<String> list, Context context) {
+    public void setOnItemClickListener(OnRecyclerViewAdapterItemClickListener mOnItemClickListener) {
+        this.mOnItemClickListener = mOnItemClickListener;
+    }
+
+    public GoodsTypeRankingAdapter(List<GoodsTypeRankingList.CategoryListBean> list, Context context) {
         this.list = list;
         this.context = context;
         layoutInflater=LayoutInflater.from(context);
     }
 
-    public void setUI(List<String> list){
+    public void setUI(List<GoodsTypeRankingList.CategoryListBean> list){
         this.list=list;
         notifyDataSetChanged();
     }
@@ -35,23 +42,31 @@ public class GoodsTypeRankingAdapter extends RecyclerView.Adapter<GoodsTypeRanki
     @Override
     public SaleHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
         View view=layoutInflater.inflate(R.layout.item_goods_type_ranking,viewGroup,false);
-        SaleHolder saleHolder=new SaleHolder(view);
+        final SaleHolder saleHolder=new SaleHolder(view);
+
+        saleHolder.tv_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                int position = saleHolder.getLayoutPosition();
+                //设置监听
+                if (mOnItemClickListener != null) {
+                    mOnItemClickListener.onItemClick(view ,position );
+                }
+
+            }
+        });
         return saleHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull SaleHolder saleHolder, int position) {
-        saleHolder.tv_name.setText(list.get(position));
+        final GoodsTypeRankingList.CategoryListBean bean=list.get(position);
+        saleHolder.tv_name.setText(bean.getCategoryName());
         saleHolder.tv_name.getPaint().setFlags(Paint. UNDERLINE_TEXT_FLAG ); //下划线
         saleHolder.tv_name.getPaint().setAntiAlias(true);//抗锯齿
 
-        saleHolder.tv_name.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(context,GoodsTypeRankingDetailActivity.class);
-                context.startActivity(intent);
-            }
-        });
+        saleHolder.tv_order_value.setText(bean.getCount());
 
 
     }

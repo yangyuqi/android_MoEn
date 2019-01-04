@@ -10,24 +10,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.youzheng.zhejiang.robertmoog.Count.activity.GoodsTypeRankingActivity;
 import com.youzheng.zhejiang.robertmoog.Count.activity.GoodsTypeRankingDetailActivity;
 import com.youzheng.zhejiang.robertmoog.Count.activity.TodayGoodsTypeSalesBestDetailActivity;
+import com.youzheng.zhejiang.robertmoog.Count.activity.TodaySingleGoodsSalesBestDetailActivity;
+import com.youzheng.zhejiang.robertmoog.Count.bean.GoodsTypeRankingList;
 import com.youzheng.zhejiang.robertmoog.R;
 
 import java.util.List;
 
 public class TodayGoodsTypeSalesBestAdapter extends RecyclerView.Adapter<TodayGoodsTypeSalesBestAdapter.SaleHolder> {
-    private List<String> list;
+    private List<GoodsTypeRankingList.CategoryListBean> list;
     private Context context;
     private LayoutInflater layoutInflater;
 
-    public TodayGoodsTypeSalesBestAdapter(List<String> list, Context context) {
+    public TodayGoodsTypeSalesBestAdapter(List<GoodsTypeRankingList.CategoryListBean> list, Context context) {
         this.list = list;
         this.context = context;
         layoutInflater=LayoutInflater.from(context);
     }
 
-    public void setUI(List<String> list){
+    public void setUI(List<GoodsTypeRankingList.CategoryListBean> list){
         this.list=list;
         notifyDataSetChanged();
     }
@@ -42,14 +45,19 @@ public class TodayGoodsTypeSalesBestAdapter extends RecyclerView.Adapter<TodayGo
 
     @Override
     public void onBindViewHolder(@NonNull SaleHolder saleHolder, int position) {
-        saleHolder.tv_name.setText(list.get(position));
+        final GoodsTypeRankingList.CategoryListBean bean=list.get(position);
+        saleHolder.tv_name.setText(bean.getCategoryName());
         saleHolder.tv_name.getPaint().setFlags(Paint. UNDERLINE_TEXT_FLAG ); //下划线
         saleHolder.tv_name.getPaint().setAntiAlias(true);//抗锯齿
+
+        saleHolder.tv_order_value.setText(bean.getCount());
+        final int goodid=bean.getId();
 
         saleHolder.tv_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(context,TodayGoodsTypeSalesBestDetailActivity.class);
+                intent.putExtra("todaygoodsId",goodid);
                 context.startActivity(intent);
             }
         });

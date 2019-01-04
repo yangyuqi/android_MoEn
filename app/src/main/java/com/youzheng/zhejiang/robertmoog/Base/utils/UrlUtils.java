@@ -53,4 +53,34 @@ public class UrlUtils {
     public static String ORDER_DETAOLS = BASE_URL+"/v1/app/customer/saveOrder";
 
     public static String GET_PRIVICE = BASE_URL+"/v1/app/customer/getProvince";
+
+    public static String SAMPLE_HISTORY = BASE_URL+"/v1/app/shop/productSampleHistory";
+
+    public static String COUNT_ALL = BASE_URL+"/v1/app/statistic/firstPage";
+
+    public static String SHOP_SALE = BASE_URL+"/v1/app/statistic/shopSale";
+    public static String SHOP_SALE_INSIDE = BASE_URL+"/v1/app/statistic/shopSale/findOne";
+
+    public static String GOODS_SALE = BASE_URL+"/v1/app/statistic/productSale";
+
+    public static String MEAL_RANKING_LIST = BASE_URL+"/v1/app/statistic/setMealRanking";
+
+    public static String GOODS_TYPE_RANKING_LIST = BASE_URL+"/v1/app/statistic/categoryRanking";
+    public static String GOODS_TYPE_RANKING_DETAIL = BASE_URL+"/v1/app/statistic/categoryProduct";
+
+    public static String TODAT_REGISTER_NUMBER = BASE_URL+"/v1/app/statistic/customer";
+
+    public static String UPLOAD_FILE = BASE_URL+"/v1/app/shop/publishProductSampleImage";
+
+
+
+
+
+
+
+
+
+
+
+
 }

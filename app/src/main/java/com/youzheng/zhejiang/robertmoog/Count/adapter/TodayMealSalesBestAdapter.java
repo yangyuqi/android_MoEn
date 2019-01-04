@@ -8,22 +8,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.youzheng.zhejiang.robertmoog.Count.bean.MealRankingList;
 import com.youzheng.zhejiang.robertmoog.R;
 
 import java.util.List;
 
 public class TodayMealSalesBestAdapter extends RecyclerView.Adapter<TodayMealSalesBestAdapter.SaleHolder> {
-    private List<String> list;
+    private List<MealRankingList.SetMealListBean> list;
     private Context context;
     private LayoutInflater layoutInflater;
 
-    public TodayMealSalesBestAdapter(List<String> list, Context context) {
+    public TodayMealSalesBestAdapter(List<MealRankingList.SetMealListBean> list, Context context) {
         this.list = list;
         this.context = context;
         layoutInflater=LayoutInflater.from(context);
     }
 
-    public void setUI(List<String> list){
+    public void setUI(List<MealRankingList.SetMealListBean> list){
         this.list=list;
         notifyDataSetChanged();
     }
@@ -38,7 +39,10 @@ public class TodayMealSalesBestAdapter extends RecyclerView.Adapter<TodayMealSal
 
     @Override
     public void onBindViewHolder(@NonNull SaleHolder saleHolder, int position) {
-        saleHolder.tv_goods_id.setText(list.get(position));
+        MealRankingList.SetMealListBean bean=list.get(position);
+        saleHolder.tv_goods_id.setText(bean.getComboCode());
+        saleHolder.tv_goods_name.setText(bean.getComboDescribe());
+        saleHolder.tv_goods_number.setText(bean.getNumOrPrice());
 
 
     }

@@ -9,22 +9,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.youzheng.zhejiang.robertmoog.Count.bean.ShopSaleDetail;
 import com.youzheng.zhejiang.robertmoog.R;
 
 import java.util.List;
 
 public class StoreSaleInsideAdapter extends RecyclerView.Adapter<StoreSaleInsideAdapter.SaleHolder> {
-    private List<String> list;
+    private List<ShopSaleDetail.ShopDataBean> list;
     private Context context;
     private LayoutInflater layoutInflater;
 
-    public StoreSaleInsideAdapter(List<String> list, Context context) {
+    public StoreSaleInsideAdapter(List<ShopSaleDetail.ShopDataBean> list, Context context) {
         this.list = list;
         this.context = context;
         layoutInflater=LayoutInflater.from(context);
     }
 
-    public void setUI(List<String> list){
+    public void setUI(List<ShopSaleDetail.ShopDataBean> list){
         this.list=list;
         notifyDataSetChanged();
     }
@@ -39,7 +40,12 @@ public class StoreSaleInsideAdapter extends RecyclerView.Adapter<StoreSaleInside
 
     @Override
     public void onBindViewHolder(@NonNull SaleHolder saleHolder, int position) {
-        saleHolder.tv_date.setText(list.get(position));
+        ShopSaleDetail.ShopDataBean bean=list.get(position);
+        saleHolder.tv_date.setText(bean.getDate());
+        saleHolder.tv_order_total.setText(bean.getOrder());
+        saleHolder.tv_order_money.setText(bean.getOrderAmount());
+        saleHolder.tv_order_value.setText(bean.getCustomerTransaction());
+
     }
 
     @Override

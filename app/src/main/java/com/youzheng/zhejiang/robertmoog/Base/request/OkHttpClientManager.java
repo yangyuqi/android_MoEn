@@ -1,7 +1,6 @@
 package com.youzheng.zhejiang.robertmoog.Base.request;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
@@ -24,10 +23,12 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Headers;
 import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.MultipartBody;
 
 
 /**
@@ -375,8 +376,6 @@ public class OkHttpClientManager
         String key;
         String value;
     }
-
-
 
 
 }

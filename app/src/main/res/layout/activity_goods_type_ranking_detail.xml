@@ -10,6 +10,75 @@
     <include layout="@layout/title_bar" />
 
     <LinearLayout
+        android:id="@+id/lin_search"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:visibility="gone"
+        android:background="@color/bg_background_white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="起止时间"
+            android:textSize="12sp"
+            android:textColor="@color/text_main"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_weight="1">
+
+
+            <TextView
+                android:id="@+id/tv_startDate"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="请选择时间"
+                android:gravity="center_vertical"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/text_golden2"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="至"
+                android:textSize="12sp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/text_main"/>
+
+
+            <TextView
+                android:id="@+id/tv_endDate"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="请选择时间"
+                android:textSize="12sp"
+                android:gravity="center_vertical"
+                android:textStyle="bold"
+                android:textColor="@color/text_golden2"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="查询"
+            android:textSize="12sp"
+            android:padding="10dp"
+            android:textColor="@color/colorPrimary"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/lin_title"
         android:layout_width="match_parent"
         android:layout_height="45dp"

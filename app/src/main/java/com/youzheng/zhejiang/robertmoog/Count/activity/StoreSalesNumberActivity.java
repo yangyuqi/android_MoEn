@@ -3,6 +3,7 @@ package com.youzheng.zhejiang.robertmoog.Count.activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -20,16 +21,26 @@ import com.bigkoo.pickerview.listener.OnTimeSelectListener;
 import com.bigkoo.pickerview.view.TimePickerView;
 import com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView;
 import com.youzheng.zhejiang.robertmoog.Base.BaseActivity;
+import com.youzheng.zhejiang.robertmoog.Base.request.OkHttpClientManager;
+import com.youzheng.zhejiang.robertmoog.Base.utils.PublicUtils;
+import com.youzheng.zhejiang.robertmoog.Base.utils.UrlUtils;
 import com.youzheng.zhejiang.robertmoog.Count.adapter.StoreSaleAdapter;
+import com.youzheng.zhejiang.robertmoog.Count.bean.ShopSale;
 import com.youzheng.zhejiang.robertmoog.MainActivity;
+import com.youzheng.zhejiang.robertmoog.Model.BaseModel;
 import com.youzheng.zhejiang.robertmoog.R;
+import com.youzheng.zhejiang.robertmoog.Store.bean.CustomerList;
 import com.youzheng.zhejiang.robertmoog.Store.view.RecycleViewDivider;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+
+import okhttp3.Request;
 
 /**
  * 门店销量界面
@@ -72,7 +83,13 @@ public class StoreSalesNumberActivity extends BaseActivity implements View.OnCli
     private String time="";
     private int who;
     private StoreSaleAdapter adapter;
-    private List<String> list=new ArrayList<>();
+    private List<ShopSale.ShopDataBean> list=new ArrayList<>();
+    private int page=1;
+    private int pageSize=10;
+    private boolean isDay=true;
+    private String starstDate="";
+    private String endsDate="";
+    private String orderCount,orderAmountCount,customerTransaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +97,32 @@ public class StoreSalesNumberActivity extends BaseActivity implements View.OnCli
         setContentView(R.layout.activity_store_sales_number);
         initView();
         initTimer();
+        setListener();
+    }
+
+    private void setListener() {
+        pr_list.setOnPullLoadMoreListener(new PullLoadMoreRecyclerView.PullLoadMoreListener() {
+            @Override
+            public void onRefresh() {
+               page=1;
+               list.clear();
+               initData(page,pageSize,isDay,starstDate,endsDate);
+            }
+
+            @Override
+            public void onLoadMore() {
+                page++;
+                initData(page,pageSize,isDay,starstDate,endsDate);
+            }
+        });
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initData(page,pageSize,isDay,starstDate,endsDate);
     }
 
     private void initView() {
@@ -106,24 +149,68 @@ public class StoreSalesNumberActivity extends BaseActivity implements View.OnCli
                 this, LinearLayoutManager.VERTICAL, 5, getResources().getColor(R.color.divider_color_item)));
         pr_list.setColorSchemeResources(R.color.colorPrimary);
 
-        initData();
-
-    }
-
-    private void initData() {
-
-            list.add("店长(导购)");
-        list.add("店长(导购)");
-        list.add("店长(导购)");
-        list.add("店长(导购)");
-        list.add("店长(导购)");
-        list.add("店长(导购)");
-
-
         adapter=new StoreSaleAdapter(list,this);
         pr_list.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
+
+    }
+
+    private void initData(int page,int pageSize,boolean isDay,String startDate,String endDate) {
+        HashMap<String,Object> map=new HashMap<>();
+        map.put("pageNum",page);
+        map.put("pageSize",pageSize);
+        map.put("isDay",isDay);
+        map.put("startDate",startDate);
+        map.put("endDate",endDate);
+
+        OkHttpClientManager.postAsynJson(gson.toJson(map), UrlUtils.SHOP_SALE + "?access_token=" + access_token, new OkHttpClientManager.StringCallback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+                pr_list.setPullLoadMoreCompleted();
+            }
+
+            @Override
+            public void onResponse(String response) {
+                Log.e("门店销量",response);
+                pr_list.setPullLoadMoreCompleted();
+                BaseModel baseModel = gson.fromJson(response,BaseModel.class);
+                if (baseModel.getCode()==PublicUtils.code){
+                    ShopSale shopSale = gson.fromJson(gson.toJson(baseModel.getDatas()),ShopSale.class);
+                    setData(shopSale);
+                }
+
+            }
+        });
+    }
+
+    private void setData(ShopSale shopSale) {
+        if (shopSale.getShopData()==null) return;
+        orderCount=shopSale.getOrderCount();
+        orderAmountCount=shopSale.getOrderAmountCount();
+        customerTransaction=shopSale.getCustomerTransaction();
+
+        if (!orderCount.equals("")||orderCount!=null){
+            tv_order_total.setText(orderCount);
+        }
+
+        if (!orderAmountCount.equals("")||orderAmountCount!=null){
+            tv_order_money.setText(orderAmountCount);
+        }
+
+        if (!customerTransaction.equals("")||customerTransaction!=null){
+            tv_order_value.setText(customerTransaction);
+        }
+
+        List<ShopSale.ShopDataBean> beans=shopSale.getShopData();
+        if (beans.size()!=0){
+            list.addAll(beans);
+            adapter.setUI(beans);
+        }else {
+            showToast(getString(R.string.load_list_erron));
+        }
+
+        pr_list.setPullLoadMoreCompleted();
     }
 
     @Override
@@ -143,6 +230,9 @@ public class StoreSalesNumberActivity extends BaseActivity implements View.OnCli
                 pvTime.show(v, false);
                 break;
             case R.id.tv_check:
+                list.clear();
+                isDay=false;
+                initData(page,pageSize,isDay,starstDate,endsDate);
                 break;
         }
     }
@@ -158,7 +248,7 @@ public class StoreSalesNumberActivity extends BaseActivity implements View.OnCli
          //日
         int day = selectedDate.get(Calendar.DAY_OF_MONTH);
 
-        Calendar startDate = Calendar.getInstance();
+        final Calendar startDate = Calendar.getInstance();
         startDate.set(2010, 1, 1);
 
         final Calendar endDate = Calendar.getInstance();
@@ -174,8 +264,10 @@ public class StoreSalesNumberActivity extends BaseActivity implements View.OnCli
                  if (!time.equals("")){
                      if (who==1){
                          tv_startDate.setText(time);
+                         starstDate=time;
                      }else {
                          tv_endDate.setText(time);
+                         endsDate=time;
                      }
                  }
 

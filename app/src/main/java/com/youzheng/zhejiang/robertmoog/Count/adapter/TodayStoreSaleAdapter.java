@@ -11,22 +11,23 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.youzheng.zhejiang.robertmoog.Count.activity.StoreSaleInsideActivity;
+import com.youzheng.zhejiang.robertmoog.Count.bean.ShopSale;
 import com.youzheng.zhejiang.robertmoog.R;
 
 import java.util.List;
 
 public class TodayStoreSaleAdapter extends RecyclerView.Adapter<TodayStoreSaleAdapter.SaleHolder> {
-    private List<String> list;
+    private List<ShopSale.ShopDataBean> list;
     private Context context;
     private LayoutInflater layoutInflater;
 
-    public TodayStoreSaleAdapter(List<String> list, Context context) {
+    public TodayStoreSaleAdapter(List<ShopSale.ShopDataBean> list, Context context) {
         this.list = list;
         this.context = context;
         layoutInflater=LayoutInflater.from(context);
     }
 
-    public void setUI(List<String> list){
+    public void setUI(List<ShopSale.ShopDataBean> list){
         this.list=list;
         notifyDataSetChanged();
     }
@@ -41,8 +42,12 @@ public class TodayStoreSaleAdapter extends RecyclerView.Adapter<TodayStoreSaleAd
 
     @Override
     public void onBindViewHolder(@NonNull SaleHolder saleHolder, int position) {
+        ShopSale.ShopDataBean bean=list.get(position);
         saleHolder.tv_name.setTextColor(context.getResources().getColor(R.color.text_main));
-        saleHolder.tv_name.setText(list.get(position));
+        saleHolder.tv_name.setText(bean.getShopPersonalName());
+        saleHolder.tv_order_total.setText(bean.getOrder());
+        saleHolder.tv_order_money.setText(bean.getOrderAmount());
+        saleHolder.tv_order_value.setText(bean.getCustomerTransaction());
 
     }
 
