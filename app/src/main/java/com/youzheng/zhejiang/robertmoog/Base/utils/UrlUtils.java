@@ -52,4 +52,5 @@ public class UrlUtils {
     public static String LIST_DATA = BASE_URL+"/v1/app/customer/getEnums";
     public static String ORDER_DETAOLS = BASE_URL+"/v1/app/customer/saveOrder";
 
+    public static String GET_PRIVICE = BASE_URL+"/v1/app/customer/getProvince";
 }
