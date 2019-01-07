@@ -58,7 +58,7 @@ public class AddNewAddressActivity extends BaseActivity {
         edt_provice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                OkHttpClientManager.postAsynJson(gson.toJson(new HashMap<>()), UrlUtils.GET_PRIVICE, new OkHttpClientManager.StringCallback() {
+                OkHttpClientManager.postAsynJson(gson.toJson(new HashMap<>()), UrlUtils.GET_PRIVICE+"?access_token="+access_token, new OkHttpClientManager.StringCallback() {
                     @Override
                     public void onFailure(Request request, IOException e) {
 

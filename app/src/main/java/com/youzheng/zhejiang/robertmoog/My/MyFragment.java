@@ -93,6 +93,7 @@ public class MyFragment extends BaseFragment implements BaseFragment.ReloadInter
                                 public void onResponse(String response) {
                                     BaseModel baseModel = gson.fromJson(response,BaseModel.class);
                                     if (baseModel.getCode()==PublicUtils.code){
+                                        SharedPreferencesUtils.clear(mContext);
                                         getActivity().finish();
                                     }else {
                                         showToast(baseModel.getMsg());

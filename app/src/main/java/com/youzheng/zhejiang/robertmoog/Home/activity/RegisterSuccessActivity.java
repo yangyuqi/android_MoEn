@@ -54,6 +54,15 @@ public class RegisterSuccessActivity extends BaseActivity {
                         }
 
                         break;
+
+                    case 1:
+                        Intent intent = new Intent(mContext,ShopActionActivity.class);
+                        if (customer!=null){
+                            intent.putExtra("customerId",Integer.parseInt(customer.getCustomerId()));
+                        }else {
+                            intent.putExtra("customerId",registerBean.getCustomerId());
+                        }
+                        startActivity(intent);
                 }
             }
         });

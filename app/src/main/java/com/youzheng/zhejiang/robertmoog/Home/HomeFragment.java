@@ -22,6 +22,8 @@ import com.youzheng.zhejiang.robertmoog.Home.activity.LoginActivity;
 import com.youzheng.zhejiang.robertmoog.Home.activity.RegisterActivity;
 import com.youzheng.zhejiang.robertmoog.Home.activity.RegisterSuccessActivity;
 import com.youzheng.zhejiang.robertmoog.Home.activity.SearchGoodsActivity;
+import com.youzheng.zhejiang.robertmoog.Home.activity.SetMealActivity;
+import com.youzheng.zhejiang.robertmoog.Home.activity.ShopActionActivity;
 import com.youzheng.zhejiang.robertmoog.Home.adapter.BannerNormalAdapter;
 import com.youzheng.zhejiang.robertmoog.Model.BaseModel;
 import com.youzheng.zhejiang.robertmoog.Model.Home.CustomerBean;
@@ -184,7 +186,8 @@ public class HomeFragment extends BaseFragment  implements BaseFragment.ReloadIn
                         break;
 
                     case 2 :
-                        startActivity(new Intent(mContext,LoginActivity.class));
+//                        startActivity(new Intent(mContext,LoginActivity.class));
+                        startActivity(new Intent(mContext, ShopActionActivity.class));
                         break;
 
                     case 3 :
@@ -192,7 +195,7 @@ public class HomeFragment extends BaseFragment  implements BaseFragment.ReloadIn
                         break;
 
                     case 4 :
-                        startActivity(new Intent(mContext, GoodsManageActivity.class));
+                        startActivity(new Intent(mContext, SetMealActivity.class));
                         break;
                 }
             }

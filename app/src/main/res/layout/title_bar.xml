@@ -43,7 +43,7 @@
         android:text=""
         android:textSize="@dimen/text_size_15"
         android:clickable="true"
-        android:textColor="@color/text_drak_gray"
+        android:textColor="@color/bg_background_white"
         />
 
     <ImageView
