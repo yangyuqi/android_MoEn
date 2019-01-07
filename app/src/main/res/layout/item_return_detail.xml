@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:gravity="center_vertical"
+        android:background="@color/bg_background_white">
+
+        <ImageView
+            android:id="@+id/iv_goods"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:src="@mipmap/ic_launcher"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_goods_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="987656201801020002"
+                android:textColor="@color/text_main"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/tv_goods_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="摩恩淋浴花洒龙头套装pro 淋雨喷头卫生间 浴室冷热水龙头沐浴器沐浴器"
+                android:textColor="@color/text_main"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textSize="13sp"
+                android:layout_marginRight="18dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginRight="18dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp">
+
+
+                <TextView
+                    android:id="@+id/tv_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥156"
+                    android:layout_weight="1"
+                    android:textColor="@color/text_golden2"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    />
+
+
+
+                <TextView
+                    android:id="@+id/tv_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="X1"
+                    android:textColor="@color/text_main"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    />
+
+
+
+
+
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

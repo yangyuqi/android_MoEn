@@ -14,18 +14,18 @@ import com.youzheng.zhejiang.robertmoog.Store.bean.SampleOutPic;
 import java.util.List;
 
 public class SampleDetailAdapter extends BaseAdapter {
-    private List<SampleOutPic.ProductSampleResultDataBean.ImageUrlsBean> list;
+    private List<SampleOutPic.SampleImgIssueDataBean.ListBean> list;
     private Context context;
     private LayoutInflater layoutInflater;
 
 
-    public SampleDetailAdapter(List<SampleOutPic.ProductSampleResultDataBean.ImageUrlsBean> list, Context context) {
+    public SampleDetailAdapter(List<SampleOutPic.SampleImgIssueDataBean.ListBean> list, Context context) {
         this.list = list;
         this.context = context;
         layoutInflater=LayoutInflater.from(context);
     }
 
-    public void setPic(List<SampleOutPic.ProductSampleResultDataBean.ImageUrlsBean> list){
+    public void setPic(List<SampleOutPic.SampleImgIssueDataBean.ListBean> list){
         this.list=list;
         notifyDataSetChanged();
     }
@@ -56,7 +56,7 @@ public class SampleDetailAdapter extends BaseAdapter {
         }else {
             viewHolder= (ViewHolder) convertView.getTag();
         }
-        SampleOutPic.ProductSampleResultDataBean.ImageUrlsBean bean=list.get(position);
+        SampleOutPic.SampleImgIssueDataBean.ListBean bean=list.get(position);
         Glide.with(context).load(bean.getSmallUrl()).into(viewHolder.iv_photo);
         return convertView;
     }

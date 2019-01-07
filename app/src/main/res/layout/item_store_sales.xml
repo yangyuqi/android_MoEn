@@ -17,7 +17,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:gravity="center"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="5dp"
             android:layout_weight="1">
 
 
@@ -27,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:text="哈哈(店长)"
                 android:textSize="13sp"
-                android:gravity="center"
+                android:gravity="left"
                 android:autoLink="all"
                 android:lineHeight="1dp"
                 android:textColorLink="@color/colorPrimary"
@@ -43,7 +44,7 @@
             android:layout_weight="1"
             android:textSize="13sp"
             android:padding="10dp"
-            android:gravity="center"
+            android:gravity="left"
             android:textStyle="bold"
             android:textColor="@color/text_main"/>
 

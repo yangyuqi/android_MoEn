@@ -1,11 +1,13 @@
 package com.youzheng.zhejiang.robertmoog.Store.activity;
 
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -29,14 +31,18 @@ import com.youzheng.zhejiang.robertmoog.Store.adapter.AddphotoAdapter;
 import com.youzheng.zhejiang.robertmoog.Store.bean.SampleOutPic;
 import com.youzheng.zhejiang.robertmoog.Store.listener.OnRecyclerViewAdapterItemClickListener;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Request;
 import okhttp3.Response;
+import rx.Subscriber;
+import rx.schedulers.Schedulers;
 
 public class UpPhotoActivity extends BaseCameraActivity implements View.OnClickListener, OnRecyclerViewAdapterItemClickListener {
 
@@ -66,6 +72,7 @@ public class UpPhotoActivity extends BaseCameraActivity implements View.OnClickL
      */
     private TextView tv_cancel;
     private List<String> addlist=new ArrayList<>();
+    private   List<File> fileList;
 
     Handler handler=new Handler(){
         @Override
@@ -125,20 +132,20 @@ public class UpPhotoActivity extends BaseCameraActivity implements View.OnClickL
         gv_photo.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         Log.e("2131",list.size()+"");
+        if (list.size()!=0){
+            for (int i = 0; i <list.size() ; i++) {
+                path=list.get(i);
+                Log.e("集合路径",path);
+                File file=new File(path);
 
-
+                fileList = new ArrayList<>();
+                fileList.add(file);
+            }
+        }
         adapter.setOnItemClickListener(this);
     }
 
-    private void initData() {
 
-        list.add(path);
-        adapter=new AddphotoAdapter(list,this);
-        gv_photo.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-
-
-    }
 
     @Override
     public void onClick(View v) {
@@ -149,7 +156,7 @@ public class UpPhotoActivity extends BaseCameraActivity implements View.OnClickL
                 finish();
                 break;
             case R.id.textHeadNext:
-                CommitPic();
+                showStopDialog();
                 break;
             case R.id.tv_take_photo:
                 skipCamera();
@@ -168,11 +175,92 @@ public class UpPhotoActivity extends BaseCameraActivity implements View.OnClickL
     }
 
     private void CommitPic() {
-        for (int i = 0; i <list.size() ; i++) {
-            path=list.get(i);
-            Log.e("集合路径",path);
-        }
+//        HashMap<String,Object> map=new HashMap<>();
+//        map.put("posters",fileList);
 
+        OkHttpClientManager.getInstance().sendMultipart(UrlUtils.UPLOAD_FILE + "?access_token=" + access_token,new HashMap<String, Object>(),"posters",fileList)
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(new Subscriber<String>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable throwable) {
+
+                    }
+
+                    @Override
+                    public void onNext(String s) {
+                        Log.e("图片上传成功",s);
+//                        BaseModel baseModel = gson.fromJson(s,BaseModel.class);
+//                        if (baseModel.getCode()==PublicUtils.code){
+//                            showToast("图片上传成功");
+//                            finish();
+//                        }
+                    }
+                });
+//
+//        try {
+//            OkHttpClientManager.postAsyn(UrlUtils.UPLOAD_FILE + "?access_token=" + access_token, new OkHttpClientManager.StringCallback() {
+//                @Override
+//                public void onFailure(Request request, IOException e) {
+//
+//
+//                }
+//                @Override
+//                public void onResponse(String response) {
+//                    Log.e("今日门店销量",response);
+//                    BaseModel baseModel = gson.fromJson(response,BaseModel.class);
+//                    if (baseModel.getCode()==PublicUtils.code){
+//                       showToast("成功");
+//                    }
+//
+//                }
+//            },file,"file");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+    }
+
+    public void showStopDialog() {
+        final AlertDialog dialogBuilder = new AlertDialog.Builder(UpPhotoActivity.this).create();
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_send_pic, null);
+        dialogBuilder.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialogBuilder.show();
+        dialogBuilder.setContentView(dialogView);
+
+        TextView tv_no=dialogView.findViewById(R.id.tv_no);
+        TextView tv_ok=dialogView.findViewById(R.id.tv_ok);
+
+        tv_no.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogBuilder.dismiss();
+            }
+        });
+
+        tv_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               CommitPic();
+                dialogBuilder.dismiss();
+            }
+        });
+
+        Window window = dialogBuilder.getWindow();
+        //这句设置我们dialog在底部
+        window.setGravity(Gravity.CENTER);
+        WindowManager.LayoutParams lp = window.getAttributes();
+        //这句就是设置dialog横向满屏了。
+        DisplayMetrics d = this.getResources().getDisplayMetrics(); // 获取屏幕宽、高用
+//        lp.width = (int) (d.widthPixels * 0.74); // 高度设置为屏幕的0.6
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        window.setAttributes(lp);
 
 
     }

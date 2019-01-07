@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/bg_background_white"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2016/01/19 09:19:04"
+            android:textColor="@color/text_main"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:paddingLeft="15dp"
+            android:layout_marginTop="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order_number"
+                android:textColor="@color/text_main"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:id="@+id/tv_order_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="987656201801020002"
+                android:textColor="@color/text_main"
+                android:textStyle="bold"
+                android:textSize="13sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:gravity="center_vertical"
+            android:background="@color/bg_all">
+
+            <ImageView
+                android:id="@+id/iv_goods"
+                android:layout_width="88dp"
+                android:layout_height="88dp"
+                android:src="@mipmap/ic_launcher"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_goods_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="987656201801020002"
+                    android:textColor="@color/text_main"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="10dp"/>
+
+                <TextView
+                    android:id="@+id/tv_goods_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="摩恩淋浴花洒龙头套装pro 淋雨喷头卫生间 浴室冷热水龙头沐浴器沐浴器"
+                    android:textColor="@color/text_main"
+                    android:maxLines="3"
+                    android:ellipsize="end"
+                    android:textSize="13sp"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"/>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="right|center_vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+
+            <TextView
+                android:id="@+id/tv_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="共1件商品"
+                android:textColor="@color/text_main"
+                android:textSize="13sp"
+                android:layout_marginRight="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/disbursements"
+                android:textColor="@color/text_main"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:id="@+id/tv_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="￥1314"
+                android:textColor="@color/text_golden2"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:layout_marginRight="15dp"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg_all"/>
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="48dp"
+              android:orientation="horizontal"
+              android:gravity="right|center_vertical">
+
+
+              <TextView
+                  android:id="@+id/tv_return_all"
+                  android:layout_width="80dp"
+                  android:layout_height="28dp"
+                  android:text="整单退货"
+                  android:gravity="center"
+                  android:textColor="@color/colorPrimary"
+                  android:textSize="13sp"
+                  android:background="@drawable/title_off"/>
+
+              <TextView
+                  android:id="@+id/tv_return_partial"
+                  android:layout_width="80dp"
+                  android:layout_height="28dp"
+                  android:text="部分退货"
+                  android:gravity="center"
+                  android:layout_marginLeft="10dp"
+                  android:layout_marginRight="15dp"
+                  android:textColor="@color/colorPrimary"
+                  android:textSize="13sp"
+                  android:background="@drawable/title_off"/>
+
+          </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>
