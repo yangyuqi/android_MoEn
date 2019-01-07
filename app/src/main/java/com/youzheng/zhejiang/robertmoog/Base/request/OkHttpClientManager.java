@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.FileNameMap;
 import java.net.URLConnection;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -30,8 +29,6 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.MultipartBody;
-import rx.Observable;
-import rx.Subscriber;
 
 
 /**
@@ -378,114 +375,6 @@ public class OkHttpClientManager
 
         String key;
         String value;
-    }
-
-
-
-
-    public static void postAsyn(String url, StringCallback callback, File file, String fileKey) throws IOException
-    {
-        getInstance()._postAsyn(url, callback, file, fileKey);
-    }
-
-
-    /**
-     * 异步基于post的文件上传，单文件不带参数上传
-     *
-     * @param url
-     * @param callback
-     * @param file
-     * @param fileKey
-     * @throws IOException
-     */
-    private void _postAsyn(String url, StringCallback callback, File file, String fileKey) throws IOException
-    {
-        Request request = buildMultipartFormRequest(url, new File[]{file}, new String[]{fileKey}, null);
-        deliveryResult(callback, request);
-    }
-
-    private Request buildMultipartFormRequest(String url, File[] files,
-                                              String[] fileKeys, Param[] params)
-    {
-        params = validateParam(params);
-
-        MultipartBody.Builder builder = new MultipartBody.Builder()
-                .setType(MultipartBody.FORM);
-
-        for (Param param : params)
-        {
-            builder.addPart(Headers.of("Content-Disposition", "form-data; name=\"" + param.key + "\""),
-                    RequestBody.create(null, param.value));
-        }
-        if (files != null)
-        {
-            RequestBody fileBody = null;
-            for (int i = 0; i < files.length; i++)
-            {
-                File file = files[i];
-                String fileName = file.getName();
-                fileBody = RequestBody.create(MediaType.parse(guessMimeType(fileName)), file);
-                //TODO 根据文件名设置contentType
-                builder.addPart(Headers.of("Content-Disposition",
-                        "form-data; name=\"" + fileKeys[i] + "\"; filename=\"" + fileName + "\""),
-                        fileBody);
-            }
-        }
-
-        RequestBody requestBody = builder.build();
-        return new Request.Builder()
-                .url(url)
-                .post(requestBody)
-                .build();
-    }
-
-    private static final MediaType MEDIA_TYPE_PNG = MediaType.parse("image/png");
-    public  Observable<String> sendMultipart(final String reqUrl, final Map<String, Object> params, final String pic_key, final List<File> files){
-        return Observable.create(new Observable.OnSubscribe<String>(){
-
-            @Override
-            public void call(final Subscriber<? super String> subscriber) {
-                MultipartBody.Builder multipartBodyBuilder = new MultipartBody.Builder();
-                multipartBodyBuilder.setType(MultipartBody.FORM);
-                //遍历map中所有参数到builder
-//                if (params != null){
-//                    for (String key : params.keySet()) {
-//                        multipartBodyBuilder.addFormDataPart(key, params.get(key));
-//                    }
-//                }
-                //遍历paths中所有图片绝对路径到builder，并约定key如“upload”作为后台接受多张图片的key
-                if (files != null){
-                    for (File file : files) {
-                        multipartBodyBuilder.addFormDataPart(pic_key, file.getName(), RequestBody.create(MEDIA_TYPE_PNG, file));
-                        Log.e("几张图片",file.toString());
-                    }
-                }
-                //构建请求体
-                RequestBody requestBody = multipartBodyBuilder.build();
-
-                Request.Builder RequestBuilder = new Request.Builder();
-                RequestBuilder.url(reqUrl);// 添加URL地址
-                RequestBuilder.post(requestBody);
-                Request request = RequestBuilder.build();
-                Log.e("图片网址 ",request+"");
-                mOkHttpClient.newCall(request).enqueue(new Callback() {
-                    @Override
-                    public void onFailure(Call call, IOException e) {
-                        subscriber.onError(e);
-                        subscriber.onCompleted();
-                        call.cancel();
-                    }
-
-                    @Override
-                    public void onResponse(Call call, Response response) throws IOException {
-                        String str = response.body().string();
-                        subscriber.onNext(str);
-                        subscriber.onCompleted();
-                        call.cancel();
-                    }
-                });
-            }
-        });
     }
 
 

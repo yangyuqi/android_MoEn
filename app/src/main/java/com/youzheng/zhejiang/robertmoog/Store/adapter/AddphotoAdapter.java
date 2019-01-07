@@ -58,21 +58,17 @@ public class AddphotoAdapter extends BaseAdapter {
             viewHolder= (ViewHolder) convertView.getTag();
         }
         if (position == list.size()) {
-            if (list.size()==9){
-                viewHolder.iv_photo.setVisibility(View.GONE);
-            }else {
-                viewHolder.iv_photo.setImageResource(R.mipmap.group_44_1);//最后一个显示加号图片
-                viewHolder.iv_photo.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        //设置监听
-                        if (mOnItemClickListener != null) {
-                            mOnItemClickListener.onItemClick(view ,position);
-                        }
-
+            viewHolder.iv_photo.setImageResource(R.mipmap.group_44_1);//最后一个显示加号图片
+            viewHolder.iv_photo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //设置监听
+                    if (mOnItemClickListener != null) {
+                        mOnItemClickListener.onItemClick(view ,position);
                     }
-                });
-            }
+
+                }
+            });
 
         }else{
             Glide.with(context).load(list.get(position)).into(viewHolder.iv_photo);

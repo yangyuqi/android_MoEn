@@ -1,8 +1,6 @@
 package com.youzheng.zhejiang.robertmoog.Store.adapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,19 +9,13 @@ import android.widget.TextView;
 
 import com.youzheng.zhejiang.robertmoog.R;
 import com.youzheng.zhejiang.robertmoog.Store.bean.CustomerList;
-import com.youzheng.zhejiang.robertmoog.Store.listener.OnRecyclerViewAdapterItemClickListener;
 
 import java.util.List;
 
-public class StoreCustomerAdapter extends RecyclerView.Adapter<StoreCustomerAdapter.ViewHolder> {
+public class StoreCustomerAdapter extends BaseAdapter {
     private List<CustomerList.CoustomerListBean> list;
     private LayoutInflater layoutInflater;
     private Context context;
-    private OnRecyclerViewAdapterItemClickListener mOnItemClickListener;
-
-    public void setOnItemClickListener(OnRecyclerViewAdapterItemClickListener mOnItemClickListener) {
-        this.mOnItemClickListener = mOnItemClickListener;
-    }
 
     public StoreCustomerAdapter(List<CustomerList.CoustomerListBean> list, Context context) {
         this.list = list;
@@ -36,33 +28,14 @@ public class StoreCustomerAdapter extends RecyclerView.Adapter<StoreCustomerAdap
         notifyDataSetChanged();
     }
 
-
-    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view=layoutInflater.inflate(R.layout.item_store_customer_list,viewGroup,false);
-        final ViewHolder viewHolder=new ViewHolder(view);
-
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                int position = viewHolder.getLayoutPosition();
-                //设置监听
-                if (mOnItemClickListener != null) {
-                    mOnItemClickListener.onItemClick(view ,position );
-                }
-
-            }
-        });
-        return viewHolder;
+    public int getCount() {
+        return list.size();
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-        CustomerList.CoustomerListBean coustomerListBean=list.get(position);
-        viewHolder.tv_date.setText(coustomerListBean.getMonth());
-        viewHolder.tv_number.setText(coustomerListBean.getNum()+"");
+    public Object getItem(int position) {
+        return list.get(position);
     }
 
     @Override
@@ -71,19 +44,24 @@ public class StoreCustomerAdapter extends RecyclerView.Adapter<StoreCustomerAdap
     }
 
     @Override
-    public int getItemCount() {
-        return list.size();
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder viewHolder=null;
+        if (convertView==null){
+            convertView=layoutInflater.inflate(R.layout.item_store_customer_list,null);
+            viewHolder=new ViewHolder();
+            viewHolder.tv_date=convertView.findViewById(R.id.tv_date);
+            viewHolder.tv_number=convertView.findViewById(R.id.tv_number);
+            convertView.setTag(viewHolder);
+        }else {
+            viewHolder= (ViewHolder) convertView.getTag();
+        }
+        CustomerList.CoustomerListBean coustomerListBean=list.get(position);
+        viewHolder.tv_date.setText(coustomerListBean.getMonth());
+        viewHolder.tv_number.setText(coustomerListBean.getNum()+"");
+        return convertView;
     }
 
-
-
-   public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder{
         private TextView tv_date,tv_number;
-
-       public ViewHolder(@NonNull View itemView) {
-           super(itemView);
-           tv_date=itemView.findViewById(R.id.tv_date);
-           tv_number=itemView.findViewById(R.id.tv_number);
-       }
-   }
+    }
 }

@@ -4,32 +4,30 @@ import java.util.List;
 
 public class SampleOutPic {
 
-
-
         /**
-         * sampleImgIssueData : {"operator":"15622489789","operationTime":"2019-01-07 17:04:32","list":[{"bigUrl":"http://114.55.59.171:9080/image/product/originalImg/eca994b9-26fc-4c20-bfb4-a37290acb151.jpg","smallUrl":"http://114.55.59.171:9080/image/product/100/eca994b9-26fc-4c20-bfb4-a37290acb151.jpg"}]}
+         * productSampleResultData : {"operator":"mock","operationTime":"mock","imageUrls":[{"bigUrl":"mock","smallUrl":"mock"}]}
          */
 
-        private SampleImgIssueDataBean sampleImgIssueData;
+        private ProductSampleResultDataBean productSampleResultData;
 
-        public SampleImgIssueDataBean getSampleImgIssueData() {
-            return sampleImgIssueData;
+        public ProductSampleResultDataBean getProductSampleResultData() {
+            return productSampleResultData;
         }
 
-        public void setSampleImgIssueData(SampleImgIssueDataBean sampleImgIssueData) {
-            this.sampleImgIssueData = sampleImgIssueData;
+        public void setProductSampleResultData(ProductSampleResultDataBean productSampleResultData) {
+            this.productSampleResultData = productSampleResultData;
         }
 
-        public static class SampleImgIssueDataBean {
+        public static class ProductSampleResultDataBean {
             /**
-             * operator : 15622489789
-             * operationTime : 2019-01-07 17:04:32
-             * list : [{"bigUrl":"http://114.55.59.171:9080/image/product/originalImg/eca994b9-26fc-4c20-bfb4-a37290acb151.jpg","smallUrl":"http://114.55.59.171:9080/image/product/100/eca994b9-26fc-4c20-bfb4-a37290acb151.jpg"}]
+             * operator : mock
+             * operationTime : mock
+             * imageUrls : [{"bigUrl":"mock","smallUrl":"mock"}]
              */
 
             private String operator;
             private String operationTime;
-            private List<ListBean> list;
+            private List<ImageUrlsBean> imageUrls;
 
             public String getOperator() {
                 return operator;
@@ -47,18 +45,18 @@ public class SampleOutPic {
                 this.operationTime = operationTime;
             }
 
-            public List<ListBean> getList() {
-                return list;
+            public List<ImageUrlsBean> getImageUrls() {
+                return imageUrls;
             }
 
-            public void setList(List<ListBean> list) {
-                this.list = list;
+            public void setImageUrls(List<ImageUrlsBean> imageUrls) {
+                this.imageUrls = imageUrls;
             }
 
-            public static class ListBean {
+            public static class ImageUrlsBean {
                 /**
-                 * bigUrl : http://114.55.59.171:9080/image/product/originalImg/eca994b9-26fc-4c20-bfb4-a37290acb151.jpg
-                 * smallUrl : http://114.55.59.171:9080/image/product/100/eca994b9-26fc-4c20-bfb4-a37290acb151.jpg
+                 * bigUrl : mock
+                 * smallUrl : mock
                  */
 
                 private String bigUrl;

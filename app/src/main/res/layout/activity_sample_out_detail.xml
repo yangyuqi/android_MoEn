@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:textSize="13sp"
         android:textColor="@color/text_main"
-        android:text=""
+        android:text="李学东"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="35dp"/>
 
@@ -40,7 +40,7 @@
         android:textSize="13sp"
         android:textStyle="bold"
         android:textColor="@color/text_main"
-        android:text=""
+        android:text="2016/01/19 09:19:04"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="35dp"/>
 

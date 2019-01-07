@@ -15,13 +15,12 @@ import com.youzheng.zhejiang.robertmoog.Base.BaseFragment;
 import com.youzheng.zhejiang.robertmoog.Home.activity.ClientViewActivity;
 import com.youzheng.zhejiang.robertmoog.R;
 import com.youzheng.zhejiang.robertmoog.Store.activity.CheckResultActivity;
-import com.youzheng.zhejiang.robertmoog.Store.activity.CouponRecordActivity;
 import com.youzheng.zhejiang.robertmoog.Store.activity.GoodsManageActivity;
 import com.youzheng.zhejiang.robertmoog.Store.activity.OrderListActivity;
 import com.youzheng.zhejiang.robertmoog.Store.activity.PeopleMangerActivity;
 import com.youzheng.zhejiang.robertmoog.Store.activity.ProfessionalCustomerActivity;
 import com.youzheng.zhejiang.robertmoog.Store.activity.ProfessionalCustomerOrderActivity;
-import com.youzheng.zhejiang.robertmoog.Store.activity.ReturnGoodsManger.ReturnGoodsListActivity;
+import com.youzheng.zhejiang.robertmoog.Store.activity.ReturnGoodsListActivity;
 import com.youzheng.zhejiang.robertmoog.Store.activity.SampleOutInformationActivity;
 import com.youzheng.zhejiang.robertmoog.Store.activity.SampleOutMangerActivity;
 import com.youzheng.zhejiang.robertmoog.Store.activity.StoreCustomerActivity;
@@ -124,9 +123,6 @@ public class StoreFragment extends BaseFragment implements BaseFragment.ReloadIn
 
                     case 10:
                         startActivity(new Intent(getActivity(), ReturnGoodsListActivity.class));
-                        break;
-                    case 11:
-                        startActivity(new Intent(getActivity(), CouponRecordActivity.class));
                         break;
                 }
             }

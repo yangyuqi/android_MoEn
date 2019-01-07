@@ -74,12 +74,6 @@ public class UrlUtils {
 
     public static String ACTION_LIST= BASE_URL+"/v1/app/shop/getPromoList";
     public static String ACTION_LIST_DETAILS = BASE_URL+"/v1/app/shop/getPromoDetail";
-    public static String COUPON_RECORD_LIST = BASE_URL+"/v1/app/shop//couponUsageList";
-
-
-    public static String COUPON_RECORD_DETAIL = BASE_URL+"/v1/app/shop/couponUsageRecord";
-
-
 
     public static String SET_MEAL_LIST = BASE_URL+"/v1/app/shop/getComboTypes";
     public static String MEAL_USER_LIST = BASE_URL+"/v1/app/shop/getComboList";

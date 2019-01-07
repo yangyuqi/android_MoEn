@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.youzheng.zhejiang.robertmoog.R;
 import com.youzheng.zhejiang.robertmoog.Store.bean.OrderList;
-import com.youzheng.zhejiang.robertmoog.Store.listener.OnRecyclerViewAdapterItemClickListener;
 
 import java.util.List;
 
@@ -22,11 +21,6 @@ public class ReturnGoodsListAdapter extends RecyclerView.Adapter {
     private LayoutInflater layoutInflater;
     public static final int TYPE_ONE_IMAGE = 0;
     public static final int TYPE_MORE_IMAGE = 1;
-    private OnRecyclerViewAdapterItemClickListener mOnItemClickListener;
-
-    public void setOnItemClickListener(OnRecyclerViewAdapterItemClickListener mOnItemClickListener) {
-        this.mOnItemClickListener = mOnItemClickListener;
-    }
 
     public ReturnGoodsListAdapter(List<OrderList> list, List<Integer> piclist, Context context) {
         this.list = list;
@@ -49,38 +43,10 @@ public class ReturnGoodsListAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == TYPE_ONE_IMAGE) {
             View view = layoutInflater.inflate(R.layout.item_orderlist, parent,false);
-            final OneImageHolder oneImageHolder=new OneImageHolder(view);
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    int position = oneImageHolder.getLayoutPosition();
-                    //设置监听
-                    if (mOnItemClickListener != null) {
-                        mOnItemClickListener.onItemClick(view ,position );
-                    }
-
-                }
-            });
-            return oneImageHolder;
+            return new OneImageHolder(view);
         } else {
             View view = layoutInflater.inflate(R.layout.item_order_style, parent,false);
-            final MoreImageHolder moreImageHolder=new MoreImageHolder(view);
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    int position = moreImageHolder.getLayoutPosition();
-                    //设置监听
-                    if (mOnItemClickListener != null) {
-                        mOnItemClickListener.onItemClick(view ,position );
-                    }
-
-                }
-            });
-
-
-            return moreImageHolder;
+            return new MoreImageHolder(view);
         }
     }
 

@@ -50,14 +50,13 @@ public class CheckResultActivity extends BaseActivity implements View.OnClickLis
     private List<CheckStoreList.PatrolShopListBean> list=new ArrayList<>();
     private CheckResultAdapter adapter;
     private int year;
-    private Calendar selectedDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_result);
         initView();
-         selectedDate = Calendar.getInstance();
+        Calendar selectedDate = Calendar.getInstance();
         //获取系统的日期
         //年
          year = selectedDate.get(Calendar.YEAR);
@@ -68,25 +67,16 @@ public class CheckResultActivity extends BaseActivity implements View.OnClickLis
         pr_list.setOnPullLoadMoreListener(new PullLoadMoreRecyclerView.PullLoadMoreListener() {
             @Override
             public void onRefresh() {
-
-                if (year==selectedDate.get(Calendar.YEAR)){
-                    list.clear();
-                    initData(year);
-                }else {
-                    year++;
-                    list.clear();
-                    initData(year);
-                }
+               list.clear();
+               initData(year);
                tv_title.setText(year+"年");
             }
 
             @Override
             public void onLoadMore() {
-                    year=year-1;
-                    tv_title.setText(year+"年");
-                    initData(year);
-
-
+               year=year-1;
+               initData(year);
+                tv_title.setText(year+"年");
             }
         });
     }
@@ -94,7 +84,7 @@ public class CheckResultActivity extends BaseActivity implements View.OnClickLis
     @Override
     protected void onResume() {
         super.onResume();
-        initData(year);
+        initData(2018);
         tv_title.setText(year+"年");
     }
 
@@ -167,9 +157,6 @@ public class CheckResultActivity extends BaseActivity implements View.OnClickLis
         if (beans.size()!=0){
             list.addAll(beans);
             adapter.setUI(beans);
-        }else {
-            list.clear();
-            showToast(getString(R.string.load_list_erron));
         }
         pr_list.setPullLoadMoreCompleted();
     }
