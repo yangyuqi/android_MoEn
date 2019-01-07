@@ -5,6 +5,7 @@ public class BaseModel<T> {
     private String msg ;
     private T datas ;
 
+
     public Integer getCode() {
         return code;
     }

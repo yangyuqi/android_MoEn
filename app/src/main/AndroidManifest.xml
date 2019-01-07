@@ -27,7 +27,13 @@
         android:roundIcon="@mipmap/app_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:launchMode="singleTask"
+            >
+
+        </activity>
+
+        <activity android:name=".Home.activity.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -99,6 +105,7 @@
         <activity
             android:name=".Store.activity.ProfessionalCustomerOrderActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".Home.activity.AttentionManagerActivity"
             android:screenOrientation="portrait" />
@@ -188,7 +195,19 @@
         <activity android:name=".Store.activity.CouponDetailActivity" />
         <activity android:name=".Store.activity.ReturnGoodsManger.ReturnGoodsDetailActivity" />
         <activity android:name=".Store.activity.ReturnGoods.ReturnGoodsSuccessActivity" />
-        <activity android:name=".Store.activity.ReturnGoods.ChooseOrderListActivity"></activity>
+        <activity android:name=".Store.activity.ReturnGoods.ChooseOrderListActivity"/>
+
+        <activity android:name=".Store.activity.UnqualifiedActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".Home.activity.ShopActionActivity"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".Home.activity.ShopActionDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Home.activity.SetMealActivity"
+            android:screenOrientation="portrait" ></activity>
+
     </application>
 
 </manifest>

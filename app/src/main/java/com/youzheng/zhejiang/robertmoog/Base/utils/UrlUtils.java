@@ -52,6 +52,7 @@ public class UrlUtils {
     public static String LIST_DATA = BASE_URL+"/v1/app/customer/getEnums";
     public static String ORDER_DETAOLS = BASE_URL+"/v1/app/customer/saveOrder";
 
+    public static String GET_PRIVICE = BASE_URL+"/v1/app/customer/getProvince";
 
     public static String SAMPLE_HISTORY = BASE_URL+"/v1/app/shop/productSampleHistory";
 
@@ -71,6 +72,8 @@ public class UrlUtils {
 
     public static String UPLOAD_FILE = BASE_URL+"/v1/app/shop/publishProductSampleImage";
 
+    public static String ACTION_LIST= BASE_URL+"/v1/app/shop/getPromoList";
+    public static String ACTION_LIST_DETAILS = BASE_URL+"/v1/app/shop/getPromoDetail";
     public static String COUPON_RECORD_LIST = BASE_URL+"/v1/app/shop//couponUsageList";
 
 
@@ -78,7 +81,8 @@ public class UrlUtils {
 
 
 
-
+    public static String SET_MEAL_LIST = BASE_URL+"/v1/app/shop/getComboTypes";
+    public static String MEAL_USER_LIST = BASE_URL+"/v1/app/shop/getComboList";
 
 
 

@@ -53,7 +53,7 @@ public class SalesActivity extends BaseActivity {
     TextView tv_confrim ;
     Map<String,Object> map = new HashMap<>();
     private OptionsPickerView pvCustomTime;
-    TextView tv_name ,tv_phone ,tv_details ,tv_get_state , tv_dispatching_type ,tv_get_money_type ,tv_get_money_of_now ,tv_should_money;
+    TextView tv_name ,tv_phone ,tv_details ,tv_get_state , tv_dispatching_type ,tv_get_money_type ,tv_get_money_of_now ,tv_should_money ,edt_content;
     String PickUpStatus ,ShoppingMethod ,paymentMethod;
     Switch sv_life ,sv_present ;
     private String payAmount ;
@@ -256,6 +256,7 @@ public class SalesActivity extends BaseActivity {
             map.put("orderProductDatas", orderProductDatasBeans);
             map.put("orderSetMealDatas", orderSetMealDatasBeans);
             map.put("payAmount",payAmount);
+            map.put("info",edt_content.getText().toString());
         }
 
         OkHttpClientManager.postAsynJson(gson.toJson(map), UrlUtils.ORDER_DETAOLS + "?access_token=" + access_token, new OkHttpClientManager.StringCallback() {
@@ -266,7 +267,8 @@ public class SalesActivity extends BaseActivity {
 
             @Override
             public void onResponse(String response) {
-
+                BaseModel baseModel = gson.fromJson(response,BaseModel.class);
+                showToast(baseModel.getMsg());
             }
         });
 
@@ -313,8 +315,8 @@ public class SalesActivity extends BaseActivity {
                 if (baseModel.getCode()==PublicUtils.code){
                     SaleDataBean saleData = gson.fromJson(gson.toJson(baseModel.getDatas()),SaleDataBean.class);
                     payAmount = saleData.getSaleData().getPayAmount();
-                    tv_get_money_of_now.setText(R.string.label_money+payAmount);
-                    tv_should_money.setText(R.string.label_money+saleData.getSaleData().getAmountPayable());
+                    tv_get_money_of_now.setText("¥"+payAmount);
+                    tv_should_money.setText("¥"+saleData.getSaleData().getAmountPayable());
                     if (saleData.getSaleData().getAddressId()==null){
                         findViewById(R.id.rl_address).setVisibility(View.GONE);
                         findViewById(R.id.ll_address).setVisibility(View.VISIBLE);
@@ -370,6 +372,7 @@ public class SalesActivity extends BaseActivity {
         sv_present = findViewById(R.id.sv_present);
         tv_get_money_of_now = findViewById(R.id.tv_get_money_of_now);
         tv_should_money = findViewById(R.id.tv_should_money);
+        edt_content = findViewById(R.id.edt_content);
     }
 
     @Override

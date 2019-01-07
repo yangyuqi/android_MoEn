@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/bg_all"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/title_bar" />
+
+    <LinearLayout
+        android:paddingTop="@dimen/space_15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/bg_background_white"
+        >
+        <LinearLayout
+        android:layout_marginLeft="@dimen/space_15"
+        android:layout_below="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:textSize="@dimen/text_size_15"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="活动名称:"
+            />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_10"
+            android:textSize="@dimen/text_size_15"
+            android:textColor="@color/text_main"
+            />
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/space_15"
+            android:layout_marginLeft="@dimen/space_15"
+            android:layout_below="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:textSize="@dimen/text_size_15"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="活动时间:"
+                />
+
+            <TextView
+                android:id="@+id/tv_start_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_10"
+                android:textSize="@dimen/text_size_15"
+                android:textColor="@color/text_drak_black"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/space_15"
+            android:layout_marginLeft="@dimen/space_15"
+            android:layout_below="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:textSize="@dimen/text_size_15"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="活动摘要:"
+                />
+
+            <TextView
+                android:id="@+id/tv_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_10"
+                android:textSize="@dimen/text_size_15"
+                android:textColor="@color/text_main"
+                />
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_marginTop="@dimen/space_20"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_divider_2"
+            android:background="@color/bg_all"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_10"
+            android:layout_marginLeft="@dimen/space_15"
+            android:text="订单促销"
+            android:textColor="@color/text_main"
+            android:textSize="@dimen/text_size_17"
+            />
+
+        <ListView
+            android:paddingBottom="@dimen/space_15"
+            android:dividerHeight="@dimen/space_10"
+            android:divider="@color/bg_background_white"
+            android:id="@+id/ls"
+            android:background="@color/bg_background_white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/space_10"
+            android:paddingLeft="@dimen/space_15"
+            ></ListView>
+
+    </LinearLayout>
+
+</LinearLayout>

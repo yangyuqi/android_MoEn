@@ -10,6 +10,7 @@ import com.youzheng.zhejiang.robertmoog.Base.BaseActivity;
 import com.youzheng.zhejiang.robertmoog.Base.request.OkHttpClientManager;
 import com.youzheng.zhejiang.robertmoog.Base.utils.PublicUtils;
 import com.youzheng.zhejiang.robertmoog.Base.utils.UrlUtils;
+import com.youzheng.zhejiang.robertmoog.MainActivity;
 import com.youzheng.zhejiang.robertmoog.Model.BaseModel;
 import com.youzheng.zhejiang.robertmoog.Model.login.LoginBean;
 import com.youzheng.zhejiang.robertmoog.Model.login.UserConfigDataBean;
@@ -107,6 +108,7 @@ public class LoginActivity extends BaseActivity {
                            if (baseModel.getCode()==PublicUtils.code){
                                UserConfigDataBean dataBean = gson.fromJson(gson.toJson(baseModel.getDatas()),UserConfigDataBean.class);
                                SharedPreferencesUtils.setParam(mContext,PublicUtils.role,dataBean.getUserConfigData().getUserRole());
+                               startActivity(new Intent(mContext, MainActivity.class));
                                finish();
                            }
                        }
