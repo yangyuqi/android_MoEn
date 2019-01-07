@@ -71,7 +71,10 @@ public class UrlUtils {
 
     public static String UPLOAD_FILE = BASE_URL+"/v1/app/shop/publishProductSampleImage";
 
+    public static String COUPON_RECORD_LIST = BASE_URL+"/v1/app/shop//couponUsageList";
 
+
+    public static String COUPON_RECORD_DETAIL = BASE_URL+"/v1/app/shop/couponUsageRecord";
 
 
 

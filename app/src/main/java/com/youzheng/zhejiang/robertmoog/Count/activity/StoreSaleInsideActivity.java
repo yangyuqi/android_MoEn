@@ -97,6 +97,11 @@ public class StoreSaleInsideActivity extends BaseActivity implements View.OnClic
             shopid=0;
         }
         initView();
+        if (role.equals("SHOP_SELLER")) {
+            lin_search.setVisibility(View.VISIBLE);
+        }else {
+            lin_search.setVisibility(View.GONE);
+        }
         setListener();
         initTimer();
         initData(page,pageSize,shopid,startstr,endstr);

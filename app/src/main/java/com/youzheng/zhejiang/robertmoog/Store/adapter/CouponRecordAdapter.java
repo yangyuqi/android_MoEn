@@ -10,13 +10,14 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.youzheng.zhejiang.robertmoog.R;
+import com.youzheng.zhejiang.robertmoog.Store.bean.CouponRecord;
 import com.youzheng.zhejiang.robertmoog.Store.bean.CustomerList;
 import com.youzheng.zhejiang.robertmoog.Store.listener.OnRecyclerViewAdapterItemClickListener;
 
 import java.util.List;
 
-public class StoreCustomerAdapter extends RecyclerView.Adapter<StoreCustomerAdapter.ViewHolder> {
-    private List<CustomerList.CoustomerListBean> list;
+public class CouponRecordAdapter extends RecyclerView.Adapter<CouponRecordAdapter.ViewHolder> {
+    private List<CouponRecord.OrderMonthDataListBean> list;
     private LayoutInflater layoutInflater;
     private Context context;
     private OnRecyclerViewAdapterItemClickListener mOnItemClickListener;
@@ -25,13 +26,13 @@ public class StoreCustomerAdapter extends RecyclerView.Adapter<StoreCustomerAdap
         this.mOnItemClickListener = mOnItemClickListener;
     }
 
-    public StoreCustomerAdapter(List<CustomerList.CoustomerListBean> list, Context context) {
+    public CouponRecordAdapter(List<CouponRecord.OrderMonthDataListBean> list, Context context) {
         this.list = list;
         this.context = context;
         layoutInflater=LayoutInflater.from(context);
     }
 
-    public void setListRefreshUi(List<CustomerList.CoustomerListBean> list){
+    public void setListRefreshUi(List<CouponRecord.OrderMonthDataListBean> list){
         this.list = list;
         notifyDataSetChanged();
     }
@@ -42,7 +43,6 @@ public class StoreCustomerAdapter extends RecyclerView.Adapter<StoreCustomerAdap
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view=layoutInflater.inflate(R.layout.item_store_customer_list,viewGroup,false);
         final ViewHolder viewHolder=new ViewHolder(view);
-
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,9 +60,9 @@ public class StoreCustomerAdapter extends RecyclerView.Adapter<StoreCustomerAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-        CustomerList.CoustomerListBean coustomerListBean=list.get(position);
-        viewHolder.tv_date.setText(coustomerListBean.getMonth());
-        viewHolder.tv_number.setText(coustomerListBean.getNum()+"");
+        CouponRecord.OrderMonthDataListBean bean=list.get(position);
+        viewHolder.tv_date.setText(bean.getMonth());
+        viewHolder.tv_number.setText(bean.getNumPrice()+"");
     }
 
     @Override

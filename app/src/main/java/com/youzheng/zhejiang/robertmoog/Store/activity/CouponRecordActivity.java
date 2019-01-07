@@ -1,12 +1,13 @@
 package com.youzheng.zhejiang.robertmoog.Store.activity;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -17,8 +18,9 @@ import com.youzheng.zhejiang.robertmoog.Base.utils.PublicUtils;
 import com.youzheng.zhejiang.robertmoog.Base.utils.UrlUtils;
 import com.youzheng.zhejiang.robertmoog.Model.BaseModel;
 import com.youzheng.zhejiang.robertmoog.R;
-import com.youzheng.zhejiang.robertmoog.Store.adapter.CheckResultAdapter;
-import com.youzheng.zhejiang.robertmoog.Store.bean.CheckStoreList;
+import com.youzheng.zhejiang.robertmoog.Store.adapter.CouponRecordAdapter;
+import com.youzheng.zhejiang.robertmoog.Store.bean.CouponRecord;
+import com.youzheng.zhejiang.robertmoog.Store.bean.CustomerList;
 import com.youzheng.zhejiang.robertmoog.Store.listener.OnRecyclerViewAdapterItemClickListener;
 import com.youzheng.zhejiang.robertmoog.Store.view.RecycleViewDivider;
 
@@ -31,9 +33,9 @@ import java.util.List;
 import okhttp3.Request;
 
 /**
- * 巡店列表界面
+ * 优惠券使用记录界面
  */
-public class CheckResultActivity extends BaseActivity implements View.OnClickListener {
+public class CouponRecordActivity extends BaseActivity implements View.OnClickListener, OnRecyclerViewAdapterItemClickListener {
 
     private ImageView btnBack;
     /**  */
@@ -42,33 +44,30 @@ public class CheckResultActivity extends BaseActivity implements View.OnClickLis
     private TextView textHeadNext;
     private ImageView iv_next;
     private RelativeLayout layout_header;
-    /**
-     * 2018年
-     */
-    private TextView tv_title;
-    private PullLoadMoreRecyclerView pr_list;
-    private List<CheckStoreList.PatrolShopListBean> list=new ArrayList<>();
-    private CheckResultAdapter adapter;
+    /**  */
+    private TextView tv_number;
+    private PullLoadMoreRecyclerView lv_list;
+    private List<CouponRecord.OrderMonthDataListBean> list=new ArrayList<>();
+    private CouponRecordAdapter adapter;
     private int year;
     private Calendar selectedDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_check_result);
+        setContentView(R.layout.activity_coupon_record);
         initView();
-         selectedDate = Calendar.getInstance();
+        selectedDate = Calendar.getInstance();
         //获取系统的日期
         //年
-         year = selectedDate.get(Calendar.YEAR);
+        year = selectedDate.get(Calendar.YEAR);
         setListener();
     }
 
     private void setListener() {
-        pr_list.setOnPullLoadMoreListener(new PullLoadMoreRecyclerView.PullLoadMoreListener() {
+        lv_list.setOnPullLoadMoreListener(new PullLoadMoreRecyclerView.PullLoadMoreListener() {
             @Override
             public void onRefresh() {
-
                 if (year==selectedDate.get(Calendar.YEAR)){
                     list.clear();
                     initData(year);
@@ -77,101 +76,90 @@ public class CheckResultActivity extends BaseActivity implements View.OnClickLis
                     list.clear();
                     initData(year);
                 }
-               tv_title.setText(year+"年");
             }
 
             @Override
             public void onLoadMore() {
-                    year=year-1;
-                    tv_title.setText(year+"年");
-                    initData(year);
-
-
+                year=year-1;
+                initData(year);
             }
         });
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        initData(year);
-        tv_title.setText(year+"年");
     }
 
     private void initView() {
         btnBack = (ImageView) findViewById(R.id.btnBack);
         btnBack.setOnClickListener(this);
         textHeadTitle = (TextView) findViewById(R.id.textHeadTitle);
-        textHeadTitle.setText("巡店结果");
+        textHeadTitle.setText("优惠券使用记录");
         textHeadNext = (TextView) findViewById(R.id.textHeadNext);
         iv_next = (ImageView) findViewById(R.id.iv_next);
         layout_header = (RelativeLayout) findViewById(R.id.layout_header);
-        tv_title = (TextView) findViewById(R.id.tv_title);
-        pr_list = (PullLoadMoreRecyclerView) findViewById(R.id.pr_list);
-        pr_list.setLinearLayout();
-        pr_list.addItemDecoration(new RecycleViewDivider(
+        tv_number = (TextView) findViewById(R.id.tv_number);
+        lv_list = (PullLoadMoreRecyclerView) findViewById(R.id.lv_list);
+        lv_list.setLinearLayout();
+        lv_list.addItemDecoration(new RecycleViewDivider(
                 this, LinearLayoutManager.VERTICAL, 5, getResources().getColor(R.color.divider_color_item)));
-        pr_list.setColorSchemeResources(R.color.colorPrimary);
+        lv_list.setColorSchemeResources(R.color.colorPrimary);
 
-        adapter=new CheckResultAdapter(list,this);
-        pr_list.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+        adapter=new CouponRecordAdapter(list,this);
+        lv_list.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(this);
+
 
     }
 
-    private void initData(int Year) {
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initData(year);
+    }
+
+    private void initData(int year) {
 
         HashMap<String,Object> map=new HashMap<>();
-        map.put("createDate",Year);
-
-        OkHttpClientManager.postAsynJson(gson.toJson(map), UrlUtils.CHECK_STORE_LIST + "?access_token=" + access_token, new OkHttpClientManager.StringCallback() {
+        map.put("year",year);
+        OkHttpClientManager.postAsynJson(gson.toJson(map), UrlUtils.COUPON_RECORD_LIST + "?access_token=" + access_token, new OkHttpClientManager.StringCallback() {
             @Override
             public void onFailure(Request request, IOException e) {
-                pr_list.setPullLoadMoreCompleted();
+                lv_list.setPullLoadMoreCompleted();
             }
 
             @Override
             public void onResponse(String response) {
-                Log.e("巡店列表",response);
-                pr_list.setPullLoadMoreCompleted();
+                Log.e("优惠券使用列表",response);
+                lv_list.setPullLoadMoreCompleted();
                 BaseModel baseModel = gson.fromJson(response,BaseModel.class);
                 if (baseModel.getCode()==PublicUtils.code){
-                    CheckStoreList checkStoreList = gson.fromJson(gson.toJson(baseModel.getDatas()),CheckStoreList.class);
-                    setData(checkStoreList);
+                    CouponRecord couponRecord = gson.fromJson(gson.toJson(baseModel.getDatas()),CouponRecord.class);
+                    setData(couponRecord);
                 }
             }
         });
 
-        adapter.setOnItemClickListener(new OnRecyclerViewAdapterItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                Intent intent=new Intent(CheckResultActivity.this,CheckStoreDetailActivity.class);
-                intent.putExtra("checkID",list.get(position).getId());
-                startActivity(intent);
-            }
-
-            @Override
-            public void onItemLongClick(View view, int position) {
-
-            }
-        });
 
 
     }
 
-    private void setData(CheckStoreList checkStoreList) {
-        if (checkStoreList==null) return;
-        if (checkStoreList.getPatrolShopList()==null) return;
+    private void setData(CouponRecord couponRecord) {
+        if (couponRecord.getOrderMonthDataList()==null) return;
 
-        List<CheckStoreList.PatrolShopListBean> beans=checkStoreList.getPatrolShopList();
-        if (beans.size()!=0){
-            list.addAll(beans);
-            adapter.setUI(beans);
+        if (!couponRecord.getTotalAmount().equals("")||couponRecord.getTotalAmount()!=null){
+            tv_number.setText(couponRecord.getTotalAmount());
         }else {
-            list.clear();
+            tv_number.setText("0");
+        }
+
+        List<CouponRecord.OrderMonthDataListBean> beanList=couponRecord.getOrderMonthDataList();
+        if (beanList.size()!=0){
+            list.addAll(beanList);
+            adapter.setListRefreshUi(beanList);
+        }else {
             showToast(getString(R.string.load_list_erron));
         }
-        pr_list.setPullLoadMoreCompleted();
+
+        lv_list.setPullLoadMoreCompleted();
     }
 
     @Override
@@ -183,5 +171,20 @@ public class CheckResultActivity extends BaseActivity implements View.OnClickLis
                 finish();
                 break;
         }
+    }
+
+
+
+    @Override
+    public void onItemClick(View view, int position) {
+        String date=list.get(position).getMonth();
+        Intent intent=new Intent(this,CouponDetailActivity.class);
+        intent.putExtra("couponDate",date);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onItemLongClick(View view, int position) {
+
     }
 }

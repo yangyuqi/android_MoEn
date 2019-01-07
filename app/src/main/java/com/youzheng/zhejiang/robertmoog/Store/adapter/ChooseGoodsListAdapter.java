@@ -15,7 +15,7 @@ import com.youzheng.zhejiang.robertmoog.Store.listener.OnRecyclerViewAdapterItem
 
 import java.util.List;
 
-public class ReturnGoodsListAdapter extends RecyclerView.Adapter {
+public class ChooseGoodsListAdapter extends RecyclerView.Adapter {
     private List<OrderList> list;
     private List<Integer> piclist;
     private Context context;
@@ -28,7 +28,7 @@ public class ReturnGoodsListAdapter extends RecyclerView.Adapter {
         this.mOnItemClickListener = mOnItemClickListener;
     }
 
-    public ReturnGoodsListAdapter(List<OrderList> list, List<Integer> piclist, Context context) {
+    public ChooseGoodsListAdapter(List<OrderList> list, List<Integer> piclist, Context context) {
         this.list = list;
         this.piclist=piclist;
         this.context = context;
@@ -48,38 +48,14 @@ public class ReturnGoodsListAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == TYPE_ONE_IMAGE) {
-            View view = layoutInflater.inflate(R.layout.item_orderlist, parent,false);
+            View view = layoutInflater.inflate(R.layout.item_choose_orderlist, parent,false);
             final OneImageHolder oneImageHolder=new OneImageHolder(view);
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
 
-                    int position = oneImageHolder.getLayoutPosition();
-                    //设置监听
-                    if (mOnItemClickListener != null) {
-                        mOnItemClickListener.onItemClick(view ,position );
-                    }
-
-                }
-            });
             return oneImageHolder;
         } else {
-            View view = layoutInflater.inflate(R.layout.item_order_style, parent,false);
+            View view = layoutInflater.inflate(R.layout.item_choose_order_style, parent,false);
             final MoreImageHolder moreImageHolder=new MoreImageHolder(view);
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    int position = moreImageHolder.getLayoutPosition();
-                    //设置监听
-                    if (mOnItemClickListener != null) {
-                        mOnItemClickListener.onItemClick(view ,position );
-                    }
-
-                }
-            });
-
-
+            
             return moreImageHolder;
         }
     }
@@ -134,6 +110,10 @@ public class ReturnGoodsListAdapter extends RecyclerView.Adapter {
         TextView tv_count;
         TextView tv_money;
 
+        TextView tv_return_all;
+        TextView tv_return_partial;
+
+
         public OneImageHolder(View itemView) {
             super(itemView);
             tv_date = itemView.findViewById(R.id.tv_date);
@@ -143,6 +123,8 @@ public class ReturnGoodsListAdapter extends RecyclerView.Adapter {
             tv_goods_content = itemView.findViewById(R.id.tv_goods_content);
             tv_count = itemView.findViewById(R.id.tv_count);
             tv_money = itemView.findViewById(R.id.tv_money);
+            tv_return_all=itemView.findViewById(R.id.tv_return_all);
+            tv_return_partial=itemView.findViewById(R.id.tv_return_partial);
         }
     }
 
@@ -152,6 +134,8 @@ public class ReturnGoodsListAdapter extends RecyclerView.Adapter {
         RecyclerView mRvListPic;
         TextView mTvCount;
         TextView mTvMoney;
+        TextView tv_return_all;
+        TextView tv_return_partial;
         public MoreImageHolder(View itemView) {
             super(itemView);
             mTvDate = itemView.findViewById(R.id.tv_date);
@@ -159,6 +143,8 @@ public class ReturnGoodsListAdapter extends RecyclerView.Adapter {
             mRvListPic = itemView.findViewById(R.id.rv_list_pic);
             mTvCount = itemView.findViewById(R.id.tv_count);
             mTvMoney = itemView.findViewById(R.id.tv_money);
+            tv_return_all=itemView.findViewById(R.id.tv_return_all);
+            tv_return_partial=itemView.findViewById(R.id.tv_return_partial);
         }
     }
 

@@ -19,7 +19,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/store_customer_number"
+            android:text="门店优惠券使用金额（元）"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/bg_main"
             android:textSize="13sp"
@@ -44,6 +44,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:divider="@color/divider_color_item"
+        android:dividerHeight="1dp"
         android:scrollbars="none"
         android:background="@color/bg_background_white"></com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView>
 

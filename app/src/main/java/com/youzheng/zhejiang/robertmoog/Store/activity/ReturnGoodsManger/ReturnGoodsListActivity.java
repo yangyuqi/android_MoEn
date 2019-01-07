@@ -1,5 +1,6 @@
-package com.youzheng.zhejiang.robertmoog.Store.activity;
+package com.youzheng.zhejiang.robertmoog.Store.activity.ReturnGoodsManger;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -18,12 +19,13 @@ import com.youzheng.zhejiang.robertmoog.R;
 import com.youzheng.zhejiang.robertmoog.Store.adapter.ReturnGoodsListAdapter;
 import com.youzheng.zhejiang.robertmoog.Store.adapter.ReturnGoodsTimeAdapter;
 import com.youzheng.zhejiang.robertmoog.Store.bean.OrderList;
+import com.youzheng.zhejiang.robertmoog.Store.listener.OnRecyclerViewAdapterItemClickListener;
 import com.youzheng.zhejiang.robertmoog.Store.view.RecycleViewDivider;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReturnGoodsListActivity extends BaseActivity implements View.OnClickListener {
+public class ReturnGoodsListActivity extends BaseActivity implements View.OnClickListener, OnRecyclerViewAdapterItemClickListener {
 
     private ImageView btnBack;
     /**  */
@@ -129,6 +131,8 @@ public class ReturnGoodsListActivity extends BaseActivity implements View.OnClic
         goodsTimeAdapter=new ReturnGoodsTimeAdapter(strlist,this);
         gv_time.setAdapter(goodsTimeAdapter);
         goodsTimeAdapter.notifyDataSetChanged();
+
+        adapter.setOnItemClickListener(this);
     }
 
     @Override
@@ -146,5 +150,16 @@ public class ReturnGoodsListActivity extends BaseActivity implements View.OnClic
 
                 break;
         }
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        Intent intent=new Intent(this,ReturnGoodsDetailActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onItemLongClick(View view, int position) {
+
     }
 }

@@ -46,7 +46,7 @@ public class SampleOutDetailActivity extends BaseActivity implements View.OnClic
      * 2016/01/19 09:19:04
      */
     private TextView tv_time;
-    private List<SampleOutPic.ProductSampleResultDataBean.ImageUrlsBean> list=new ArrayList<>();
+    private List<SampleOutPic.SampleImgIssueDataBean.ListBean> list=new ArrayList<>();
     private SampleDetailAdapter adapter;
     private List<String> piclist=new ArrayList<>();
 
@@ -98,18 +98,18 @@ public class SampleOutDetailActivity extends BaseActivity implements View.OnClic
 
     private void setData(SampleOutPic sampleOutPic) {
         if (sampleOutPic==null) return;
-        if (sampleOutPic.getProductSampleResultData()==null) return;
-        String Operator=sampleOutPic.getProductSampleResultData().getOperator();
+        if (sampleOutPic.getSampleImgIssueData().getList()==null) return;
+        String Operator=sampleOutPic.getSampleImgIssueData().getOperator();
         if (!Operator.equals("")||Operator!=null){
             tv_name.setText(Operator);
         }
 
-        String operationTime=sampleOutPic.getProductSampleResultData().getOperationTime();
+        String operationTime=sampleOutPic.getSampleImgIssueData().getOperationTime();
         if (!operationTime.equals("")||operationTime!=null){
-            tv_time.setText(Operator);
+            tv_time.setText(operationTime);
         }
 
-        List<SampleOutPic.ProductSampleResultDataBean.ImageUrlsBean> pic=sampleOutPic.getProductSampleResultData().getImageUrls();
+        List<SampleOutPic.SampleImgIssueDataBean.ListBean> pic=sampleOutPic.getSampleImgIssueData().getList();
         if (pic.size()!=0){
             list.addAll(pic);
             adapter.setPic(pic);
