@@ -39,13 +39,15 @@
 
     </LinearLayout>
 
-    <com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView
+    <ListView
         android:id="@+id/lv_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:divider="@color/divider_color_item"
+        android:dividerHeight="1dp"
         android:scrollbars="none"
-        android:background="@color/bg_background_white"></com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView>
+        android:background="@color/bg_background_white"></ListView>
 
 
 
